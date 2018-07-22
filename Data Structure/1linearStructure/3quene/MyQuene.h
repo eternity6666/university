@@ -1,5 +1,5 @@
-#ifdef MYQUENE_H
 #define MYQUENE_H
+#ifdef MYQUENE_H
 
 class MyQuene
 {
@@ -16,6 +16,6 @@ private:
     int *m_pQuene;
     int m_iQueneLen;
     int m_iQueneCapacity;
-}
+};
 
 #endif

@@ -1,5 +1,3 @@
-#include <istream>
-#include <ostream>
 #include <iostream>
 #include "./eg2.h"
 using namespace std;

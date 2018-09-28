@@ -5,13 +5,12 @@
 //////////////////////////////////////////////////////////////////////////////
 // 
 // eg1.h 长方形数据结构C++类声明和实现(基类)
-
 #ifndef EG1_H
     #define EG1_H
-    #include "./eg1.h"
+    #include "eg1.h"
 #endif
-
 // 长方形数据结构C++类声明(派生类)
+#include <iostream>
 
 template <typename ElemType>
 class MyRectangle:public Rectangle<ElemType>
@@ -34,7 +33,7 @@ public:
 // 功能:输入长方形
 // 说明:输入长方形的长和宽
 template <typename ElemType>
-void MyRecatangle<ElemType>::read(istream& in)
+void MyRectangle<ElemType>::read(istream& in)
 {
     cout << "请输入第" << myNo.no << "个长方形对象" << endl;
     cout << "长方形的长为";

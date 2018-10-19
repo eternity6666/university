@@ -272,3 +272,4 @@ int SqList<ElemType>::searchElem(ElemType a)
     }
     return -1;
 }
+

@@ -13,6 +13,9 @@ public:
     public:
         int no;          //存放长方形的序号
     };
+    ElemType length;                   // 长方形的长
+    ElemType width;                    // 长方形的宽
+    RectangleNo myNo;                  // 长方形的序号
     // 重载赋值运算符的定义
     Rectangle operator = (Rectangle rightR);
 
@@ -32,10 +35,6 @@ public:
     // 长方形析构函数
     virtual ~Rectangle();
 
-protected:
-    ElemType length;                   // 长方形的长
-    ElemType width;                    // 长方形的宽
-    RectangleNo myNo;                  // 长方形的序号
 };
 
 ////////////////////////////////////////////////////////////////////////////

@@ -1,3 +1,19 @@
 b{
     color:rgba(65, 82, 238, 0.925);
 };
+
+thead{
+    font-weight:bold;
+};
+
+a{
+    text-decoration: none;
+}
+
+table{
+    text-align: center;
+};
+
+body{
+    margin-left: 10%;
+};

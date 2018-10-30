@@ -4,6 +4,7 @@
 #define ERROR 0
 #define INFEASIBLE -1
 #define OVERFLOW -2
+#define NULL -1
 
 typedef int Status;
 

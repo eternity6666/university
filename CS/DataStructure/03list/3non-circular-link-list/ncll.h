@@ -251,22 +251,82 @@ Status linkList<ElemType>::nextElem(ElemType e, ElemType & next_e)
     return OK;
 }
 
-    // 重载赋值运算符的定义
-    template <typename ElemType>
-    linkList<ElemType> operator = (LinkList<ElemType> rightL);
+// 重载赋值运算符的定义
+template <typename ElemType>
+linkList<ElemType> linkList<ElemType>::operator = (LinkList<ElemType> rightL)
+{
+    nodeP p = NULL, rp = rightL.getHead(), s;
+    if(this != &rightL)
+    {
+        clear();
 
-    // 返回某结点前驱的数据域
-    template <typename ElemType>
-    Status priorElem(ElemType e, ElemType & prior_e);
+        while(rp)
+        {
+            s = new linkNode;
+            assert(s != 0);
+            s->data = rp->data;
+            if(!head)
+                head = s;
+            else
+                p->next = s;
+            p = s;
+            rp = rp->next;
+        }
+        if(p)
+            p->next = NULL;
+    }
+    return *this;
+}
 
-    // 非循环单链表析构函数
-    template <typename ElemType>
-    ~linkList();
+// 返回某结点前驱的数据域
+template <typename ElemType>
+Status linkList<ElemType>::priorElem(ElemType e, ElemType & prior_e)
+{
+    nodeP r = NULL, p = head,;
+    while(p && !equal(p->data, e))
+    {
+        r = p;
+        p = p->next;
+    }
+    if(!p||!r)
+        return ERROR;
 
-    // 非循环单链表拷贝初始化构造函数
-    template <typename ElemType>
-    linkList(const linkNode<ElemType> & linkNode);
+    prior_e = r->data;
+    return OK;
+}
 
-    // 非循环单链表构造函数
-    template <typename ElemType>
-    linkList();
+// 非循环单链表析构函数
+template <typename ElemType>
+linkList<ElemType>::~linkList()
+{
+    clear();
+}
+
+// 非循环单链表拷贝初始化构造函数
+template <typename ElemType>
+linkList<ElemType>::linkList(const linkNode<ElemType> & linkNode)
+{
+    nodeP p, op = otherL.head, s;
+    head = p = NULL;
+    while(op)
+    {
+        s = new linkNode;
+        assert(s != 0);
+        s->data = op->data;
+        if(!head)
+            head = s;
+        else
+            p->next = s;
+        p = s;
+        op = op->next;
+    }
+    if(head)
+        p->next = NULL;
+}
+
+// 非循环单链表构造函数
+template <typename ElemType>
+linkList<ElemType>::linkList()
+{
+    head = NULL;
+}

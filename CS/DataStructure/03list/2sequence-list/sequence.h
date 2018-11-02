@@ -14,9 +14,11 @@ public:
     
     // 顺序表元素个数
     int getLength();
-   
+
+    // 输出顺序表
     void output();
 
+    //　输入顺序表
     void input(int x);
 
     // 顺序表是否已满
@@ -61,6 +63,8 @@ public:
     // 构造函数
     SqList();
 
+    void newList();
+
     // 拷贝初始化构造函数
     SqList(const SqList<ElemType>& otherL);
 
@@ -69,9 +73,36 @@ public:
 };
 
 template <typename ElemType>
+void SqList<ElemType>::newList()
+{
+    int tmp[10];
+    for(int i = 0; i < 10; i++)
+    {
+        elem[i] = rand() % 100;
+        cout << elem[i] << " ";
+    }
+    n = 10;
+    cout << endl;
+}
+
+template <typename ElemType>
 void SqList<ElemType>::input(int x)
 {
+    ElemType *newbase;
 
+    if(x >= listSize)
+    {
+        newbase = new ElemType[x + addSize];
+        assert(newbase != 0);
+        
+        delete[] elem;
+        elem = newbase;
+        listSize = x +addSize;
+    }
+
+    for(int i = 1; i <= x; i++)
+        cin >> elem[i - 1];
+    n = x;
 }
 
 // 输出顺序表
@@ -79,9 +110,10 @@ template <typename ElemType>
 void SqList<ElemType>::output()
 {
     for(int i = 1; i <= n ; i++)
-        cout << " [ " << n << " ] " << endl;
+        cout << " [ " << i << " ]";
+    cout << endl;
     for(int i = 0; i < n; i++)
-        cout << elem[i];
+        cout << setw(5) << elem[i];
     cout << endl;
 }
 

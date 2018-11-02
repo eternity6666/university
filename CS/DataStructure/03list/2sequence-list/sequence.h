@@ -17,6 +17,8 @@ public:
    
     void output();
 
+    void input(int x);
+
     // 顺序表是否已满
     bool isFull();
 
@@ -65,6 +67,12 @@ public:
     // 析构函数
     ~SqList();
 };
+
+template <typename ElemType>
+void SqList<ElemType>::input(int x)
+{
+
+}
 
 // 输出顺序表
 template <typename ElemType>

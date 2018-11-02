@@ -1,10 +1,28 @@
-#define TRUE 1
-#define FALSE 0
-#define OK 1
-#define ERROR 0
-#define INFEASIBLE -1
-#define OVERFLOW -2
-#define NULL -1
+#include <cassert>
+#include <new>
+using namespace std;
+
+#include <time.h>
+
+const int OK = 1;
+const int ERROR = 0;
+const int INFEASIBLE = -1;
+const int OVERFLOW = -2;
 
 typedef int Status;
+
+Status equal(int a, int b)
+{
+    return a == b ? OK : ERROR;
+}
+
+Status great(int a, int b)
+{
+    return a > b ? OK : ERROR;
+}
+
+Status less(int a, int b)
+{
+    return a < b ? OK : ERROR;
+}
 

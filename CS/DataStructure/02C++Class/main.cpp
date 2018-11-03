@@ -1,16 +1,8 @@
 #include <iostream>
-#include <istream>
-#include <ostream>
 using namespace std;
-// #include <stream>
 #include "./eg2.h"
 int main()
 {
-    /*
-    MyRectangle<int> a;
-    cin >> a;
-    cout << a;
-    */
     float al = (float)8.2;
 
     MyRectangle<int> d1;

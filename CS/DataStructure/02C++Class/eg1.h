@@ -4,6 +4,8 @@
 
 ////////////////////////////////////////////////////////////////////////////
 // 长方形数据结构C++类声明(基类)
+#include <iostream>
+using namespace std;
 template <typename ElemType>
 class Rectangle
 {
@@ -13,9 +15,6 @@ public:
     public:
         int no;          //存放长方形的序号
     };
-    ElemType length;                   // 长方形的长
-    ElemType width;                    // 长方形的宽
-    RectangleNo myNo;                  // 长方形的序号
     // 重载赋值运算符的定义
     Rectangle operator = (Rectangle rightR);
 
@@ -34,7 +33,10 @@ public:
 
     // 长方形析构函数
     virtual ~Rectangle();
-
+public:
+    ElemType length;                   // 长方形的长
+    ElemType width;                    // 长方形的宽
+    RectangleNo myNo;                  // 长方形的序号
 };
 
 ////////////////////////////////////////////////////////////////////////////
@@ -73,7 +75,7 @@ void Rectangle<ElemType>::setLength(ElemType l)
 template <typename ElemType>
 void Rectangle<ElemType>::setNo(int i)
 {
-    myNo = i;
+    myNo.no = i;
 }
 
 // ****** 下面为系统自动调用的构造函数及析构函数的实现 ******
@@ -84,7 +86,7 @@ template <typename ElemType>
 Rectangle<ElemType>::Rectangle()
 {
     length = width = 0;
-    //
+    cout << "自动调用构造函数" << endl;
 }
 
 // 功能:长方形拷贝初始化函数
@@ -96,7 +98,7 @@ Rectangle<ElemType>::Rectangle(const Rectangle<ElemType> & otherD)
     length = otherD.length;
     width = otherD.width;
     myNo = otherD.myNo;
-    //
+    cout << "自动调用拷贝初始化构造函数初始化为(" << length << "," << width << ")" << endl;
 }
 
 // 功能:长方形的析构函数
@@ -104,5 +106,5 @@ Rectangle<ElemType>::Rectangle(const Rectangle<ElemType> & otherD)
 template <typename ElemType>
 Rectangle<ElemType>::~Rectangle()
 {
-    //
+    cout << "\n第" << myNo.no << "个长方形对象(" << length << "," << width << ")生存期结束!" << endl;
 }

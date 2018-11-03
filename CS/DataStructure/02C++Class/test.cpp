@@ -1,13 +1,12 @@
 #include <iostream>
-#include "testh.h"
+#include "eg3.h"
 using namespace std;
 
 int main()
 {
     myRectangle<int> a;
-
-    cin >> a.width >> a.length;
-    cout << a.width << a.length << endl;
+    //a.myNo.no = 1;    a.length = a.width = 1;
+    cin >> a.myNo.no >> a.length >> a.width;
+    cout << a.length << a.width << endl;
     return 0;
-
 }

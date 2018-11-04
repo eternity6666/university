@@ -86,7 +86,7 @@ template <typename ElemType>
 Rectangle<ElemType>::Rectangle()
 {
     length = width = 0;
-    cout << "自动调用构造函数" << endl;
+    cout << " 自动调用构造函数" << endl;
 }
 
 // 功能:长方形拷贝初始化函数
@@ -98,7 +98,7 @@ Rectangle<ElemType>::Rectangle(const Rectangle<ElemType> & otherD)
     length = otherD.length;
     width = otherD.width;
     myNo = otherD.myNo;
-    cout << "自动调用拷贝初始化构造函数初始化为(" << length << "," << width << ")" << endl;
+    cout << " 自动调用拷贝初始化构造函数初始化为(" << length << "," << width << ")" << endl;
 }
 
 // 功能:长方形的析构函数
@@ -106,5 +106,5 @@ Rectangle<ElemType>::Rectangle(const Rectangle<ElemType> & otherD)
 template <typename ElemType>
 Rectangle<ElemType>::~Rectangle()
 {
-    cout << "\n第" << myNo.no << "个长方形对象(" << length << "," << width << ")生存期结束!" << endl;
+    cout << " 第" << myNo.no << "个长方形对象(" << length << "," << width << ")生存期结束!" << endl;
 }

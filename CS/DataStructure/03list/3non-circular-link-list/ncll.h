@@ -1,3 +1,4 @@
+#include "../../myhead.h"
 template<typename ElemType>
 class linkList
 {
@@ -14,6 +15,8 @@ public:
     // 逆置非循环单链表
     void adverse();
 
+    void display();
+    
     // 把非循环单链表置为空
     void clear();
 
@@ -24,7 +27,7 @@ public:
     void deleteRepeat();
 
     // 取非循环单链表的第i个结点
-    status getElem(int i, ElemType & e);
+    Status getElem(int i, ElemType & e);
 
     // 取第一个结点的指针
     nodeP getHead();
@@ -45,7 +48,7 @@ public:
     Status nextElem(ElemType e, ElemType & next_e);
 
     // 重载赋值运算符的定义
-    linkList<ElemType> operator = (LinkList<ElemType> rightL);
+    linkList<ElemType> operator = (linkList<ElemType> rightL);
 
     // 返回某结点前驱的数据域
     Status priorElem(ElemType e, ElemType & prior_e);
@@ -54,7 +57,7 @@ public:
     ~linkList();
 
     // 非循环单链表拷贝初始化构造函数
-    linkList(const linkNode<ElemType> & linkNode);
+    linkList(const linkList<ElemType> & linkNode);
 
     // 非循环单链表构造函数
     linkList();
@@ -63,6 +66,31 @@ protected:
     nodeP head;
 };
 
+template <typename ElemType>
+void linkList<ElemType>::display()
+{
+    nodeP p = head;
+    if(p == NULL)
+    {
+        cout << " 当前非循环单链表为空 " << endl;
+        return ;
+    }
+    cout << " 当前非循环单链表为: " << endl;
+    int n = getLength();
+    for(int i = 1; i <= n; i++)
+        cout << " [" << i << "] ";
+    cout << endl;
+    while(p != NULL)
+    {
+        cout << p->data;
+        if(p->next != NULL)
+            cout << "->";
+        else
+            cout << "^";
+        p = p->next;
+    }
+    cout << endl;
+}
 
 // 逆置非循环单链表
 template <typename ElemType>
@@ -102,9 +130,9 @@ void linkList<ElemType>::clear()
 template <typename ElemType>
 Status linkList<ElemType>::deleteElem(ElemType e)
 {
-    NodePointer r, p;
+    nodeP r, p;
     r = NULL, p = head;
-    while(p && !equal(p-data, e))
+    while(p && !equal(p->data, e))
     {
         r = p;
         p = p->next;
@@ -121,7 +149,7 @@ Status linkList<ElemType>::deleteElem(ElemType e)
 
 // 删除非循环单链表中的重复值
 template <typename ElemType>
-void LinkList<ElemType>::deleteRepeat()
+void linkList<ElemType>::deleteRepeat()
 {
     nodeP r,p,s;
     r = NULL, p = head;
@@ -147,7 +175,7 @@ void LinkList<ElemType>::deleteRepeat()
 
 // 取非循环单链表的第i个结点
 template <typename ElemType>
-status linkList<ElemType>::getElem(int i, ElemType & e)
+Status linkList<ElemType>::getElem(int i, ElemType & e)
 {
     int j = 1;
     nodeP p = head;
@@ -164,7 +192,7 @@ status linkList<ElemType>::getElem(int i, ElemType & e)
 
 // 取第一个结点的指针
 template <typename ElemType>
-linkList<ElemType>::nodeP linkList<ElemType>::getHead()
+typename linkList<ElemType>::nodeP linkList<ElemType>::getHead()
 {
     return head;
 }
@@ -253,7 +281,7 @@ Status linkList<ElemType>::nextElem(ElemType e, ElemType & next_e)
 
 // 重载赋值运算符的定义
 template <typename ElemType>
-linkList<ElemType> linkList<ElemType>::operator = (LinkList<ElemType> rightL)
+linkList<ElemType> linkList<ElemType>::operator = (linkList<ElemType> rightL)
 {
     nodeP p = NULL, rp = rightL.getHead(), s;
     if(this != &rightL)
@@ -282,7 +310,7 @@ linkList<ElemType> linkList<ElemType>::operator = (LinkList<ElemType> rightL)
 template <typename ElemType>
 Status linkList<ElemType>::priorElem(ElemType e, ElemType & prior_e)
 {
-    nodeP r = NULL, p = head,;
+    nodeP r = NULL, p = head;
     while(p && !equal(p->data, e))
     {
         r = p;
@@ -304,7 +332,7 @@ linkList<ElemType>::~linkList()
 
 // 非循环单链表拷贝初始化构造函数
 template <typename ElemType>
-linkList<ElemType>::linkList(const linkNode<ElemType> & linkNode)
+linkList<ElemType>::linkList(const linkList<ElemType> & otherL)
 {
     nodeP p, op = otherL.head, s;
     head = p = NULL;

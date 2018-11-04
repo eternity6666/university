@@ -35,11 +35,11 @@ public:
 template <typename ElemType>
 void MyRectangle<ElemType>::read(istream& in)
 {
-    cout << "请输入第" << myNo.no << "个长方形对象" << endl;
-    cout << "长方形的长为";
-    in >> length;
-    cout << endl << "长方形的宽为";
-    in >> width;
+    cout << " 请输入第" << this->myNo.no << "个长方形对象" << endl;
+    cout << " 长方形的长为";
+    in >> this->length;
+    cout << " 长方形的宽为";
+    in >> this->width;
     cout << endl;
 }
 
@@ -49,7 +49,7 @@ void MyRectangle<ElemType>::read(istream& in)
 template <typename ElemType>
 istream& operator >> (istream& in, MyRectangle<ElemType>& iD)
 {
-    ID.read(in);
+    iD.read(in);
     return in;
 }
 
@@ -58,7 +58,11 @@ istream& operator >> (istream& in, MyRectangle<ElemType>& iD)
 template <typename ElemType>
 void MyRectangle<ElemType>::display(ostream& out) const
 {
-    out << "第" << myNo.no << "个长方形对象:\n长＝" << length << "\t　宽=" << width << endl;
+    out << " ****************************************************** " << endl;
+    cout << endl;
+    out << " 第" << this->myNo.no << "个长方形对象:\n 长＝" << this->length << "\t　宽=" << this->width << endl;
+    cout << endl;
+    out << " ****************************************************** " << endl;
 }
 
 // 功能:重载输出运算符的定义

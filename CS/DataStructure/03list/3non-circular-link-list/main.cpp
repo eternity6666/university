@@ -27,7 +27,15 @@ int main()
     menu();
     while(1)
     {
-        a.display();
+        cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
+        if(a.getLength() == 0)
+            cout << " 当前非循环单链表为空 " << endl;
+        else
+        {
+            cout << " 当前非循环单链表为: " << endl;
+            a.display();
+        };
+        cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
         cout << " 请输入: <1-15>为操作, 0为操作菜单 " << endl;
         int n;
         cin >> n;
@@ -88,6 +96,13 @@ int main()
             cout << "请输入1-15之间的整数" << endl;
             break;
         }
+        cout << " 还继续吗<Y.继续\tN.结束>? ";
+        char c;
+        cin >> c;
+        if(c == 'Y' || c == 'y')
+            continue;
+        else
+            break;
     }
     return 0;
 }
@@ -104,7 +119,12 @@ void code9(){}
 void code10(){}
 void code11(){}
 void code12(){}
-void code13(){}
+
+void code13()
+{
+    a.randList();
+}
+
 void code14(){}
 void code15(){}
 
@@ -126,6 +146,5 @@ void menu()
          << " 13. 随机生成非循环单链表" << endl
          << " 14. 用已有的非循环单链表初始化另一个非循环单链表" << endl
          << " 15. 输入非循环单链表" << endl
-         << " 16. 打开菜单" << endl
          << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
 }

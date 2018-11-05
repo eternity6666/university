@@ -61,7 +61,9 @@ public:
 
     // 非循环单链表构造函数
     linkList();
-
+    
+    void randList();
+    
 protected:
     nodeP head;
 };
@@ -70,12 +72,6 @@ template <typename ElemType>
 void linkList<ElemType>::display()
 {
     nodeP p = head;
-    if(p == NULL)
-    {
-        cout << " 当前非循环单链表为空 " << endl;
-        return ;
-    }
-    cout << " 当前非循环单链表为: " << endl;
     int n = getLength();
     for(int i = 1; i <= n; i++)
         cout << " [" << i << "] ";
@@ -357,4 +353,19 @@ template <typename ElemType>
 linkList<ElemType>::linkList()
 {
     head = NULL;
+}
+
+template <typename ElemType>
+void linkList<ElemType>::randList()
+{
+    cout << " ×××××××××××××× && 随机生成非循环单链表 && ×××××××××××××××× " << endl;
+    int array[6];
+    for(int i = 0; i < 6; i++)
+        array[i] = rand() % 100;
+
+    int n = getLength();
+
+    cout << " 随机生成的非循环单链表为: " << endl;
+    display();
+    cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
 }

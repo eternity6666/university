@@ -74,7 +74,7 @@ void linkList<ElemType>::display()
     nodeP p = head;
     int n = getLength();
     for(int i = 1; i <= n; i++)
-        cout << " [" << i << "] ";
+        cout << "[" << i << "] ";
     cout << endl;
     while(p != NULL)
     {
@@ -359,12 +359,28 @@ template <typename ElemType>
 void linkList<ElemType>::randList()
 {
     cout << " ×××××××××××××× && 随机生成非循环单链表 && ×××××××××××××××× " << endl;
+    clear();
+
     int array[6];
     for(int i = 0; i < 6; i++)
         array[i] = rand() % 100;
 
-    int n = getLength();
+    nodeP p, s;
+    p = head;
+    for(int i = 1; i <= 6; i++)
+    {
+        s = new linkNode;
+        assert(s != 0);
 
+        s->data = array[i - 1];
+        if(!head)
+            head = s;
+        else
+            p->next = s;
+        p = s;
+    }
+    if(head)
+        p->next = NULL;
     cout << " 随机生成的非循环单链表为: " << endl;
     display();
     cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;

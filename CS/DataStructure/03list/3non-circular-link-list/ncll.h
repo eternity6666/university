@@ -1,4 +1,5 @@
 #include "../../myhead.h"
+#include <iomanip>
 template<typename ElemType>
 class linkList
 {
@@ -64,21 +65,57 @@ public:
     
     void randList();
     
+    void input();
+
 protected:
     nodeP head;
 };
+
+template <typename ElemType>
+void linkList<ElemType>::input()
+{
+    cout << " 请输入非循环单链表中结点的个数:";
+    clear();
+
+    int n;
+    cin >> n;
+    int array[10000];
+    for(int i = 0; i < n; i++)
+        cin >> array[i];
+
+    nodeP p, s;
+    p = head;
+    for(int i = 1; i <= n; i++)
+    {
+        s = new linkNode;
+        assert(s != 0);
+
+        s->data = array[i - 1];
+        if(!head)
+            head = s;
+        else
+            p->next = s;
+        p = s;
+    }
+    if(head)
+        p->next = NULL;
+    cout << " 随机生成的非循环单链表为: " << endl;
+    display();
+}
 
 template <typename ElemType>
 void linkList<ElemType>::display()
 {
     nodeP p = head;
     int n = getLength();
+    cout << " ";
     for(int i = 1; i <= n; i++)
         cout << "[" << i << "] ";
     cout << endl;
+    cout << " ";
     while(p != NULL)
     {
-        cout << p->data;
+        cout << setw(2) << p->data;
         if(p->next != NULL)
             cout << "->";
         else
@@ -358,12 +395,17 @@ linkList<ElemType>::linkList()
 template <typename ElemType>
 void linkList<ElemType>::randList()
 {
-    cout << " ×××××××××××××× && 随机生成非循环单链表 && ×××××××××××××××× " << endl;
     clear();
 
     int array[6];
+    cout << " 用如下的随机数生成的非循环单链表: " << endl;
+    cout << " ";
     for(int i = 0; i < 6; i++)
+    {
         array[i] = rand() % 100;
+        cout << array[i] << " ";
+    }
+    cout << endl;
 
     nodeP p, s;
     p = head;
@@ -383,5 +425,5 @@ void linkList<ElemType>::randList()
         p->next = NULL;
     cout << " 随机生成的非循环单链表为: " << endl;
     display();
-    cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
 }
+

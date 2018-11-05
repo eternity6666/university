@@ -212,13 +212,12 @@ Status SqList<ElemType>::addElem(ElemType a, int i)
 template <typename ElemType>
 int SqList<ElemType>::locateElem(ElemType a, Status (*compare)(ElemType, ElemType))
 {
-    for(int i = 1; i <= n && !(*compare)(elem[i - 1], a); i++)
-    {
-        
-        if(i <= n)
-            return i;
+    int i;
+    for(i = 1; i <= n && !(*compare)(elem[i - 1], a); i++);
+    if(i <= n)
+        return i;
+    else
         return -1;
-    }
 }
 
 // 返回某个元素的后继

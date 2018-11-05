@@ -21,7 +21,7 @@ Status great(int a, int b)
     return a > b ? OK : ERROR;
 }
 
-Status less(int a, int b)
+Status Less(int a, int b)
 {
     return a < b ? OK : ERROR;
 }

@@ -139,6 +139,27 @@ void getElem()
 void locateElem()
 {
     cout << " *** && 查找第1个与某元素满足compare()关系元素的序号 && *** "<< endl;
+    int x, e;
+    cout << " 查找等于某个元素的操作 " << endl;
+    cout << " 请输入你想查找的元素:";
+    cin >> x;
+    cout << " 你想查找第一个等于" << x << "的元素序号为";
+    e = a.locateElem(x, equal);
+    cout << e << endl << endl;
+
+    cout << " 查找大于某个元素的操作 " << endl;
+    cout << " 请输入你想查找的元素:";
+    cin >> x;
+    cout << " 你想查找第一个大于" << x << "的元素序号为";
+    e = a.locateElem(x, great);
+    cout << e << endl << endl;
+    
+    cout << " 查找小于某个元素的操作 " << endl;
+    cout << " 请输入你想查找的元素:";
+    cin >> x;
+    cout << " 你想查找第一个小于" << x << "的元素序号为";
+    e = a.locateElem(x, Less);
+    cout << e << endl << endl;
     cout << " ********************************************************** " << endl;
 }
 

@@ -1,4 +1,5 @@
 #include "../../myhead.h"
+#include <iomanip>
 
 template <typename elemtype>
 class circularLinkList
@@ -12,7 +13,15 @@ public:
     };
     typedef linkNode * nodeP;
 
+    void display();
+    
+    void randList();
+
+    void input();
+
     void clear();
+
+    int getLength();
 
     Status deleteElem(int i, elemtype & e);
 
@@ -33,6 +42,112 @@ public:
 protected:
     nodeP head;
 };
+
+template <typename elemtype>
+void circularLinkList<elemtype>::input()
+{
+    cout << " 请输入循环双链表中结点的个数:";
+    clear();
+
+    int n;
+    cin >> n;
+    int array[10000];
+    for(int i = 0; i < n; i++)
+        cin >> array[i];
+
+    nodeP p, s;
+    p = head;
+    for(int i = 1; i <= n; i++)
+    {
+        s = new linkNode;
+        assert(s != 0);
+
+        s->data = array[i - 1];
+        if(!head)
+            head = s;
+        else
+            p->next = s;
+        p = s;
+    }
+    if(head)
+        p->next = head;
+    cout << " 当前输入的循环双链表为: " << endl;
+    display();
+
+}
+
+template <typename elemtype>
+void circularLinkList<elemtype>::randList()
+{
+    clear();
+    int array[10];
+    cout << " 用如下随机数生成循环单链表:" << endl;
+    for(int i = 0; i < 10; i++)
+    {
+        array[i] = rand() % 100;
+        cout << " " << array[i];
+    }
+    cout << endl;
+
+    nodeP p, s;
+    p = head;
+    for(int i = 1; i <= 10; i++)
+    {
+        s = new linkNode;
+        assert(s != 0);
+
+        s->data = array[i - 1];
+        if(!head)
+            head = s;
+        else
+            p->next = s;
+        p = s;
+    }
+    if(head)
+        p->next = head;
+    cout << " 随机生成的循环双链表为: " << endl;
+    display();
+}
+
+template <typename elemtype>
+void circularLinkList<elemtype>::display()
+{
+    int n = getLength();
+    if(n > 0)
+    {
+        cout << " 当前循环单链表为空 " << endl;
+        return ;
+    }
+    cout << " 当前循环单链表为:";
+    for(int i = 1; i <= n; i++)
+    {
+        cout << "[" << setw(2) << i << "] ";
+    }
+    nodeP p = head;
+    do
+    {
+        cout << setw(2) << p->data;
+        p = p->next;
+        cout << "->";
+    }while(p != head);
+}
+
+template <typename elemtype>
+int circularLinkList<elemtype>::getLength()
+{
+    if(head)
+        return 0;
+    if(head -> next == head)
+        return 1;
+    nodeP p = head->next;
+    int ans = 1;
+    while(p != head)
+    {
+        ans ++;
+        p = p->next;
+    }
+    return ans;
+}
 
 template <typename elemtype>
 void circularLinkList<elemtype>::clear()
@@ -108,7 +223,7 @@ Status circularLinkList<elemtype>::moveHead(int i)
 }
 
 template <typename elemtype>
-circularLinkList<elemtype> circularLinkList<elemtype>::operaotr = (circularLinkList<elemtype> rightL)
+circularLinkList<elemtype> circularLinkList<elemtype>::operator = (circularLinkList<elemtype> rightL)
 {
     nodeP p = NULL;
     nodeP rp = rightL.head;

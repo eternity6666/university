@@ -99,7 +99,7 @@ void linkList<ElemType>::input()
     }
     if(head)
         p->next = NULL;
-    cout << " 随机生成的非循环单链表为: " << endl;
+    cout << " 当前输入的非循环单链表为: " << endl;
     display();
 }
 

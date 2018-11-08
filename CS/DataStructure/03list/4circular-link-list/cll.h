@@ -79,7 +79,8 @@ void circularLinkList<elemtype>::input()
 template <typename elemtype>
 void circularLinkList<elemtype>::randList()
 {
-    clear();
+    if(head != NULL)
+        clear();
     int array[10];
     cout << " 用如下随机数生成循环单链表:" << endl;
     for(int i = 0; i < 10; i++)
@@ -105,7 +106,7 @@ void circularLinkList<elemtype>::randList()
     }
     if(head)
         p->next = head;
-    cout << " 随机生成的循环双链表为: " << endl;
+    cout << " 随机生成的循环单链表为: " << endl;
     display();
 }
 
@@ -153,11 +154,14 @@ template <typename elemtype>
 void circularLinkList<elemtype>::clear()
 {
     nodeP p;
-    while(head != head->next)
+    if(head != head->next)
     {
-        p = head->next;
-        head->next = p->next;
-        delete p;
+        while(head != head->next)
+        {
+            p = head->next;
+            head->next = p->next;
+            delete p;
+        }
     }
     delete head;
     head = NULL;

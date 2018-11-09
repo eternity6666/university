@@ -29,15 +29,16 @@ void stu();
 int main()
 {
     a.newList();
-    menu();
     while(1)
     {
+        system("clear");
+        menu();
         cout << " ********************************************************** " << endl;
         cout << " 当前顺序表有" << a.getLength() << "个元素,分别为:" << endl;
         a.output(); 
         cout << " ********************************************************** " << endl;
 
-        cout << "请选择你要操作的代码<1-13>:";
+        cout << " 请选择你要操作的代码<1-13>:";
         int code;
         cin >> code;
 
@@ -91,11 +92,11 @@ int main()
             break;
         */
         default:
-            cout << "请输入1-15之间的整数" << endl;
+            cout << " 请输入1-13之间的整数" << endl;
             break;
         }
         
-        cout << "输入Y继续，输入N结束:" << endl;
+        cout << " 输入Y继续，输入N结束:";
         char c;
         cin >> c;
         if(c == 'N' || c == 'n')
@@ -128,11 +129,16 @@ void getElem()
     cout << " 请输入你想取的元素的序号(1-";
     int n = a.getLength();
     cout << n << "):";
-    int code;
-    cin >> code;
-    int e;
-    a.getElem(code, e);
-    cout << " 你想取的第" << code <<"个元素的值为:" << e << endl;
+    int i;
+    cin >> i;
+    if(i < 1 || i > n)
+        cout << " 您输入了非法序号 " << endl;
+    else
+    {
+        int e;
+        a.getElem(i, e);
+        cout << " 你想取的第" << i <<"个元素的值为:" << e << endl;
+    }
     cout << " ********************************************************** " << endl;
 }
 
@@ -145,21 +151,33 @@ void locateElem()
     cin >> x;
     cout << " 你想查找第一个等于" << x << "的元素序号为";
     e = a.locateElem(x, equal);
-    cout << e << endl << endl;
+    if(e == -1)
+        cout << " 未找到 " << endl;
+    else
+        cout << e << endl;
+    cout << endl;
 
     cout << " 查找大于某个元素的操作 " << endl;
     cout << " 请输入你想查找的元素:";
     cin >> x;
     cout << " 你想查找第一个大于" << x << "的元素序号为";
     e = a.locateElem(x, great);
-    cout << e << endl << endl;
+    if(e == -1)
+        cout << " 未找到 " << endl;
+    else
+        cout << e << endl;
+    cout << endl;
     
     cout << " 查找小于某个元素的操作 " << endl;
     cout << " 请输入你想查找的元素:";
     cin >> x;
     cout << " 你想查找第一个小于" << x << "的元素序号为";
     e = a.locateElem(x, Less);
-    cout << e << endl << endl;
+    if(e == -1)
+        cout << " 未找到 " << endl;
+    else
+        cout << e << endl;
+    cout << endl;
     cout << " ********************************************************** " << endl;
 }
 
@@ -168,11 +186,16 @@ void nextElem()
     cout << " ****************** && 返回某元素的后继 && **************** " << endl;
     cout << " 请问你想查找哪个元素的后继:" << endl;
     int i;
+    cout << " ";
     cin >> i;
-    cout << " 你想查找元素" << i << "的后继为";
     int e;
-    a.nextElem(i, e);
-    cout << e << endl;
+    if(a.nextElem(i, e))
+    {
+        cout << " 你想查找元素" << i << "的后继为";
+        cout << e << endl;
+    }
+    else
+        cout << " 请检查你的输入 " << endl;
     cout << " ********************************************************** " << endl;
 }
 
@@ -181,11 +204,16 @@ void priorElem()
     cout << " **************** && 返回某元素的前驱 && ****************** " << endl;
     cout << " 请问你想查找哪个元素的前驱:" << endl;
     int i;
+    cout << " ";
     cin >> i;
-    cout << " 你想查找元素" << i << "的前驱为";
     int e;
-    a.priorElem(i, e);
-    cout << e << endl;
+    if(a.priorElem(i, e))
+    {    
+        cout << " 你想查找元素" << i << "的前驱为";
+        cout << e << endl;
+    }
+    else
+        cout << " 请检查你的输入 " << endl;
     cout << " ********************************************************** " << endl;
 }
 
@@ -196,12 +224,17 @@ void deleteElem()
     cout << " 请输入你想要删除元素的序号<1-" << n << ">:";
     int i;
     cin >> i;
-    cout << "你想删除的第" << i << "个元素的值为:";
-    int e;
-    a.deleteElem(i, e);
-    cout << e << endl;
-    cout << "删除后的顺序表为" << endl;
-    a.output();
+    if(i < 1 || i > n)
+        cout << " 您输入了非法序号 " << endl;
+    else
+    {
+        cout << " 你想删除的第" << i << "个元素的值为:";
+        int e;
+        a.deleteElem(i, e);
+        cout << e << endl;
+        cout << " 删除后的顺序表为" << endl;
+        a.output();
+    }
     cout << " ********************************************************** " << endl;
 }
 
@@ -228,11 +261,11 @@ void inputList()
 {
     cout << " ******************** && 输入顺序表 && ******************** " << endl;
     cout << " 请输入顺序表中的元素个数:";
-    int n;
-    cin >> n;
+    int i;
+    cin >> i;
     cout << " 请输入顺序表中的元素:" << endl;
-    a.input(n);
-    cout << " 新输入的顺序表如下:";
+    a.input(i);
+    cout << " 新输入的顺序表如下:" << endl;
     a.output();
     cout << " ********************************************************** " << endl;
 }
@@ -243,13 +276,19 @@ void insert()
     cout << " 请输入你要在第几个元素之前插入元素:";
     int i;
     cin >> i;
-    cout << " 请输入你要插入的元素的值:";            
-    int e;
-    cin >> e;
-    cout << " 你要在第" << i << "个元素前插入元素" << e << endl;
-    a.addElem(e, i);
-    cout << " 插入后的顺序表为:" << endl;
-    a.output();
+    int n = a.getLength();
+    if(i < 1 || i > n)
+        cout << " 您输入了非法序号 " << endl;
+    else
+    {
+        cout << " 请输入你要插入的元素的值:";            
+        int e;
+        cin >> e;
+        cout << " 你要在第" << i << "个元素前插入元素" << e << endl;
+        a.addElem(e, i);
+        cout << " 插入后的顺序表为:" << endl;
+        a.output();
+    }
     cout << " ********************************************************** " << endl;
 }
 

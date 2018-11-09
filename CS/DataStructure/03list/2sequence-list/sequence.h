@@ -52,10 +52,10 @@ public:
     int locateElem(ElemType a, Status (*compare)(ElemType, ElemType));
     
     // 返回某个元素的后继
-    Status nextElem(ElemType a, ElemType & next_a);
+    bool nextElem(ElemType a, ElemType & next_a);
 
     // 返回某个元素的前驱
-    Status priorElem(ElemType a, ElemType & prior_a);
+    bool priorElem(ElemType a, ElemType & prior_a);
 
     // 重载"="运算符
     SqList operator = (const SqList & otherL);
@@ -100,6 +100,7 @@ void SqList<ElemType>::input(int x)
         listSize = x +addSize;
     }
 
+    cout << " ";
     for(int i = 1; i <= x; i++)
         cin >> elem[i - 1];
     n = x;
@@ -110,7 +111,7 @@ template <typename ElemType>
 void SqList<ElemType>::output()
 {
     for(int i = 1; i <= n ; i++)
-        cout << " [ " << i << " ]";
+        cout << " [" << setw(2) << i << "]";
     cout << endl;
     for(int i = 0; i < n; i++)
         cout << setw(5) << elem[i];
@@ -222,28 +223,28 @@ int SqList<ElemType>::locateElem(ElemType a, Status (*compare)(ElemType, ElemTyp
 
 // 返回某个元素的后继
 template <typename ElemType>
-Status SqList<ElemType>::nextElem(ElemType a, ElemType & next_a)
+bool SqList<ElemType>::nextElem(ElemType a, ElemType & next_a)
 {
     int i = locateElem(a, equal);
 
     if(i < 1 || i == n)
-        return ERROR;
+        return false;
     else
         getElem(i + 1, next_a);
-    return OK;
+    return true;
 }
     
 // 返回某个元素的前驱
 template <typename ElemType>
-Status SqList<ElemType>::priorElem(ElemType a, ElemType & prior_a)
+bool SqList<ElemType>::priorElem(ElemType a, ElemType & prior_a)
 {
     int i = locateElem(a, equal);
 
     if(i <= 1)
-        return ERROR;
+        return false;
     else
         getElem(i - 1, prior_a);
-    return OK;
+    return true;
 }
 
 // 重载"="运算符

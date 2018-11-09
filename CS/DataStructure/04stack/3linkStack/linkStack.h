@@ -1,3 +1,5 @@
+#include "../../myhead.h"
+#include <iomanip>
 template<typename ElemType>
 class linkStack
 {
@@ -34,4 +36,65 @@ public:
 protected:
     nodeP top;
 };
+
+template<typename ElemType>
+void linkStack<elemtype>::clear()
+{
+    nodeP s;
+    while(top)
+    {
+        s = top;
+        top = top->next;
+        delete s
+    }
+    top = NULL;
+}
+
+template<typename ElemType>
+int linkStack<elemtype>::getLength()
+{
+    int length = 0;
+    nodeP p = top;
+    while(p)
+    {
+        ++length;
+        p = p->next;
+    }
+    return 0;
+}
+
+template<typename ElemType>
+bool linkStack<elemtype>::getTop(elemtype &e)
+{
+    if(!top)
+        return false;
+    e = top->data;
+    return true;
+}
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
+
+template<typename ElemType>
 

@@ -46,7 +46,7 @@ protected:
 template <typename elemtype>
 void circularLinkList<elemtype>::input()
 {
-    cout << " 请输入循环双链表中结点的个数:";
+    cout << " 请输入循环单链表中结点的个数:";
     clear();
 
     int n;
@@ -71,7 +71,7 @@ void circularLinkList<elemtype>::input()
     }
     if(head)
         p->next = head;
-    cout << " 当前输入的循环双链表为: " << endl;
+    cout << " 当前输入的循环单链表为: " << endl;
     display();
 
 }
@@ -114,29 +114,27 @@ template <typename elemtype>
 void circularLinkList<elemtype>::display()
 {
     int n = getLength();
-    if(n > 0)
-    {
-        cout << " 当前循环单链表为空 " << endl;
-        return ;
-    }
-    cout << " 当前循环单链表为:";
     for(int i = 1; i <= n; i++)
     {
-        cout << "[" << setw(2) << i << "] ";
+        cout << " [" << setw(2) << i << "]";
     }
+    cout << endl;
     nodeP p = head;
+    cout << " ";
     do
     {
-        cout << setw(2) << p->data;
+        cout << setw(3) << p->data;
         p = p->next;
         cout << "->";
     }while(p != head);
+
+    cout << endl;
 }
 
 template <typename elemtype>
 int circularLinkList<elemtype>::getLength()
 {
-    if(head)
+    if(!head)
         return 0;
     if(head -> next == head)
         return 1;
@@ -285,10 +283,11 @@ circularLinkList<elemtype>::circularLinkList(const circularLinkList &otherL)
 
         s->data = op->data;
 
-        if(!head)
+        if(head == NULL)
             head = s;
         else
             p->next = s;
+
         p = s;
         op = op->next;
     }

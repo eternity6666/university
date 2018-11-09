@@ -39,9 +39,17 @@ public:
     
     circularLinkList(const circularLinkList & otherL);
 
+    nodeP getHead();
+
 protected:
     nodeP head;
 };
+
+template <typename elemtype>
+typename circularLinkList<elemtype>::nodeP circularLinkList<elemtype>::getHead()
+{
+    return head;
+}
 
 template <typename elemtype>
 void circularLinkList<elemtype>::input()
@@ -152,9 +160,9 @@ template <typename elemtype>
 void circularLinkList<elemtype>::clear()
 {
     nodeP p;
-    if(head != head->next)
+    if(head && head != head->next)
     {
-        while(head != head->next)
+        while(head && head != head->next)
         {
             p = head->next;
             head->next = p->next;
@@ -227,31 +235,41 @@ Status circularLinkList<elemtype>::moveHead(int i)
 template <typename elemtype>
 circularLinkList<elemtype> circularLinkList<elemtype>::operator = (circularLinkList<elemtype> rightL)
 {
+    cout << 0 << endl;
     nodeP p = NULL;
-    nodeP rp = rightL.head;
+    nodeP rp = rightL.getHead();
     nodeP s;
     
-    if(this != &rightL)
+    cout << 1 << endl;
+    if(rightL.head == NULL)
     {
-        clear();
-
-        while(rp->next != rightL.head)
+        this = NULL;
+    }
+    else
+    {
+        if(head != rightL.getHead())
         {
-            s = new linkNode;
-            assert(s != 0);
-            
-            s->data = rp->data;
+            cout << 2 << endl;
+            clear();
+            cout << 3 << endl;
+            while(rp && rp->next != rightL.getHead())
+            {
+                s = new linkNode;
+                assert(s != 0);
+                
+                s->data = rp->data;
 
-            if(!head)
-                head = s;
-            else
-                p->next = s;
-            p = s;
-            rp = rp->next;
+                if(!head)
+                    head = s;
+                else
+                    p->next = s;
+                p = s;
+                rp = rp->next;
+            }
+
+            if(head)
+                p->next = head;
         }
-
-        if(head)
-            p->next = head;
     }
     return *this;
 }
@@ -275,8 +293,8 @@ circularLinkList<elemtype>::circularLinkList(const circularLinkList &otherL)
     nodeP op = otherL.head;
     nodeP s;
     head = p = NULL;
-
-    while(op != otherL.head)
+    
+    do
     {
         s = new linkNode;
         assert(s != 0);
@@ -291,6 +309,7 @@ circularLinkList<elemtype>::circularLinkList(const circularLinkList &otherL)
         p = s;
         op = op->next;
     }
+    while(op != otherL.head);
 
     if(head)
         p->next = head;

@@ -279,4 +279,127 @@ bool sqString::operator < (sqString rightS)
         return false;
 }
 
+int sqString::operator == (char *s)
+{
+    int sl;
+    for(int i = 0; s[i]; ++i)
+        sl = i;
+    for(int i = 0; i < length && i < sl; i++)
+        if(ch[i] != s[i])
+            return ch[i] - s[i];
+    return length - sl;
+}
+
+int sqString::operator == (sqString rightS)
+{
+    for(int i = 0; i < length && i < rightS.length; i++)
+        if(ch[i] != rightS.ch[i])
+            return ch[i] - rightS.ch[i];
+    return length - rightS.length;
+}
+
+void sqString::strAssign_aux(char *s)
+{
+    clear();
+
+    for(int i = 0; s[i]; i++)
+        length = i;
+
+    ch = new char[length];
+    assert(ch != 0);
+
+    for(int i = 0; i < length; i++)
+        ch[i] = s[i];
+}
+
+bool sqString::strDelete(int i, int len)
+{
+    char *temp;
+    
+    if(i < 1 || i > length + 1)
+        return false;
+
+    temp = new char[length - len];
+    assert(temp != 0);
+
+    int j;
+    for(j = 0; j < i - 1; j++)
+        temp[j] = ch[j];
+    for(j = i - 1 + len; j < length; j++)
+        temp[j - len] = ch[j];
+
+    delete []ch;
+    ch = temp;
+    length -= len;
+    return true;
+}
+
+bool sqString::subString(sqString &sub, int i, int len)
+{
+    if(i < 1 || i > length || len < 0 || len > length - i + 1)
+        return false;
+
+    sub.clear();
+
+    sub.ch = new char[len];
+    assert(sub.ch != 0);
+
+    for(int j = 0; j < len; j++)
+        sub.ch[j] = ch[i - 1 + j];
+    sub.length = len;
+
+    return true;
+}
+
+sqString::sqString()
+{
+    ch = NULL;
+    length = 0;
+}
+
+sqString::~sqString()
+{
+    clear();
+}
+
+sqString::sqString(char *s)
+{
+    ch = NULL;
+    strAssign_aux(s);
+}
+
+sqString::sqString(const sqString &otherS)
+{
+    ch = new char[otherS.length];
+    assert(ch != 0);
+
+    length = otherS.length;
+    for(int i = 0; i < length; i++)
+        ch[i] = otherS.ch[i];
+}
+
+void sqString::read(istream& in)
+{
+    char s[50];
+    in >> s;
+    strAssign_aux(s);
+}
+
+istream& operator >> (istream& in, sqString& s)
+{
+    s.read(in);
+    return in;
+}
+
+void sqString::display(ostream& out) const
+{
+    for(int i = 0; i < length; i++)
+        out << ch[i];
+}
+
+ostream& operator << (ostream& out, const sqString &s)
+{
+    s.display(out);
+    return out;
+}
 

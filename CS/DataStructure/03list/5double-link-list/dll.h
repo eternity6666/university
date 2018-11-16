@@ -1,11 +1,12 @@
 #include "../../myhead.h"
-template<typename ElemType>
+template<typename elemtype>
 class doubleLinkList
 {
 public:
     class linkNode
     {
-        ElemType data;
+    public:
+        elemtype data;
         linkNode *next;
         linkNode *prior;
     };
@@ -13,32 +14,66 @@ public:
 
     void clear();
 
-    Status getElem(int i, ElemType & e);
+    Status getElem(int i, elemtype & e);
 
-    Status deleteElem(ElemType e);
+    Status deleteElem(elemtype e);
 
     nodeP getHead();
 
     int getLength();
 
-    Status insert(int i, ElemType e);
+    Status insert(int i, elemtype e);
 
     bool isEmpty();
 
-    Status locateElem(ElemType find_e, nodeP &r);
+    Status locateElem(elemtype find_e, nodeP &r);
 
-    Status nextElem(ElemType e, ElemType &next_e);
+    Status nextElem(elemtype e, elemtype &next_e);
     
-    doubleLinkList<ElemType> operator = (doubleLinkList<ElemType> rightL);
+    doubleLinkList<elemtype> operator = (doubleLinkList<elemtype> rightL);
 
-    Status priorElem(ElemType e, ElemType &prior_e);
+    Status priorElem(elemtype e, elemtype &prior_e);
 
     doubleLinkList();
 
     ~doubleLinkList();
 
-    doubleLinkList(const doubleLinkList<ElemType> &otherL);
+    doubleLinkList(const doubleLinkList<elemtype> &otherL);
+
+    void input(int n);
+
+    void display();
+
+protected:
+    nodeP head;
 };
+
+template <typename elemtype>
+void doubleLinkList<elemtype>::display()
+{
+    int n = getLength();
+
+    cout << "   ↓";
+    for(int i = 0; i < n * 5; i++)
+        cout << "─";
+    cout << endl;
+}
+
+template <typename elemtype>
+void doubleLinkList<elemtype>::input(int n)
+{
+    cout << " 请输入循环双链表每个结点数据域的值: ";
+    
+    int array[100000];
+    for(int i = 0; i < n; i++)
+        cin >> array[i];
+
+    cout << "\n 已经在当前循环双链表输入了" << n << "个结点\n\n";
+
+    cout << " 输入的循环双链表如下:\n";
+
+    display();
+}
 
 template <typename elemtype>
 void doubleLinkList<elemtype>::clear()
@@ -77,7 +112,7 @@ Status doubleLinkList<elemtype>::deleteElem(elemtype e)
             head = p->next;
 
         p->prior->next = p->next;
-        p-next->prior = p->prior;
+        p->next->prior = p->prior;
     }
     delete p;
     return OK;
@@ -128,7 +163,7 @@ int doubleLinkList<elemtype>::getLength()
 }
 
 template <typename elemtype>
-Status doubleLinkList<elemtype>::insert(int i, elemtype &e)
+Status doubleLinkList<elemtype>::insert(int i, elemtype e)
 {
     int j = 1;
     nodeP p = head;

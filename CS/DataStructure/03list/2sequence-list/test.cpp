@@ -92,8 +92,8 @@ int main()
             break;
         */
         default:
-            cout << " 请输入1-13之间的整数" << endl;
-            break;
+            cout << " 结束" << endl;
+            return 0;
         }
         
         cout << " 输入Y继续，输入N结束:";
@@ -149,34 +149,31 @@ void locateElem()
     cout << " 查找等于某个元素的操作 " << endl;
     cout << " 请输入你想查找的元素:";
     cin >> x;
-    cout << " 你想查找第一个等于" << x << "的元素序号为";
     e = a.locateElem(x, equal);
     if(e == -1)
         cout << " 未找到 " << endl;
     else
-        cout << e << endl;
+        cout << " 你想查找第一个等于" << x << "的元素序号为" << e << endl;
     cout << endl;
 
     cout << " 查找大于某个元素的操作 " << endl;
     cout << " 请输入你想查找的元素:";
     cin >> x;
-    cout << " 你想查找第一个大于" << x << "的元素序号为";
     e = a.locateElem(x, great);
     if(e == -1)
         cout << " 未找到 " << endl;
     else
-        cout << e << endl;
+        cout << " 你想查找第一个大于" << x << "的元素序号为" << e << endl;
     cout << endl;
     
     cout << " 查找小于某个元素的操作 " << endl;
     cout << " 请输入你想查找的元素:";
     cin >> x;
-    cout << " 你想查找第一个小于" << x << "的元素序号为";
     e = a.locateElem(x, Less);
     if(e == -1)
         cout << " 未找到 " << endl;
     else
-        cout << e << endl;
+        cout << " 你想查找第一个小于" << x << "的元素序号为" << e << endl;
     cout << endl;
     cout << " ********************************************************** " << endl;
 }
@@ -312,19 +309,20 @@ void getLength()
 void menu()
 {
     cout << " ********************* 测试顺序表的操作 ******************* " << endl;
-    cout << " 1.  在第i个元素之前插入一个元素" << endl;
-    cout << " 2.  判断顺序表是否为空" << endl;
-    cout << " 3.  求顺序表中元素的个数" << endl;
-    cout << " 4.  取第i个元素" << endl;
-    cout << " 5.  查找第1个与某元素满足compare()关系元素的序号" << endl;
-    cout << " 6.  返回某元素的前驱" << endl;
-    cout << " 7.  返回某元素的后继" << endl;
-    cout << " 8.  删除第i个元素" << endl;
-    cout << " 9.  把一个顺序表赋值给另一个顺序表" << endl;
-    cout << " 10. 把顺序表置空" << endl;
-    cout << " 11. 随机生成顺序表(元素值为0到99之间的整数)" << endl;
-    cout << " 12. 用已有的顺序表初始化另一个顺序表" << endl;
-    cout << " 13. 输入顺序表" << endl;
+    cout << "    1. 在第i个元素之前插入一个元素" << endl;
+    cout << "    2. 判断顺序表是否为空" << endl;
+    cout << "    3. 求顺序表中元素的个数" << endl;
+    cout << "    4. 取第i个元素" << endl;
+    cout << "    5. 查找第1个与某元素满足compare()关系元素的序号" << endl;
+    cout << "    6. 返回某元素的前驱" << endl;
+    cout << "    7. 返回某元素的后继" << endl;
+    cout << "    8. 删除第i个元素" << endl;
+    cout << "    9. 把一个顺序表赋值给另一个顺序表" << endl;
+    cout << "   10. 把顺序表置空" << endl;
+    cout << "   11. 随机生成顺序表(元素值为0到99之间的整数)" << endl;
+    cout << "   12. 用已有的顺序表初始化另一个顺序表" << endl;
+    cout << "   13. 输入顺序表" << endl;
+    cout << " 其他. 结束" << endl;
     // cout << " 14. 两个顺序表的并交集运算" << endl;
     // cout << " 15. 学生信息管理系统(顺序表的应用)" << endl;
     cout << endl;

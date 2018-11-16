@@ -22,7 +22,7 @@ public:
     void clear();
 
     // 删除非循环单链表中数据域为e的第一个结点
-    Status deleteElem(ElemType e);
+    bool deleteElem(ElemType e);
 
     // 删除非循环单链表中的重复值
     void deleteRepeat();
@@ -161,7 +161,7 @@ void linkList<ElemType>::clear()
 
 // 删除非循环单链表中数据域为e的第一个结点
 template <typename ElemType>
-Status linkList<ElemType>::deleteElem(ElemType e)
+bool linkList<ElemType>::deleteElem(ElemType e)
 {
     nodeP r, p;
     r = NULL, p = head;
@@ -171,13 +171,13 @@ Status linkList<ElemType>::deleteElem(ElemType e)
         p = p->next;
     }
     if(p == NULL)
-        return ERROR;
+        return false;
     if(r == NULL)
-        return ERROR;
+        return false;
     else
         r->next = p->next;
     free(p);
-    return OK;
+    return true;
 }
 
 // 删除非循环单链表中的重复值

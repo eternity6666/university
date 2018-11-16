@@ -76,6 +76,7 @@ template <typename ElemType>
 void SqList<ElemType>::newList()
 {
     int tmp[10];
+    cout << " ";
     for(int i = 0; i < 10; i++)
     {
         elem[i] = rand() % 100;

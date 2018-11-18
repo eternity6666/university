@@ -1,6 +1,10 @@
 #include "../../myhead.h"
 #include <iomanip>
-template<typename ElemType>
+
+const int addSize = 10;
+const int firstSize = 100;
+
+template<typename elemtype>
 class SqStack
 {
 public:
@@ -10,48 +14,48 @@ public:
 
     int getStackSize();
 
-    Status getTop(ElemType &e);
+    bool getTop(elemtype &e);
 
     bool isEmpty();
 
-    SqStack<ElemType> operator = (SqStack<ElemType> rightS);
+    SqStack<elemtype> operator = (SqStack<elemtype> rightS);
 
-    Status pop(ElemType &e);
+    bool pop(elemtype &e);
 
-    void push(ElemType e);
+    void push(elemtype e);
 
     SqStack();
 
     ~SqStack();
 
-    SqStack(const SqStack<ElemType> &otherS);
+    SqStack(const SqStack<elemtype> &otherS);
 
 protected:
-    ElemType *base;
-    ElemType *top;
+    elemtype *base;
+    elemtype *top;
     int stackSize;
 };
 
-template<typename ElemType>
-void SqStack<ElemType>::clear()
+template<typename elemtype>
+void SqStack<elemtype>::clear()
 {
     top = base;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 int SqStack<elemtype>::getLength()
 {
     return top - base;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 int SqStack<elemtype>::getStackSize()
 {
     return stackSize;
 }
 
-template<typename ElemType>
-Status SqStack<elemtype>::getTop(elemtype &e)
+template<typename elemtype>
+bool SqStack<elemtype>::getTop(elemtype &e)
 {
     if(isEmpty())
         return ERROR;
@@ -60,13 +64,13 @@ Status SqStack<elemtype>::getTop(elemtype &e)
     return OK;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 bool SqStack<elemtype>::isEmpty()
 {
     return (top == base ? true : false);
 }
 
-template<typename ElemType>
+template<typename elemtype>
 SqStack<elemtype> SqStack<elemtype>::operator = (SqStack rights)
 {
     int length = rights.getLength();
@@ -82,13 +86,13 @@ SqStack<elemtype> SqStack<elemtype>::operator = (SqStack rights)
         
         for(int i = 0; i < length; i++)
             *(base + i) = *(rights.base + i);
-        top = base + length();
+        top = base + length;
     }
     return *this;
 }
 
-template<typename ElemType>
-Status SqStack<elemtype>::pop(elemtype &e)
+template<typename elemtype>
+bool SqStack<elemtype>::pop(elemtype &e)
 {
     if(isEmpty())
         return ERROR;
@@ -97,7 +101,7 @@ Status SqStack<elemtype>::pop(elemtype &e)
     return OK;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 void SqStack<elemtype>::push(elemtype e)
 {
     int length = top - base;
@@ -118,7 +122,7 @@ void SqStack<elemtype>::push(elemtype e)
     ++top;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 SqStack<elemtype>::SqStack()
 {
     base = new elemtype[firstSize];
@@ -127,7 +131,7 @@ SqStack<elemtype>::SqStack()
     top = base;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 SqStack<elemtype>::~SqStack()
 {
     if(base)
@@ -136,15 +140,15 @@ SqStack<elemtype>::~SqStack()
     top = base = NULL;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 SqStack<elemtype>::SqStack(const SqStack &others)
 {
-    int length;
+    int length = others.top - others.base;
     base = new elemtype[others.stackSize];
     assert(base != 0);
     stackSize = others.stackSize;
     for(int i = 0; i < length; i++)
-        *(base + i) = *(othes.base + i);
+        *(base + i) = *(others.base + i);
     top = base + length;
 }
 

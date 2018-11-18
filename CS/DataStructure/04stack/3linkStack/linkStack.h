@@ -1,14 +1,14 @@
 #include "../../myhead.h"
 #include <iomanip>
-template<typename ElemType>
+template<typename elemtype>
 class linkStack
 {
 private:
     class linkNode
     {
     public:
-        ElemType data;
-        linknode *next;
+        elemtype data;
+        linkNode *next;
     };
     typedef linkNode * nodeP;
 
@@ -17,27 +17,27 @@ public:
 
     int getLength();
 
-    Status getTop(ElemType &e);
+    bool getTop(elemtype &e);
 
     bool isEmpty();
 
-    linkStack<ElemType> operator = (linkStack<ElemType> rightS);
+    linkStack<elemtype> operator = (linkStack<elemtype> rightS);
 
-    bool pop(ElemType &e);
+    bool pop(elemtype &e);
 
-    void push(ElemType e);
+    void push(elemtype e);
 
     linkStack();
     
     ~linkStack();
 
-    linkStack(const linkStack<ElemType> &otherS);
+    linkStack(const linkStack<elemtype> &otherS);
 
 protected:
     nodeP top;
 };
 
-template<typename ElemType>
+template<typename elemtype>
 void linkStack<elemtype>::clear()
 {
     nodeP s;
@@ -45,12 +45,12 @@ void linkStack<elemtype>::clear()
     {
         s = top;
         top = top->next;
-        delete s
+        delete s;
     }
     top = NULL;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 int linkStack<elemtype>::getLength()
 {
     int length = 0;
@@ -63,7 +63,7 @@ int linkStack<elemtype>::getLength()
     return 0;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 bool linkStack<elemtype>::getTop(elemtype &e)
 {
     if(!top)
@@ -72,13 +72,13 @@ bool linkStack<elemtype>::getTop(elemtype &e)
     return true;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 bool linkStack<elemtype>::isEmpty()
 {
     return (top ? false : true);
 }
 
-template<typename ElemType>
+template<typename elemtype>
 linkStack<elemtype> linkStack<elemtype>::operator = (linkStack<elemtype> rightS)
 {
     nodeP p;
@@ -108,7 +108,7 @@ linkStack<elemtype> linkStack<elemtype>::operator = (linkStack<elemtype> rightS)
     return *this;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 bool linkStack<elemtype>::pop(elemtype &e)
 {
     nodeP s = top;
@@ -121,7 +121,7 @@ bool linkStack<elemtype>::pop(elemtype &e)
 
 }
 
-template<typename ElemType>
+template<typename elemtype>
 void linkStack<elemtype>::push(elemtype e)
 {
     nodeP s;
@@ -133,19 +133,19 @@ void linkStack<elemtype>::push(elemtype e)
     top = s;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 linkStack<elemtype>::linkStack()
 {
     top = NULL;
 }
 
-template<typename ElemType>
+template<typename elemtype>
 linkStack<elemtype>::~linkStack()
 {
     clear();
 }
 
-template<typename ElemType>
+template<typename elemtype>
 linkStack<elemtype>::linkStack(const linkStack<elemtype> &otherS)
 {
     nodeP p = NULL, op = otherS.top, s;

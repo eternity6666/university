@@ -1,5 +1,4 @@
 #include <iostream>
-#include "SqStack.h"
 using namespace std;
 
 void menu();
@@ -65,15 +64,76 @@ int main()
                 cout << " 结束" << endl;
                 return 0;
         }
+        cout << " 还继续吗<Y.继续/tN.结束>?";
+        char c;
+        cin >> c;
+        if(c == 'Y' || c == 'y')
+            continue;
+        else
+            break;
     }
     return 0;
+}
+
+void code1()
+{
+
+}
+
+void code2()
+{
+
+}
+
+void code3()
+{
+
+}
+
+void code4()
+{
+
+}
+
+void code5()
+{
+
+}
+
+void code6()
+{
+
+}
+
+void code7()
+{
+
+}
+
+void code8()
+{
+
+}
+
+void code9()
+{
+
+}
+
+void code10()
+{
+
+}
+
+void code11()
+{
+
 }
 
 void menu()
 {
     cout << " ----------- && 测试顺序栈的操作 && ------------" << endl;
     cout << " 其他. 结束 " << endl;
-    cout << endl;
     cout << " -----------------------------------------------" << endl;
 }
 

@@ -1,8 +1,9 @@
 #include <cassert>
 #include <new>
-using namespace std;
-
 #include <time.h>
+#define fei(a, b) for(int i = a; i <= b; i++)
+
+using namespace std;
 
 const int OK = 1;
 const int ERROR = 0;

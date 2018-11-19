@@ -6,11 +6,11 @@ class SqQueue
 public:
     void clear();
 
-    Status deQueue(ElemType &e);
+    bool deQueue(elemtype &e);
 
-    Status enQueue(ElemType e);
+    bool enQueue(elemtype e);
 
-    Status getFront(ElemType &e);
+    bool getFront(elemtype &e);
 
     int getLength();
 
@@ -18,20 +18,28 @@ public:
 
     bool isFull();
 
-    SqQueue<ElemType> operator = (SqQueue<ElemType> rightQ);
+    SqQueue<elemtype> operator = (SqQueue<elemtype> rightQ);
 
     SqQueue(int size = 0);
 
     virtual ~SqQueue();
 
-    SqQueue(const SqQueue<ElemType> &otherQ);
+    SqQueue(const SqQueue<elemtype> &otherQ);
+
+    int get_queueSize();
 
 protected:
     int rear;
     int front;
     int queueSize;
-    ElemType *base;
+    elemtype *base;
 };
+
+template <typename elemtype>
+int SqQueue<elemtype>::getQueueSize()
+{
+    return queueSize;
+}
 
 template<typename elemtype>
 void SqQueue<elemtype>::clear()

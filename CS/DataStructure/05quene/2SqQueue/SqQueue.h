@@ -20,7 +20,7 @@ public:
 
     SqQueue<elemtype> operator = (SqQueue<elemtype> rightQ);
 
-    SqQueue(int size = 0);
+    SqQueue(int size = 10);
 
     virtual ~SqQueue();
 

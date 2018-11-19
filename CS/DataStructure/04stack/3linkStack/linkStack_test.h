@@ -6,7 +6,7 @@ void display(linkStack<elemtype> a)
     int n = a.getLength();
     if(n)
     {
-        cout << 1 << endl;
+        // cout << 1 << endl;
         for(int i = 0; i < n; i++)
         {
             elemtype e;
@@ -17,8 +17,9 @@ void display(linkStack<elemtype> a)
             if(i + 1 != n)
                 cout << "→";
         }
-        cout << "  ↑" << endl;
-        cout << " top" << endl;
+        cout << endl;
+        cout << "   ↑" << endl;
+        cout << "  top" << endl;
     }
     else
         return ;

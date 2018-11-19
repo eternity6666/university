@@ -60,7 +60,7 @@ int linkStack<elemtype>::getLength()
         ++length;
         p = p->next;
     }
-    return 0;
+    return length;
 }
 
 template<typename elemtype>

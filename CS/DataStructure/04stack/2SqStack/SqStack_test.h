@@ -47,6 +47,6 @@ void display(SqStack<elemtype> s)
         cout << " base";
         for(int i = 0; i < 5 * (n - 1); i++)
             cout << ' ';
-        cout << "top" << endl;
+        cout << " top" << endl;
     }
 }

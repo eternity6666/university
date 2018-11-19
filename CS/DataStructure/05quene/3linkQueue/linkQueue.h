@@ -1,10 +1,10 @@
-template<typename ElemType>
+template<typename elemtype>
 class linkQueue
 {
 private:
     class linkNode
     {
-        ElemType data;
+        elemtype data;
         linkNode *next;
     };
     typedef linkNode *nodeP;
@@ -12,23 +12,23 @@ private:
 public:
     void clear();
 
-    Status deQueue(ElemType &e);
+    bool deQueue(elemtype &e);
 
-    Status enQueue(ElemType e);
+    void enQueue(elemtype e);
 
-    Status getFront(ElemType &e);
+    bool getFront(elemtype &e);
 
     int getLength();
 
     bool isEmpty();
 
-    linkQueue<ElemType> operator = (linkQueue<ElemType> rightQ);
+    linkQueue<elemtype> operator = (linkQueue<elemtype> rightQ);
 
     linkQueue();
 
     virtual ~linkQueue();
 
-    linkQueue(const linkQueue<ElemType> &otherQ);
+    linkQueue(const linkQueue<elemtype> &otherQ);
 
 protected:
     nodeP rear;

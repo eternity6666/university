@@ -7,6 +7,7 @@ public:
     void display();
 
     void getByRand(int display);
+
 };
 
 template <typename elemtype>
@@ -35,45 +36,64 @@ template <typename elemtype>
 void mySqQueue<elemtype>::display()
 {
     fei(1, this->queueSize)
-        cout << " [" << setw(2) << "]";
+        cout << " [" << setw(2) << i << "]";
     cout << endl;
     int rear = this->rear;
     int front = this->front;
     if(rear < front)
     {
-        fei(0, rear - 2)
-            cout << "     ";
-        cout << "↑";
-
-        fei(rear, front - 2)
-            cout << "     ";
-        cout << "↑";
-        
-        fei(0, rear - 2)
-            cout << "     ";
-        cout << "rear";
-
-        fei(rear, front - 2)
-            cout << "     ";
-        cout << "front";
+        fei(0, this->queueSize - 1)
+        {
+            cout.width(5);
+            cout.fill(' ');
+            if(i < rear)
+                cout << this->base[i];
+            else if(i < front)
+                cout << ' ';
+            else
+                cout << this->base[i];
+        }
     }
     else
     {
-        fei(0, front - 2)
-            cout << "     ";
-        cout << "↑";
-        
-        fei(front, rear - 2)
-            cout << "     ";
-        cout << "↑";
-
-        fei(0, front - 2)
-            cout << "     ";
-        cout << "front";
-
-        fei(front - 2, rear)
-            cout << "     ";
-        cout << "rear";
+        fei(0, this->queueSize - 1)
+        {
+            cout.width(5);
+            cout.fill(' ');
+            if(i < front)
+                cout << ' ';
+            else if(i < rear)
+                cout << this->base[i];
+            else
+                cout << ' ';
+        }
     }
+    cout << endl;
+    
+    fei(0, this->queueSize - 1)
+    {
+        if(i == rear || i == front)
+            cout << "   ↑ ";
+        else
+        {
+            cout.width(5);
+            cout.fill(' ');
+            cout << ' ';
+        }
+    }
+    cout << endl;
+
+    fei(0, this->queueSize - 1)
+    {
+        cout.width(5);
+        cout.fill(' ');
+        if(i == rear)
+            cout << " rear";
+        else if(i == front)
+            cout << " front";
+        else
+            cout << ' ';
+    }
+    cout << endl;
 }
 

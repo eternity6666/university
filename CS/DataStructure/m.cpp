@@ -12,7 +12,6 @@ void code7();
 void code8();
 void code9();
 void code10();
-void code11();
 
 int main()
 {
@@ -21,7 +20,7 @@ int main()
         system("clear");
         menu();
         display(a);
-        cout << " -----------------------------------------------" << endl;
+        cout << " -------------------------------------------------------------------------" << endl;
         cout << " 请选择你要操作的代码<1-11>: ";
         int n;
         cin >> n;
@@ -57,14 +56,11 @@ int main()
             case 10:
                 code10();
                 break;
-            case 11:
-                code11();
-                break;
             default:
                 cout << " 结束" << endl;
                 return 0;
         }
-        cout << " 还继续吗<Y.继续/tN.结束>?";
+        cout << " 还继续吗<Y.继续\tN.结束>?";
         char c;
         cin >> c;
         if(c == 'Y' || c == 'y')
@@ -125,15 +121,9 @@ void code10()
 
 }
 
-void code11()
-{
-
-}
-
 void menu()
 {
-    cout << " ----------- && 测试顺序栈的操作 && ------------" << endl;
     cout << " 其他. 结束 " << endl;
-    cout << " -----------------------------------------------" << endl;
+    cout << " -------------------------------------------------------------------------" << endl;
 }
 

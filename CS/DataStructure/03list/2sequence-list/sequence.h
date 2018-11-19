@@ -3,10 +3,10 @@
 const int firstSize = 100;
 const int addSize = 10;
 
-template <typename ElemType>
+template <typename elemtype>
 class SqList{
 protected:
-    ElemType *elem;
+    elemtype *elem;
     int listSize;
     int n;
 
@@ -28,34 +28,34 @@ public:
     bool isEmpty();
 
     // 查找某个元素
-    int searchElem(ElemType a);
+    int searchElem(elemtype a);
     
     // 有序顺序表折半查找
-    int bin_Search(ElemType key);
+    int bin_Search(elemtype key);
 
     // 把顺序表置为空
     void clear();
 
     // 删除第i个元素
-    Status deleteElem(int i, ElemType & a);
+    Status deleteElem(int i, elemtype & a);
 
     // 取第i个元素
-    Status getElem(int i, ElemType & a);
+    Status getElem(int i, elemtype & a);
 
     // 顺序表存储空间大小
     int getListSize();
 
     // 在第i个元素之前添加某个元素
-    Status addElem(ElemType a, int i);
+    Status addElem(elemtype a, int i);
 
     // 查找第1个与a元素满足某个关系的元素序号
-    int locateElem(ElemType a, Status (*compare)(ElemType, ElemType));
+    int locateElem(elemtype a, Status (*compare)(elemtype, elemtype));
     
     // 返回某个元素的后继
-    bool nextElem(ElemType a, ElemType & next_a);
+    bool nextElem(elemtype a, elemtype & next_a);
 
     // 返回某个元素的前驱
-    bool priorElem(ElemType a, ElemType & prior_a);
+    bool priorElem(elemtype a, elemtype & prior_a);
 
     // 重载"="运算符
     SqList operator = (const SqList & otherL);
@@ -66,14 +66,14 @@ public:
     void newList();
 
     // 拷贝初始化构造函数
-    SqList(const SqList<ElemType>& otherL);
+    SqList(const SqList<elemtype>& otherL);
 
     // 析构函数
     ~SqList();
 };
 
-template <typename ElemType>
-void SqList<ElemType>::newList()
+template <typename elemtype>
+void SqList<elemtype>::newList()
 {
     int tmp[10];
     cout << " ";
@@ -86,14 +86,14 @@ void SqList<ElemType>::newList()
     cout << endl;
 }
 
-template <typename ElemType>
-void SqList<ElemType>::input(int x)
+template <typename elemtype>
+void SqList<elemtype>::input(int x)
 {
-    ElemType *newbase;
+    elemtype *newbase;
 
     if(x >= listSize)
     {
-        newbase = new ElemType[x + addSize];
+        newbase = new elemtype[x + addSize];
         assert(newbase != 0);
         
         delete[] elem;
@@ -108,8 +108,8 @@ void SqList<ElemType>::input(int x)
 }
 
 // 输出顺序表
-template <typename ElemType>
-void SqList<ElemType>::output()
+template <typename elemtype>
+void SqList<elemtype>::output()
 {
     for(int i = 1; i <= n ; i++)
         cout << " [" << setw(2) << i << "]";
@@ -120,8 +120,8 @@ void SqList<ElemType>::output()
 }
 
 // 有序顺序表折半查找
-template <typename ElemType>
-int SqList<ElemType>::bin_Search(ElemType key)
+template <typename elemtype>
+int SqList<elemtype>::bin_Search(elemtype key)
 {
     int low, mid, high;
 
@@ -142,15 +142,15 @@ int SqList<ElemType>::bin_Search(ElemType key)
 }
 
 // 把顺序表置为空
-template <typename ElemType>
-void SqList<ElemType>::clear()
+template <typename elemtype>
+void SqList<elemtype>::clear()
 {
     n = 0;
 }
 
 // 删除第i个元素
-template <typename ElemType>
-Status SqList<ElemType>::deleteElem(int i, ElemType & a)
+template <typename elemtype>
+Status SqList<elemtype>::deleteElem(int i, elemtype & a)
 {
     if(i < 1 || i > n)
         return ERROR;
@@ -164,8 +164,8 @@ Status SqList<ElemType>::deleteElem(int i, ElemType & a)
 }
 
 // 取第i个元素
-template <typename ElemType>
-Status SqList<ElemType>::getElem(int i, ElemType & a)
+template <typename elemtype>
+Status SqList<elemtype>::getElem(int i, elemtype & a)
 {
     if(i < 1 || i > n)
         return ERROR;
@@ -176,23 +176,23 @@ Status SqList<ElemType>::getElem(int i, ElemType & a)
 }
 
 // 顺序表存储空间大小
-template <typename ElemType>
-int SqList<ElemType>::getListSize()
+template <typename elemtype>
+int SqList<elemtype>::getListSize()
 {
     return listSize;
 }
 
 // 在第i个元素之前添加某个元素
-template <typename ElemType>
-Status SqList<ElemType>::addElem(ElemType a, int i)
+template <typename elemtype>
+Status SqList<elemtype>::addElem(elemtype a, int i)
 {
     if(i < 1 || i > n)
         return ERROR;
-    ElemType *newbase;
+    elemtype *newbase;
 
     if(n >= listSize)
     {
-        newbase = new ElemType[listSize + addSize];
+        newbase = new elemtype[listSize + addSize];
         assert(newbase != 0);
 
         for(int j = 1; j <= n; j++)
@@ -211,8 +211,8 @@ Status SqList<ElemType>::addElem(ElemType a, int i)
 }
 
 // 查找第1个与a元素满足某个关系的元素序号
-template <typename ElemType>
-int SqList<ElemType>::locateElem(ElemType a, Status (*compare)(ElemType, ElemType))
+template <typename elemtype>
+int SqList<elemtype>::locateElem(elemtype a, Status (*compare)(elemtype, elemtype))
 {
     int i;
     for(i = 1; i <= n && !(*compare)(elem[i - 1], a); i++);
@@ -223,8 +223,8 @@ int SqList<ElemType>::locateElem(ElemType a, Status (*compare)(ElemType, ElemTyp
 }
 
 // 返回某个元素的后继
-template <typename ElemType>
-bool SqList<ElemType>::nextElem(ElemType a, ElemType & next_a)
+template <typename elemtype>
+bool SqList<elemtype>::nextElem(elemtype a, elemtype & next_a)
 {
     int i = locateElem(a, equal);
 
@@ -236,8 +236,8 @@ bool SqList<ElemType>::nextElem(ElemType a, ElemType & next_a)
 }
     
 // 返回某个元素的前驱
-template <typename ElemType>
-bool SqList<ElemType>::priorElem(ElemType a, ElemType & prior_a)
+template <typename elemtype>
+bool SqList<elemtype>::priorElem(elemtype a, elemtype & prior_a)
 {
     int i = locateElem(a, equal);
 
@@ -249,15 +249,15 @@ bool SqList<ElemType>::priorElem(ElemType a, ElemType & prior_a)
 }
 
 // 重载"="运算符
-template <typename ElemType>
-SqList<ElemType> SqList<ElemType>::operator = (const SqList & otherL)
+template <typename elemtype>
+SqList<elemtype> SqList<elemtype>::operator = (const SqList & otherL)
 {
     if(this != &otherL)
     {
         if(listSize < otherL.listSize)
         {
             delete[] elem;
-            elem = new ElemType[otherL.listSize];
+            elem = new elemtype[otherL.listSize];
 
             assert(elem != 0);
             listSize = otherL.listSize;
@@ -270,37 +270,37 @@ SqList<ElemType> SqList<ElemType>::operator = (const SqList & otherL)
 }
 
 // 析构函数
-template <typename ElemType>
-SqList<ElemType>::~SqList()
+template <typename elemtype>
+SqList<elemtype>::~SqList()
 {
     delete[] elem;
 }
 
 // 顺序表元素个数
-template <typename ElemType>
-int SqList<ElemType>::getLength()
+template <typename elemtype>
+int SqList<elemtype>::getLength()
 {
     return n;
 }
 
 // 构造函数
-template <typename ElemType>
-SqList<ElemType>::SqList()
+template <typename elemtype>
+SqList<elemtype>::SqList()
 {
-    elem = new ElemType[firstSize];
+    elem = new elemtype[firstSize];
     assert(elem != 0);
     listSize = firstSize;
     n = 0;
 }
 
 // 拷贝初始化构造函数
-template <typename ElemType>
-SqList<ElemType>::SqList(const SqList<ElemType>& otherL)
+template <typename elemtype>
+SqList<elemtype>::SqList(const SqList<elemtype>& otherL)
 {
     listSize = otherL.listSize;
     n = otherL.n;
     
-    elem = new ElemType[listSize];
+    elem = new elemtype[listSize];
     assert(elem != 0);
 
     for(int i = 0; i < n; i++)
@@ -308,8 +308,8 @@ SqList<ElemType>::SqList(const SqList<ElemType>& otherL)
 }
 
 // 顺序表是否已满
-template <typename ElemType>
-bool SqList<ElemType>::isFull()
+template <typename elemtype>
+bool SqList<elemtype>::isFull()
 {
     if(n == listSize)
         return true;
@@ -318,8 +318,8 @@ bool SqList<ElemType>::isFull()
 }
 
 // 顺序表是否为空
-template <typename ElemType>
-bool SqList<ElemType>::isEmpty()
+template <typename elemtype>
+bool SqList<elemtype>::isEmpty()
 {
     if(n == 0)
         return true;
@@ -328,8 +328,8 @@ bool SqList<ElemType>::isEmpty()
 }
 
 // 查找某个元素
-template <typename ElemType>
-int SqList<ElemType>::searchElem(ElemType a)
+template <typename elemtype>
+int SqList<elemtype>::searchElem(elemtype a)
 {
     if(isEmpty())
         return -1;

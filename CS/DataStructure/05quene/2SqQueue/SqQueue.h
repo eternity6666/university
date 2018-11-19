@@ -26,20 +26,12 @@ public:
 
     SqQueue(const SqQueue<elemtype> &otherQ);
 
-    int get_queueSize();
-
 protected:
     int rear;
     int front;
     int queueSize;
     elemtype *base;
 };
-
-template <typename elemtype>
-int SqQueue<elemtype>::getQueueSize()
-{
-    return queueSize;
-}
 
 template<typename elemtype>
 void SqQueue<elemtype>::clear()
@@ -61,7 +53,7 @@ bool SqQueue<elemtype>::deQueue(elemtype &e)
 template<typename elemtype>
 bool SqQueue<elemtype>::enQueue(elemtype e)
 {
-    if(isFull)
+    if(isFull())
         return false;
     base[rear] = e;
     rear = (rear + 1) % queueSize;
@@ -69,7 +61,7 @@ bool SqQueue<elemtype>::enQueue(elemtype e)
 }
 
 template<typename elemtype>
-bool SqQueue<elemtype>::getfront(elemtype &e)
+bool SqQueue<elemtype>::getFront(elemtype &e)
 {
     if(isEmpty())
         return false;
@@ -104,7 +96,7 @@ SqQueue<elemtype> SqQueue<elemtype>::operator = (SqQueue<elemtype> rightQ)
         delete[] base;
         base = new elemtype[rightQ.queueSize];
         assert(base != 0);
-        queueSize = rightQ.ququeSize;
+        queueSize = rightQ.queueSize;
         front = rightQ.front;
         rear = rightQ.rear;
         for(int j = front; j % queueSize != rear;)

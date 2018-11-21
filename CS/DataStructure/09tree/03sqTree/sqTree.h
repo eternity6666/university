@@ -125,3 +125,4 @@ sqTree<elemtype>::sqTree(const sqTree& otherT)
     }
 }
 
+

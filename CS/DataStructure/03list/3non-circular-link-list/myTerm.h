@@ -1,8 +1,3 @@
-#ifndef LINKLIST_H
-    #define LINKLIST_H
-    #include "../../myhead.h"
-#endif
-
 class myTerm
 {
 public:
@@ -16,7 +11,7 @@ public:
     int expn;
 };
 
-void myTerm:read(istream& in)
+void myTerm::read(istream& in)
 {
     cout << "系数: ";
 
@@ -41,7 +36,7 @@ void myTerm::display(ostream& out)
         out << "x" << expn;
 }
 
-ostream& operator <<(ostream& out, myTerm& s)
+ostream& operator << (ostream& out, myTerm& s)
 {
     s.display(out);
     return out;

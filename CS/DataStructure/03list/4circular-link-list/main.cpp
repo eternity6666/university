@@ -11,6 +11,7 @@ void code5();
 void code6();
 void code7();
 void code8();
+void code9();
 void menu();
 
 int main()
@@ -28,7 +29,7 @@ int main()
             a.display();
         }
         cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
-        cout << " 请输入操作代码<1-8>: ";
+        cout << " 请输入操作代码<1-9>: ";
         int n;
         cin >> n;
         switch(n)
@@ -57,6 +58,8 @@ int main()
         case 8:
             code8();
             break;
+        case 9:
+            code9();
         default:
             cout << " 结束" << endl;
             return 0;
@@ -162,6 +165,37 @@ void code8()
 {
     cout << " ××××××××××××××××××× && 输入循环单链表 && ××××××××××××××××× " << endl;
 	a.input();
+    cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
+}
+
+void code9()
+{
+    cout << " ×××××××××××××× && 约瑟夫(Josephus)环出列 && ×××××××××××××× " << endl;
+    if(false)
+    {
+        cout << " 当前的约瑟夫环为空." << endl;
+    }
+    else
+    {
+        cout << " 当前的约瑟夫环为: " << endl;
+        // 约瑟夫环.display();
+        cout << " 请输入起始结点号: ";
+        int s;
+        cin >> s;
+        cout << "       间隔结点数: ";
+        int x;
+        cin >> x;
+
+        int n = 0;
+        // n = 约瑟夫环.length();
+
+        fei(1, n)
+        {
+            // s = 约瑟夫环.deal(s, x);
+            cout << " 第" << i "次出列的结点为" << s << ", 出列后约瑟夫环为: "<< endl;
+            // 约瑟夫环.display();
+        }
+    }
     cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
 }
 

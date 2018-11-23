@@ -37,16 +37,16 @@ public:
     void clear();
 
     // 删除第i个元素
-    Status deleteElem(int i, elemtype & a);
+    bool deleteElem(int i, elemtype & a);
 
     // 取第i个元素
-    Status getElem(int i, elemtype & a);
+    bool getElem(int i, elemtype & a);
 
     // 顺序表存储空间大小
     int getListSize();
 
     // 在第i个元素之前添加某个元素
-    Status addElem(elemtype a, int i);
+    bool addElem(elemtype a, int i);
 
     // 查找第1个与a元素满足某个关系的元素序号
     int locateElem(elemtype a, Status (*compare)(elemtype, elemtype));
@@ -63,7 +63,7 @@ public:
     // 构造函数
     SqList();
 
-    void newList();
+    void newList(int display);
 
     // 拷贝初始化构造函数
     SqList(const SqList<elemtype>& otherL);
@@ -73,17 +73,20 @@ public:
 };
 
 template <typename elemtype>
-void SqList<elemtype>::newList()
+void SqList<elemtype>::newList(int display)
 {
     int tmp[10];
-    cout << " ";
-    for(int i = 0; i < 10; i++)
+    n = rand() % 6 + 1;
+    if(display)
+        cout << " ";
+    for(int i = 0; i < n; i++)
     {
         elem[i] = rand() % 100;
-        cout << elem[i] << " ";
+        if(display)
+            cout << elem[i] << " ";
     }
-    n = 10;
-    cout << endl;
+    if(display)
+        cout << endl;
 }
 
 template <typename elemtype>
@@ -150,7 +153,7 @@ void SqList<elemtype>::clear()
 
 // 删除第i个元素
 template <typename elemtype>
-Status SqList<elemtype>::deleteElem(int i, elemtype & a)
+bool SqList<elemtype>::deleteElem(int i, elemtype & a)
 {
     if(i < 1 || i > n)
         return ERROR;
@@ -165,7 +168,7 @@ Status SqList<elemtype>::deleteElem(int i, elemtype & a)
 
 // 取第i个元素
 template <typename elemtype>
-Status SqList<elemtype>::getElem(int i, elemtype & a)
+bool SqList<elemtype>::getElem(int i, elemtype & a)
 {
     if(i < 1 || i > n)
         return ERROR;
@@ -184,9 +187,9 @@ int SqList<elemtype>::getListSize()
 
 // 在第i个元素之前添加某个元素
 template <typename elemtype>
-Status SqList<elemtype>::addElem(elemtype a, int i)
+bool SqList<elemtype>::addElem(elemtype a, int i)
 {
-    if(i < 1 || i > n)
+    if(i < 1 || i > n + 1)
         return ERROR;
     elemtype *newbase;
 
@@ -216,6 +219,7 @@ int SqList<elemtype>::locateElem(elemtype a, Status (*compare)(elemtype, elemtyp
 {
     int i;
     for(i = 1; i <= n && !(*compare)(elem[i - 1], a); i++);
+
     if(i <= n)
         return i;
     else

@@ -1,12 +1,14 @@
 #include <iostream>
 #include <iomanip>
 #include "setSqList.h"
+#include <vector>
+#include "student.h"
 using namespace std;
 
 mySqList<int> a, b;
+vector<student> x, y;
 
 void menu();
-
 void code1();
 void code2();
 void code3();
@@ -337,6 +339,8 @@ void code14()
 
 void code15()
 {
+    x = randStu();
+    y = randStu();
     while(1)
     {
         system("clear");
@@ -355,8 +359,14 @@ void code15()
              << " 15.12. 输入学生表\n"
              << "  其他. 结束\n" << endl;
         cout << " ********************************************************** " << endl;
-        cout << " 当前学生表(采用顺序表存储)有" << "个学生, 分别为: " << endl;
-        cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+        if(x.size())
+        {
+            cout << " 当前学生表(采用顺序表存储)有" << "个学生, 分别为: " << endl;
+            cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+            output(x);
+        }
+        else
+            cout << " 当前学生表为空" << endl;
         cout << " ********************************************************** " << endl;
         cout << " 请选择你要操作的代码<1-12>: ";
         int n;
@@ -415,7 +425,7 @@ void code15()
 
 void code1501()
 {
-
+    cout << "  " << endl;
     cout << " ********************************************************** " << endl;
 }
 
@@ -470,19 +480,74 @@ void code1509()
 void code1510()
 {
     cout << " ************ && 随机生成学生表中的学生信息 && ************ " << endl;
-
+    x = randStu();
+    cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+    output(x);
     cout << " ********************************************************** " << endl;
 }
 
 void code1511()
 {
-
+    cout << " ********* && 用已有的学生表初始化另一个学生表 && ********* " << endl;
+    cout << " 当前的学生表初始化另一个学生表为:\n";
+    y = x;
+    cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+    output(y);
     cout << " ********************************************************** " << endl;
 }
 
 void code1512()
 {
-
+    cout << " ******************** && 输入学生表 && ******************** " << endl;
+    cout << " 请输入学生表中的学生人数: ";
+    int n;
+    cin >> n;
+    if(n < 0)
+        cout << " 您的输入非法" << endl;
+    else
+    {
+        x.clear();
+        fei(1, n)
+        {
+            system("clear");
+            if(x.empty())
+                cout << " 当前学生表为空." << endl;
+            else
+            {
+                cout << " 当前学生表(采用顺序存储)有" << x.size() << "个学生, 分别为:\n";
+                cout << endl;
+                cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+                output(x);
+            }
+            cout << " ********************************************************** " << endl;
+            cout << " 请输入学生表第" << i << "个学生的信息:\n" << endl;
+            student s;
+            cout << "       学号: ";
+            cin >> s.num;
+            cout << "       姓名: ";
+            cin >> s.name;
+            cout << "       语文: ";
+            cin >> s.Chinese;
+            cout << "       英语: ";
+            cin >> s.English;
+            cout << "       数学: ";
+            cin >> s.math;
+            s.sum = s.math + s.Chinese + s.English;
+            s.average = s.sum / 3;
+            x.push_back(s);
+        }
+        system("clear");
+        cout << " **************** && 重新输入一个学生表 && **************** " << endl;
+        if(x.empty())
+            cout << " 当前学生表为空." << endl;
+        else
+        {
+            cout << " 当前学生表(采用顺序存储)有" << x.size() << "个学生, 分别为:\n";
+            cout << endl;
+            cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+            output(x);
+        }
+    }
     cout << " ********************************************************** " << endl;
 }
 

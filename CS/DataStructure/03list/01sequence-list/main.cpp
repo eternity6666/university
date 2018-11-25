@@ -425,25 +425,121 @@ void code15()
 
 void code1501()
 {
-    cout << "  " << endl;
+    cout << " ************* && 在第i个学生之前插入新学生 && ************ " << endl;
+    if(x.empty())
+        cout << " 当前学生表为空, 无法进行插入操作\n";
+    else
+    {
+        cout << " 请输入你要在第几个学生之前插入新学生: ";
+        int n;
+        while(cin >> n)
+        {
+            if(n <= 0 || n > x.size())
+                cout << " 非法输入, 请输入合法学生序号: ";
+            else
+                break;
+        }
+        student s;
+        cout << " 请输入你要插入的新学生的信息: " << endl;
+        cout << "   学号: ";
+        do
+        {
+            cin >> s.num;
+            if(s.num > 0)
+                break;
+            else
+                cout << "   请输入合法的学号: ";
+        }while(1);
+        cout << "   姓名: ";
+        cin >> s.name;
+        cout << "   语文: ";
+        do
+        {
+            cin >> s.Chinese;
+            if(s.Chinese > 0 && s.Chinese <= 100)
+                break;
+            else
+                cout << "   请输入合法的语文成绩: ";
+        }while(1);
+        cout << "   英语: ";
+        do
+        {
+            cin >> s.English;
+            if(s.English > 0 && s.English <= 100)
+                break;
+            else
+                cout << "   请输入合法的英语成绩: ";
+        }while(1);
+        cout << "   数学: ";
+        do
+        {
+            cin >> s.math;
+            if(s.math > 0 && s.math <= 100)
+                break;
+            else
+                cout << "   请输入合法的数学成绩: ";
+        }while(1);
+        s.sum = s.math + s.Chinese + s.English;
+        s.average = s.sum / 3;
+
+        cout << " 你要在第" << n << "个学生前插入新学生\n";
+        cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+        vector<student> tmp;
+        tmp.push_back(s);
+        output(tmp);
+        x.push_back(s);
+        cout << "\n 插入后的学生表如下:\n";
+        cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+        output(x);
+    }
     cout << " ********************************************************** " << endl;
 }
 
 void code1502()
 {
-
+    cout << " **************** && 判断学生表是否为空 && **************** " << endl;
+    if(x.empty())
+        cout << " 当前学生表为空" << endl;
+    else
+        cout << " 当前学生表不为空" << endl;
     cout << " ********************************************************** " << endl;
 }
 
 void code1503()
 {
-
+    cout << " *************** && 求学生表中学生的个数 && *************** " << endl;
+    cout << " 当前学生表中的人数为: " << x.size() << endl;
     cout << " ********************************************************** " << endl;
 }
 
 void code1504()
 {
-
+    cout << " ************** && 返回学生表中第i个学生 && *************** " << endl;
+    if(x.empty())
+        cout << " 当前学生表为空" << endl;
+    else
+    {
+        cout << " 请输入你想取的学生序号<1-" << x.size() << ">: ";
+        int n;
+        do
+        {
+            cin >> n;
+            if(n < 1 || n > x.size())
+            {
+                cout << " 您的输入非法，请输入合法学生序号<1-" << x.size() << ">: ";
+            }
+            else
+                break;
+        }while(1);
+        cout << " 你想取的第" << n << "个学生的信息为: " << endl;
+        vector<student> tmp;
+        vector<student>::iterator it = x.begin();
+        fei(0, n - 2)
+            it++;
+        tmp.push_back(*it);
+        cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+        output(tmp);
+    }
     cout << " ********************************************************** " << endl;
 }
 

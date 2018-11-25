@@ -100,7 +100,7 @@ void output(vector<student> x)
     for(it = x.begin(); it != x.end(); it++)
     {
         student s = *it;
-        printf(" %2d\t", s.num);
+        printf("  %2d\t", s.num);
         cout << s.name;
         printf("\t %2.0lf\t %2.0lf\t %2.0lf\t %2.2lf\t %2.0lf\n", s.Chinese, s.English, s.math, s.average, s.sum);
     }

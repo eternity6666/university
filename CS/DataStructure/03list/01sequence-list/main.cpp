@@ -545,19 +545,125 @@ void code1504()
 
 void code1505()
 {
-
+    cout << " **************** && 返回某个学生的前驱 && **************** " << endl;
+    if(x.empty())
+        cout << " 当前学生表为空, 无法进行操作" << endl;
+    else
+    {
+        cout << " 请输入你想查找起前驱学生的姓名: ";
+        string s;
+        cin >> s;
+        vector<student>::iterator it;
+        int flag = 0;
+        vector<student> tmp;
+        for(it = x.begin(); it != x.end(); it++)
+        {
+            if((*it).name == s)
+            {
+                if(it == x.begin())
+                    flag = -1;
+                else
+                {
+                    it--;
+                    tmp.push_back(*it);
+                    flag = 1;
+                }
+                break;
+            }
+        }
+        if(flag == 0)
+            cout << " 学生表中没有名为" << s << "的同学的个人信息" << endl;
+        else if(flag == -1)
+            cout << " " << s << "同学为学生表中第一位同学, 无前驱" << endl;
+        else
+        {
+            cout << " 你想查找姓名为" << s << "的学生前驱为: " << endl;
+            cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+            output(tmp);
+        }
+    }
     cout << " ********************************************************** " << endl;
 }
 
 void code1506()
 {
-
+    cout << " **************** && 返回某个学生的后继 && **************** " << endl;
+    if(x.empty())
+        cout << " 当前学生表为空, 无法进行操作" << endl;
+    else
+    {
+        cout << " 请输入你想查找起后继学生的姓名: ";
+        string s;
+        cin >> s;
+        vector<student>::iterator it;
+        int flag = 0;
+        vector<student> tmp;
+        for(it = x.begin(); it != x.end(); it++)
+        {
+            if((*it).name == s)
+            {
+                if(it == x.end() - 1)
+                    flag = -1;
+                else
+                {
+                    it++;
+                    tmp.push_back(*it);
+                    flag = 1;
+                }
+                break;
+            }
+        }
+        if(flag == 0)
+            cout << " 学生表中没有名为" << s << "的同学的个人信息" << endl;
+        else if(flag == -1)
+            cout << " " << s << "同学为学生表中最后一位同学, 无后继" << endl;
+        else
+        {
+            cout << " 你想查找姓名为" << s << "的学生后继为: " << endl;
+            cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+            output(tmp);
+        }
+    }
     cout << " ********************************************************** " << endl;
 }
 
 void code1507()
 {
+    cout << " ************** && 删除学生表中第i个元素 && *************** " << endl;
+    if(x.empty())
+        cout << " 当前学生表为空, 无法进行操作" << endl;
+    else
+    {
+        cout << " 请输入你想删除学生的序号<1-" << x.size() << ">: ";
+        int n;
+        while(cin >> n)
+        {
+            if(n < 1 || n > x.size())
+                cout << " 请输入<1-" << x.size() << ">: ";
+            else
+                break;
+        }
+        
+        vector<student>::iterator it = x.begin() + n - 1;
+        vector<student> tmp;
+        tmp.push_back(*it);
+        
+        cout << " 你想删除的第" << n << "个学生的信息为: " << endl;
+        cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+        output(tmp);
+        cout << endl;
 
+        x.erase(it);
+
+        if(x.empty())
+            cout << " 删除后, 学生表为空" << endl;
+        else
+        {
+            cout << " 删除后的学生表如下: " << endl << endl;
+            cout << " 学号\t姓名\t语文\t英语\t数学\t平均分\t总分\n";
+            output(x);
+        }
+    }
     cout << " ********************************************************** " << endl;
 }
 

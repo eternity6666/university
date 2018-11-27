@@ -1,5 +1,6 @@
 #include <iostream>
 #include "cll.h"
+#include "myJosephus.h"
 using namespace std;
 
 circularLinkList<int> a,b;
@@ -60,6 +61,7 @@ int main()
             break;
         case 9:
             code9();
+            break;
         default:
             cout << " 结束" << endl;
             return 0;
@@ -171,30 +173,26 @@ void code8()
 void code9()
 {
     cout << " ×××××××××××××× && 约瑟夫(Josephus)环出列 && ×××××××××××××× " << endl;
-    if(false)
-    {
+    if(a.isEmpty())
         cout << " 当前的约瑟夫环为空." << endl;
-    }
     else
     {
         cout << " 当前的约瑟夫环为: " << endl;
-        // 约瑟夫环.display();
+        a.display();
         cout << " 请输入起始结点号: ";
         int s;
-        cin >> s;
+        int n = a.getLength();
+        while(cin >> s)
+        {
+            if(s < 1 || s > n)
+                cout << " 请输入从1-" << n << ">: "; 
+            else
+                break;
+        }
         cout << "       间隔结点数: ";
         int x;
         cin >> x;
-
-        int n = 0;
-        // n = 约瑟夫环.length();
-
-        fei(1, n)
-        {
-            // s = 约瑟夫环.deal(s, x);
-            cout << " 第" << i "次出列的结点为" << s << ", 出列后约瑟夫环为: "<< endl;
-            // 约瑟夫环.display();
-        }
+        Josephus(a, s, x);
     }
     cout << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
 }
@@ -210,6 +208,7 @@ void menu()
          << "    6. 随机生成循环单链表" << endl
          << "    7. 用已有的循环单链表初始化另一个循环单链表" << endl
          << "    8. 输入循环单链表" << endl
+         << "    9. 约瑟夫(Josephus)环出列(循环单链表的应用)" << endl
          << " 其他. 结束" << endl
          << " ×××××××××××××××××××××××××××××××××××××××××××××××××××××××××× " << endl;
 }

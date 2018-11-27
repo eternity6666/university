@@ -29,7 +29,7 @@ template <typename elemtype>
 myPolynomialLinkList<elemtype> myPolynomialLinkList<elemtype>::operator + (myPolynomialLinkList<elemtype> l)
 {
     typename linkList<elemtype>::nodeP p1 = this->head;
-    typename linkList<elemtype>::nodeP p2 = l->head;
+    typename linkList<elemtype>::nodeP p2 = l.head;
 
     myPolynomialLinkList<elemtype> l3;
 
@@ -66,8 +66,8 @@ myPolynomialLinkList<elemtype> myPolynomialLinkList<elemtype>::operator + (myPol
                 p3->data.expn = p2->data.expn;
                 p2 = p2->next;
             }
-            if(!l3->head)
-                l3->head = p3;
+            if(!l3.head)
+                l3.head = p3;
             else
                 r3->next = p3;
             r3 = p3;
@@ -80,8 +80,8 @@ myPolynomialLinkList<elemtype> myPolynomialLinkList<elemtype>::operator + (myPol
         p3->data.expn = p1->data.expn;
         p1 = p1->next;
 
-        if(!l3->head)
-            l3->head = p3;
+        if(!l3.head)
+            l3.head = p3;
         else
             r3->next = p3;
         r3 = p3;
@@ -93,8 +93,8 @@ myPolynomialLinkList<elemtype> myPolynomialLinkList<elemtype>::operator + (myPol
         p3->data.expn = p2->data.expn;
         p2 = p2->next;
 
-        if(!l3->head)
-            l3->head = p3;
+        if(!l3.head)
+            l3.head = p3;
         else
             r3->next = p3;
         r3 = p3;
@@ -108,7 +108,7 @@ myPolynomialLinkList<elemtype> myPolynomialLinkList<elemtype>::operator + (myPol
 template <typename elemtype>
 myPolynomialLinkList<elemtype> myPolynomialLinkList<elemtype>::operator -(myPolynomialLinkList<elemtype> l)
 {
-    typename linkList<elemtype>::nodeP p2 = l->head;
+    typename linkList<elemtype>::nodeP p2 = l.head;
     myPolynomialLinkList<elemtype> l3;
 
     while(p2)

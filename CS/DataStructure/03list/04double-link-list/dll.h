@@ -1,4 +1,13 @@
-#include "../../myhead.h"
+#ifndef MYHEAD_H
+    #define MYHEAD_H
+    #include "../../myhead.h"
+#endif
+
+#ifndef IOMANIP_H
+    #define IOMANIP_H
+    #include <iomanip>
+#endif
+
 template<typename elemtype>
 class doubleLinkList
 {
@@ -14,25 +23,25 @@ public:
 
     void clear();
 
-    Status getElem(int i, elemtype & e);
+    bool getElem(int i, elemtype & e);
 
-    Status deleteElem(elemtype e);
+    bool deleteElem(elemtype e);
 
     nodeP getHead();
 
     int getLength();
 
-    Status insert(int i, elemtype e);
+    bool insert(int i, elemtype e);
 
     bool isEmpty();
 
-    Status locateElem(elemtype find_e, nodeP &r);
+    bool locateElem(elemtype find_e, nodeP &r);
 
-    Status nextElem(elemtype e, elemtype &next_e);
+    bool nextElem(elemtype e, elemtype &next_e);
     
     doubleLinkList<elemtype> operator = (doubleLinkList<elemtype> rightL);
 
-    Status priorElem(elemtype e, elemtype &prior_e);
+    bool priorElem(elemtype e, elemtype &prior_e);
 
     doubleLinkList();
 
@@ -53,23 +62,71 @@ void doubleLinkList<elemtype>::display()
 {
     int n = getLength();
 
-    cout << "   ↓";
-    for(int i = 0; i < n * 5; i++)
+    cout << "   ╭";
+    fei(0, 5 * n - 3)
         cout << "─";
+    cout << "╮" << endl;
+    cout << "   ↓";
+    fei(0, 5 * n - 3)
+        cout << " ";
+    cout << "│" << endl;
+    cout << " ╭";
+    nodeP p = head;
+    do
+    {
+        cout << setw(3) << p->data << "->";
+        p = p->next;
+    }while(p != head);
     cout << endl;
+    cout << " │  ";
+    fei(0, n - 2)
+        cout << "↑   │";
+    cout << "↑" << endl;
+    cout << " │  ";
+    fei(0, n - 2)
+        cout << "╰───╯";
+    cout << "│" << endl;
+    cout << " ╰";
+    fei(0, 5 * (n - 1))
+        cout << "─";
+    cout << "─╯" << endl;
 }
 
 template <typename elemtype>
 void doubleLinkList<elemtype>::input(int n)
 {
+    clear();
     cout << " 请输入循环双链表每个结点数据域的值: ";
+
+    nodeP p, s;
+    head = p = NULL;
+    fei(1, n)
+    {
+        int tmp;
+        cin >> tmp;
+
+        s = new linkNode;
+        assert(s != 0);
+        
+        s->data = tmp;
+
+        if(!this->head)
+            p = this->head = s;
+
+        p->next = s;
+        s->prior = p;
+
+        p = s;
+    }
     
-    int array[100000];
-    for(int i = 0; i < n; i++)
-        cin >> array[i];
+    if(head)
+    {
+        head->prior = p;
+        p->next = head;
+    }
 
     cout << "\n 已经在当前循环双链表输入了" << n << "个结点\n\n";
-
+    
     cout << " 输入的循环双链表如下:\n";
 
     display();
@@ -97,12 +154,12 @@ void doubleLinkList<elemtype>::clear()
 }
 
 template <typename elemtype>
-Status doubleLinkList<elemtype>::deleteElem(elemtype e)
+bool doubleLinkList<elemtype>::deleteElem(elemtype e)
 {
     nodeP p;
     
     if(!locateElem(e,p))
-        return ERROR;
+        return false;
 
     if(head->next == head)
         head = NULL;
@@ -115,11 +172,11 @@ Status doubleLinkList<elemtype>::deleteElem(elemtype e)
         p->next->prior = p->prior;
     }
     delete p;
-    return OK;
+    return true;
 }
 
 template <typename elemtype>
-Status doubleLinkList<elemtype>::getElem(int i, elemtype &e)
+bool doubleLinkList<elemtype>::getElem(int i, elemtype &e)
 {
     int j = 1;
     nodeP p = head;
@@ -133,10 +190,10 @@ Status doubleLinkList<elemtype>::getElem(int i, elemtype &e)
     if(j == i)
     {
         e = p->data;
-        return OK;
+        return true;
     }
 
-    return ERROR;
+    return false;
 }
 
 template <typename elemtype>
@@ -163,7 +220,7 @@ int doubleLinkList<elemtype>::getLength()
 }
 
 template <typename elemtype>
-Status doubleLinkList<elemtype>::insert(int i, elemtype e)
+bool doubleLinkList<elemtype>::insert(int i, elemtype e)
 {
     int j = 1;
     nodeP p = head;
@@ -176,7 +233,7 @@ Status doubleLinkList<elemtype>::insert(int i, elemtype e)
     }
 
     if(!head && i != 1 || j < i)
-        return ERROR;
+        return false;
 
     s = new linkNode;
     assert(s != 0);
@@ -188,7 +245,7 @@ Status doubleLinkList<elemtype>::insert(int i, elemtype e)
         if(!head)
         {
             head = s->prior = s->next = s;
-            return OK;
+            return true;
         }
         head = s;
     }
@@ -198,7 +255,7 @@ Status doubleLinkList<elemtype>::insert(int i, elemtype e)
     p->prior = s;
     s->next = p;
     
-    return OK;
+    return true;
 }
 
 template <typename elemtype>
@@ -208,7 +265,7 @@ bool doubleLinkList<elemtype>::isEmpty()
 }
 
 template <typename elemtype>
-Status doubleLinkList<elemtype>::locateElem(elemtype e, nodeP &r)
+bool doubleLinkList<elemtype>::locateElem(elemtype e, nodeP &r)
 {
     nodeP p = head;
 
@@ -218,20 +275,20 @@ Status doubleLinkList<elemtype>::locateElem(elemtype e, nodeP &r)
     if(p->data == e)
     {
         r = p;
-        return OK;
+        return true;
     }
     else
-        return ERROR;
+        return false;
 }
 
 template <typename elemtype>
-Status doubleLinkList<elemtype>::nextElem(elemtype e, elemtype &next_e)
+bool doubleLinkList<elemtype>::nextElem(elemtype e, elemtype &next_e)
 {
     nodeP p;
     if(locateElem(e, p))
     {
         next_e = p->next->data;
-        return OK;
+        return true;
     }
     else
         return false;
@@ -277,16 +334,16 @@ doubleLinkList<elemtype> doubleLinkList<elemtype>::operator = (doubleLinkList<el
 }
 
 template <typename elemtype>
-Status doubleLinkList<elemtype>::priorElem(elemtype e, elemtype &prior_e)
+bool doubleLinkList<elemtype>::priorElem(elemtype e, elemtype &prior_e)
 {
     nodeP p;
     if(locateElem(e, p))
     {
         prior_e = p->prior->data;
-        return OK;
+        return true;
     }
     else
-        return ERROR;
+        return false;
 }
 
 template <typename elemtype>

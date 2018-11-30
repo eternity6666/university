@@ -1,9 +1,12 @@
+#include <bits/stdc++.h>
 #include <iostream>
 #include <random>
 #include "SqStack_test.h"
+#include "myExpress.h"
 using namespace std;
 
 SqStack<int> a, b;
+string x, y; 
 
 void menu();
 void code1();
@@ -190,6 +193,7 @@ void code9()
 
 void code10()
 {
+    x = y = "";
     while(1)
     {
         system("clear");
@@ -199,16 +203,12 @@ void code10()
              << " 10.3. 输入中缀表达式\n"
              << " 其他. 结束 " << endl;
         cout << " =============================================== " << endl;
-        // 
-        //
-        if(false) //
+        if(x == "")
             cout << " 当前未输入中缀表达式." << endl;
         else
         {
-            cout << " 当前中缀表达式为: ";
+            cout << " 当前中缀表达式为: " << x << endl;
         }
-        //
-        //
         cout << " =============================================== " << endl;
         cout << " 请选择你要操作的代码<1-3>: ";
         int n;
@@ -240,32 +240,33 @@ void code10()
 
 void code101()
 {
-    cout << " ============ && 输入中缀表达式 && ============= " << endl;
-    cout << " 请输入一个中缀表达式: ";
-    string s;
-    cin >> s;
-    
+    cout << " ======= && 中缀表达式转换为后缀表达式 && ====== " << endl;
+    cout << " 当前中缀表达式对应的后缀表达式为: " << endl;
+    y = transform(x);
+    cout << " " << y << endl;
     cout << " =============================================== " << endl;
 }
 
 void code102()
 {
-    cout << " ======= && 中缀表达式转换为后缀表达式 && ====== " << endl;
-    cout << " 当前中缀表达式对应的后缀表达式为: " << endl;
-    // cout << 后缀表达式;
+    cout << " =========== && 后缀表达式的计算 && ============ " << endl;
+    if(y == "")
+        cout << " 后缀表达式为空, 无法进行计算" << endl;
+    else
+    {
+        cout << " 当前后缀表达式" << y << endl;
+        cout << " 的结果为: " << evaluation(y) << endl;
+    }
     cout << " =============================================== " << endl;
 }
 
 void code103()
 {
-    cout << " =========== && 后缀表达式的计算 && ============ " << endl;
-    cout << " 当前后缀表达式";
-    // cout << 后缀表达式;
-    cout << " 的结果为: ";
-    // cout << ans;
+    cout << " ============ && 输入中缀表达式 && ============= " << endl;
+    cout << " 请输入一个中缀表达式: ";
+    cin >> x; 
     cout << " =============================================== " << endl;
 }
-
 
 void code11()
 {

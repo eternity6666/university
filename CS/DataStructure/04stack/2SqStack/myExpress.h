@@ -1,6 +1,21 @@
 // 后缀表达式转中缀表达式
+/*
+#ifndef STACK_H
+    #define STACK_H
+    #include <stack>
+#endif
+*/
 
-#include <stack>
+#ifndef SQSTACK_H
+    #define SQSTACK_H
+    #include "SqStack.h"
+#endif
+
+#ifndef STRING_H
+    #define STRING_H
+    #include <string>
+#endif
+
 int isOpMember(char ch)
 {
     if(ch >= '0' && ch <= '9')
@@ -37,13 +52,13 @@ int order(char m)
 int precede(char op1, char op2)
 {
     int inCmpOut[7][7] = {
-        { 1, 1, -1,-1,-1, 1, 1},
-        { 1, 1, -1,-1,-1, 1, 1},
-        { 1, 1,  1, 1,-1, 1, 1},
-        { 1, 1,  1, 1,-1, 1, 1},
-        {-1,-1, -1,-1,-1, 0, 0},
-        { 1, 1,  1, 1, 2, 1, 1},
-        {-1,-1, -1,-1,-1, 2, 0}
+        { 1,  1, -1, -1, -1,  1,  1},
+        { 1,  1, -1, -1, -1,  1,  1},
+        { 1,  1,  1,  1, -1,  1,  1},
+        { 1,  1,  1,  1, -1,  1,  1},
+        {-1, -1, -1, -1, -1,  0,  0},
+        { 1,  1,  1,  1,  2,  1,  1},
+        {-1, -1, -1, -1, -1,  2,  0}
     };
 
     int i, j;
@@ -52,28 +67,42 @@ int precede(char op1, char op2)
     return inCmpOut[i][j];
 }
 
-void transform(char *mids, char *suffixs)
+string transform(string mids)
 {
+    string suffixs = "";
     int i = 0;
     int j = 0;
     char ch = mids[0];
-
-    stack<char> s;
+    // cout << mids << endl;
+    SqStack<char> s;
     char op;
     s.push('\0');
 
     while(!s.isEmpty())
     {
-        if(!isOpMenber(ch))
+        // cout << 1 << endl;
+        if(isOpMember(ch) == -1)
+        {
+            cout << " error " << endl;
+            break;
+        }
+        else if(!isOpMember(ch))
         {
             if(i > 0 && isOpMember(suffixs[i - 1]) == 1)
-                suffixs[i++] = ' ';
-            suffixs[i++] = ch;
+            {
+                suffixs += ' ';
+                i++;
+            }
+            suffixs += ch;
+            i++;
         }
         else
         {
             if(i > 0 && suffixs[i - 1] != ' ')
-                suffixs[i++] = ' ';
+            {
+                suffixs += ' ';
+                i++;
+            }
             switch(ch)
             {
                 case '(':
@@ -83,8 +112,10 @@ void transform(char *mids, char *suffixs)
                     s.pop(op);
                     while(op != '(')
                     {
-                        suffixs[i++] = op;
-                        suffixs[i++] = ' ';
+                        suffixs += op;
+                        i++;
+                        suffixs += ' ';
+                        i++;
                         s.pop(op);
                     }
                     --i;
@@ -94,8 +125,10 @@ void transform(char *mids, char *suffixs)
                     {
                         if(precede(op, ch) == 1 || precede(op, ch) == 0)
                         {
-                            suffixs[i++] = op;
-                            suffixs[i++] = ' ';
+                            suffixs += op;
+                            i++;
+                            suffixs += ' ';
+                            i++;
                         }
                         else
                             break;
@@ -110,6 +143,7 @@ void transform(char *mids, char *suffixs)
             ch = mids[++j];
     }
     suffixs[i] = '\0';
+    return suffixs;
 }
 
 double caculate(double a, char ch, double b)
@@ -129,13 +163,13 @@ double caculate(double a, char ch, double b)
     }
 }
 
-double evaluation(char *suffixs)
+double evaluation(string suffixs)
 {
     int i = 0;
     char ch = suffixs[i];
     double x;
 
-    stack<double> s;
+    SqStack<double> s;
 
     double a, b;
 
@@ -153,12 +187,15 @@ double evaluation(char *suffixs)
         }
         else if(isOpMember(ch) == 1)
         {
+            // b = s.top();
             s.pop(b);
+            // a = s.top();
             s.pop(a);
             s.push(caculate(a, ch, b));
         }
         ch = suffixs[++i];
     }
+    // x = s.top();
     s.pop(x);
     return x;
 }

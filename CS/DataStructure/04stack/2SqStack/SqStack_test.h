@@ -1,4 +1,7 @@
-#include "SqStack.h"
+#ifndef SQSTACK_H
+    #define SQSTACK_H
+    #include "SqStack.h"
+#endif
 
 template <typename elemtype>
 void getByRand(SqStack<elemtype> &a, int display = 0)

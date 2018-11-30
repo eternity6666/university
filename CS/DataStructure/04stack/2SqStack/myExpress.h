@@ -80,13 +80,14 @@ string transform(string mids)
 
     while(!s.isEmpty())
     {
+        cout << suffixs << endl;
         // cout << 1 << endl;
         if(isOpMember(ch) == -1)
         {
             cout << " error " << endl;
             break;
         }
-        else if(!isOpMember(ch))
+        else if(isOpMember(ch) == 0)
         {
             if(i > 0 && isOpMember(suffixs[i - 1]) == 1)
             {
@@ -96,13 +97,14 @@ string transform(string mids)
             suffixs += ch;
             i++;
         }
-        else
+        else if(isOpMember(ch) == 1)
         {
-            if(i > 0 && suffixs[i - 1] != ' ')
+            if(i > 0 && suffixs[i] != ' ')
             {
                 suffixs += ' ';
                 i++;
             }
+
             switch(ch)
             {
                 case '(':

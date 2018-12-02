@@ -3,10 +3,13 @@
 #include <random>
 #include "SqStack_test.h"
 #include "myExpress.h"
+#include "mg.h"
 using namespace std;
+const int maxn = 1000 + 5;
 
 SqStack<int> a, b;
 string x, y; 
+mg mg1, mg2;
 
 void menu();
 void code1();
@@ -270,6 +273,7 @@ void code103()
 
 void code11()
 {
+
     while(1)
     {
         system("clear");
@@ -280,7 +284,8 @@ void code11()
              << " 11.4. 输入迷宫\n"
              << " 其他. 结束" << endl;
         cout << " =============================================== " << endl;
-
+        cout << " 当前迷宫为: " << endl;
+        cout << mg1 << endl;
         cout << " =============================================== " << endl;
         cout << " 请选择你要操作的代码<1-4>: ";
         int n;
@@ -315,28 +320,96 @@ void code11()
 
 void code111()
 {
-
+    cout << " ================ && 走迷宫 && ================= " << endl;
+    if(mg1.isEmpty())
+    {
+        cout << " 当前迷宫为空, 无法继续操作" << endl;
+    }
+    else
+    {
+        int lx, ly;
+        lx = mg1.getx();
+        ly = mg1.gety();
+        cout << " 请输入起始点的坐标: " << endl;
+        cout << "    x: ";
+        int sx;
+        while(cin >> sx)
+        {
+            if(sx < 0 || sx > lx)
+                cout << " 请注意: x的范围为<0-" << lx << ">";
+            else
+                break;
+        }
+        cout << "    y: ";
+        int sy;
+        while(cin >> sy)
+        {
+            if(sy < 0 || sy > ly)
+                cout << " 请注意: y的范围为<0-" << ly << ">";
+            else
+                break;
+        }
+        cout << " 请输入终点的坐标: " << endl;
+        cout << "    x: ";
+        int ex;
+        while(cin >> ex)
+        {
+            if(ex < 0 || ex > lx)
+                cout << " 请注意: x的范围为<0-" << lx << ">";
+            else
+                break;
+        }
+        cout << "    y: ";
+        int ey;
+        while(cin >> ey)
+        {
+            if(ey < 0 || ey > ly)
+                cout << " 请注意: y的范围为<0-" << ly << ">";
+            else
+                break;
+        }
+        cout << " 从起点<" << sx << "," << sy << ">到终点<" << ex << "," << ey << ">";
+        if(mg1.findRoad(sx, sy, ex, ey))
+        {
+            cout << "有通路, 现用2标注如下: " << endl;
+        }
+        else
+            cout << "无通路" << endl;
+    }
     cout << " =============================================== " << endl;
 }
 
 void code112()
 {
+    cout << " ====== && 把一个迷宫赋值给另一个迷宫 && ======= " << endl;
+    mg1 = mg2;
 
+    if(mg2.isEmpty())
+        cout << " 由于另一个迷宫当前为空，所有当前迷宫为空" << endl;
+    else
+    {
+        cout << " 把另一个迷宫赋值给当前迷宫" << endl;
+        cout << mg1;
+    }
     cout << " =============================================== " << endl;
 }
 
 void code113()
 {
-
+    cout << " ============= && 随机生成迷宫 && ============== " << endl;
+    cout << " 随机生成的迷宫为: " << endl;
+    mg1.getByRand(true);
     cout << " =============================================== " << endl;
 }
 
 void code114()
 {
-
+    cout << " ================ && 输入迷宫 && =============== " << endl;
+    cin >> mg1;
+    cout << " 矫正后的迷宫为: " << endl;
+    cout << mg1;
     cout << " =============================================== " << endl;
 }
-
 
 void menu()
 {

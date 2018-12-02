@@ -2,6 +2,8 @@
 #include <new>
 #include <time.h>
 #define fei(a, b) for(int i = a; i <= b; i++)
+#define fej(a, b) for(int j = a; j <= b; j++)
+#define fek(a, b) for(int k = a; k <= b; k++)
 
 using namespace std;
 

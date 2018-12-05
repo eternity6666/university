@@ -1,5 +1,5 @@
 #include <iostream>
-#include <
+
 using namespace std;
 
 void menu();
@@ -13,6 +13,9 @@ void code7();
 void code8();
 void code9();
 void code10();
+void code101();
+void code102();
+void code103();
 
 int main()
 {
@@ -172,6 +175,22 @@ void code10()
 
     cout << " ----------------------------------------------------" << endl;
 }
+
+void code101()
+{
+    cout << " ---------------------------------------------------- " << endl;
+}
+
+void code102()
+{
+    cout << " ---------------------------------------------------- " << endl;
+}
+
+void code103()
+{
+    cout << " ---------------------------------------------------- " << endl;
+}
+
 
 void menu()
 {

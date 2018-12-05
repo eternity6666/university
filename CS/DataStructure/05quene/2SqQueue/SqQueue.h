@@ -1,5 +1,11 @@
-#include "../../myhead.h"
-#include <iomanip>
+#ifndef MYHEAD_H
+    #define MYHEAD_H
+    #include "../../myhead.h"
+#endif
+#ifndef IOMANIP
+    #define IOMANIP
+    #include <iomanip>
+#endif
 template<typename elemtype>
 class SqQueue
 {

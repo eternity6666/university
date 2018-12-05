@@ -9,6 +9,7 @@
 #endif
 
 const int maxm = 100 + 5;
+bool v[maxm][maxm];
 class mg{
 public:
     void display(ostream& out);
@@ -25,7 +26,9 @@ public:
 
     bool isEmpty();
 
-    bool findRoad(int sx, int sy, int ex, int ey);
+    void findRoad(int sx, int sy, int ex, int ey);
+
+    void dfs(int sx, int sy, bool* flag, int ex, int ey);
 
     mg operator = (mg omg);
 
@@ -50,58 +53,60 @@ int mg::gety()
     return y;
 }
 
-bool mg::findRoad(int sx, int sy, int ex, int ey)
+void mg::dfs(int sx, int sy, bool* flag, int ex, int ey)
 {
-    int dx[] = {1,0,-1,0};
-    int dy[] = {0,1,0,-1};
-    struct node
+    int dx[4] = {0,1,0,-1};
+    int dy[4] = {1,0,-1,0};
+    if(v[sx][sy] == 1)
+        return ;
+    v[sx][sy] = 1;
+
+    if(g[sx][sy] == 1)
+        return ;
+    if(sx == ex && sy == ey)
     {
-        int x, y;
-    };
-    bool v[maxm][maxm];
+        *flag = 1;
+        g[sx][sy] = 2;
+        return ;
+    }
+    fei(0, 3)
+    {
+        int tx = sx + dx[i];
+        int ty = sy + dy[i];
+        if(tx >= 0 && tx <= x && ty >= 0 && ty <= y)
+        {
+            dfs(tx, ty, flag, ex, ey);
+        }
+
+        if(*flag)
+            break;
+    }
+    if(*flag)
+    {
+        g[sx][sy] = 2;
+        return ;
+    }
+}
+
+void mg::findRoad(int sx, int sy, int ex, int ey)
+{
     fei(0, x)
         fej(0, y)
             v[i][j] = 0;
-    SqStack<node> s;
-    
-    node t;
-    t.x = sx;
-    t.y = sy;
-    s.push(t);
-
     bool flag = 0;
-
-    while(!s.isEmpty())
-    {
-        s.pop(t);
-        if(g[t.x][t.y] == 1)
-            continue;
-        if(t.x == ex && t.y == ey)
-        {
-            flag = 1;
-            break;
-        }
-        fei(0, 3)
-        {
-            node tmp;
-            tmp.x = t.x + dx[i];
-            tmp.y = t.y + dy[i];
-
-            if(tmp.x >= 0 && tmp.x <= x)
-                if(tmp.y >= 0 && tmp.y <= y)
-                {
-                    if(v[tmp.x][tmp.y] == 0)
-                    {
-                        v[tmp.x][tmp.y] = 1;
-                        s.push(tmp);
-                    }
-                }
-        }
-    }
+    dfs(sx, sy, &flag, ex, ey);
     if(flag)
-        return true;
+    {
+        cout << "有通路, 现用2标注如下: " << endl;
+        display(cout);
+
+        fei(0, x)
+            fej(0, y)
+                if(g[i][j] == 2)
+                    g[i][j] = 0;
+    }
     else
-        return false;
+        cout << "无通路" << endl;
 }
 
 void mg::clear()
@@ -118,7 +123,9 @@ void mg::getByRand(bool see)
             g[i][j] = rand() % 2;
 
     if(see)
-        cout << this;
+    {
+        display(cout);
+    }
 }
 
 bool mg::isEmpty()
@@ -132,13 +139,13 @@ bool mg::isEmpty()
 void mg::display(ostream& out)
 {
     out << setw(6) << " ";
-    fei(0, x)
+    fei(0, y)
         out << "[" << setw(3) << i << "]";
     out << endl;
-    fei(0, y)
+    fei(0, x)
     {
         out << " [" << setw(3) << i << "]";
-        fej(0, x)
+        fej(0, y)
         {
             out << " " << setw(3) << g[i][j] << " ";
         }

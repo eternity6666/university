@@ -369,12 +369,7 @@ void code111()
                 break;
         }
         cout << " 从起点<" << sx << "," << sy << ">到终点<" << ex << "," << ey << ">";
-        if(mg1.findRoad(sx, sy, ex, ey))
-        {
-            cout << "有通路, 现用2标注如下: " << endl;
-        }
-        else
-            cout << "无通路" << endl;
+        mg1.findRoad(sx, sy, ex, ey);
     }
     cout << " =============================================== " << endl;
 }

@@ -1,8 +1,16 @@
 #include <iostream>
-#include "mySqQueue.h"
+#ifndef MYSQQUEUE_H
+    #define MYSQQUEUE_H
+    #include "mySqQueue.h"
+#endif
+#ifndef MYSPORTS_H
+    #define MYSPORTS_H
+    #include "mySports.h"
+#endif
 using namespace std;
 
 mySqQueue<int> a, b;
+mySports x;
 
 void menu();
 void code1();
@@ -16,6 +24,8 @@ void code8();
 void code9();
 void code10();
 void code11();
+void code111();
+void code112();
 
 int main()
 {
@@ -204,6 +214,50 @@ void code10()
 
 void code11()
 {
+    while(1)
+    {
+        cout << " ------------ && 运动会比赛安排(循环顺序队列的应用) && ------------ " << endl;
+        cout << " 11.1. 安排比赛" << endl
+             << " 11.2. 输入运动会项目及运动员参赛情况" << endl
+             << " 其他. 结束" << endl;
+        cout << " ------------------------------------------------------------------ " << endl;
+        cout << " 请选择你要操作的代码<1-2>: ";
+        int n;
+        cin >> n;
+        switch(n)
+        {
+            case 1: 
+                code111();
+                break;
+            case 2:
+                code112();
+                break;
+            default:
+                cout << " 结束" << endl;
+                return ;
+        }
+        cout << " 还继续吗<Y.继续\tN.结束>?";
+        char c;
+        cin >> c;
+        if(c == 'Y' || c == 'y')
+            continue;
+        else
+            break;
+    }
+    
+}
+
+void code112()
+{
+    cout << " -------------- && 输入运动会项目及运动员参赛情况 && -------------- " << endl;
+    cin >> x;
+    cout << " ------------------------------------------------------------------ " << endl;
+}
+
+void code111()
+{
+    cout << " ------------------------- && 安排比赛 && ------------------------- " << endl;
+    cout << x;
     cout << " ------------------------------------------------------------------ " << endl;
 }
 

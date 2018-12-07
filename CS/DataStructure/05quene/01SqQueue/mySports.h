@@ -1,12 +1,7 @@
-#ifndef MYSQQUEUE_H
-    #define MYSQQUEUE_H
-    #include "mySqQueue.h"
-#endif
-#ifndef MYHEAD_H
-    #define MYHEAD_H
+#ifndef MYSPORTS_H
+    #define MYSPORTS_H
     #include "../../myhead.h"
-#endif
-
+    #include "mySqQueue.h"
 class mySports
 {
 public:
@@ -362,4 +357,6 @@ ostream& operator <<(ostream& out, mySports& sq)
     sq.display(out);
     return out;
 }
+
+#endif
 

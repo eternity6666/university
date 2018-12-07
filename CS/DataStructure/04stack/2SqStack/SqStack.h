@@ -1,12 +1,5 @@
-#ifndef MYHEAD_H
-    #define MYHEAD_H
-    #include "../../myhead.h"
-#endif
-
-#ifndef IOMANIP_H
-    #define IOMANIP_H
-    #include <iomanip>
-#endif
+#include "../../myhead.h"
+#include <iomanip>
 
 const int addSize = 10;
 const int firstSize = 100;

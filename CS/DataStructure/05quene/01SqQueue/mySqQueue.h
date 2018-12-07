@@ -1,5 +1,6 @@
-#include "SqQueue.h"
-
+#ifndef MYSQQUEUE_H
+    #define MYSQQUEUE_H
+    #include "SqQueue.h"
 template <typename elemtype>
 class mySqQueue:public SqQueue<elemtype>
 {
@@ -96,4 +97,6 @@ void mySqQueue<elemtype>::display()
     }
     cout << endl;
 }
+
+#endif
 

@@ -1,11 +1,11 @@
-#ifndef SQSTACK_H
-    #define SQSTACK_H   
+#ifndef MYSQSTACK_H
+    #define MYSQSTACK_H   
     #include "SqStack.h"
-#endif
-
 template <typename elemtype>
 class mySqStack:public SqStack<elemtype>
 {
 public:
 
 };
+#endif
+

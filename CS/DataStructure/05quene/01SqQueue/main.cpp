@@ -1,12 +1,6 @@
 #include <iostream>
-#ifndef MYSQQUEUE_H
-    #define MYSQQUEUE_H
-    #include "mySqQueue.h"
-#endif
-#ifndef MYSPORTS_H
-    #define MYSPORTS_H
-    #include "mySports.h"
-#endif
+#include "mySqQueue.h"
+#include "mySports.h"
 using namespace std;
 
 mySqQueue<int> a, b;
@@ -220,6 +214,8 @@ void code11()
         cout << " 11.1. 安排比赛" << endl
              << " 11.2. 输入运动会项目及运动员参赛情况" << endl
              << " 其他. 结束" << endl;
+        cout << " ------------------------------------------------------------------ " << endl;
+        cout << x; 
         cout << " ------------------------------------------------------------------ " << endl;
         cout << " 请选择你要操作的代码<1-2>: ";
         int n;

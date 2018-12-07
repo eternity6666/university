@@ -1,44 +1,4 @@
-#ifndef MYHEAD_H
-    #define MYHEAD_H
-    #include "../../myhead.h"
-#endif
-#ifndef IOMANIP
-    #define IOMANIP
-    #include <iomanip>
-#endif
-template<typename elemtype>
-class SqQueue
-{
-public:
-    void clear();
-
-    bool deQueue(elemtype &e);
-
-    bool enQueue(elemtype e);
-
-    bool getFront(elemtype &e);
-
-    int getLength();
-
-    bool isEmpty();
-
-    bool isFull();
-
-    SqQueue<elemtype> operator = (SqQueue<elemtype> rightQ);
-
-    SqQueue(int size = 10);
-
-    virtual ~SqQueue();
-
-    SqQueue(const SqQueue<elemtype> &otherQ);
-
-protected:
-    int rear;
-    int front;
-    int queueSize;
-    elemtype *base;
-};
-
+#include "SqQueue.cpp"
 template<typename elemtype>
 void SqQueue<elemtype>::clear()
 {

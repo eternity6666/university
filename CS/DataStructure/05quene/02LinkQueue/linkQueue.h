@@ -1,9 +1,12 @@
+#ifndef LINKQUEUE_H
+    #define LINKQUEUE_H
 template<typename elemtype>
 class linkQueue
 {
 private:
     class linkNode
     {
+    public:
         elemtype data;
         linkNode *next;
     };
@@ -86,7 +89,7 @@ void linkQueue<elemtype>::enQueue(elemtype e)
 }
 
 template <typename elemtype>
-bool linkQueue<elemtype>::getFront(elemtype &e))
+bool linkQueue<elemtype>::getFront(elemtype &e)
 {
     if(!front)
         return false;
@@ -185,4 +188,6 @@ linkQueue<elemtype>::linkQueue(const linkQueue<elemtype> &otherQ)
         op = op->next;
     }
 }
+
+#endif
 

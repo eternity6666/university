@@ -1,5 +1,4 @@
-#ifndef MYHEAD_H
-    #define MYHEAD_H
+#include "myhead.h"
 #include <cassert>
 #include <new>
 #include <time.h>
@@ -31,4 +30,3 @@ Status Less(int a, int b)
     return a < b ? OK : ERROR;
 }
 
-#endif

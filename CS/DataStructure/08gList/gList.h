@@ -1,18 +1,8 @@
-#ifndef MYHEAD_H
-    #define MYHEAD_H
+#ifndef GLIST_H
+    #define GLIST_H
     #include "../../myhead.h"
-#endif
-
-#ifndef STACK_H
-    #define STACK_H
     #include <stack>
-#endif
-
-#ifndef QUEUE_H
-    #define QUEUE_H
     #include <queue>
-#endif
-
 typedef enum {ATOM, LIST} elemTag;
 
 void separte(sqString& str, sqString& hstr);
@@ -103,3 +93,66 @@ void gList::copyGlist_aux(glnodeP& s, glnodeP p)
     }
 }
 
+void gList::createGList(sqString s)
+{
+    destruction_aux(root);
+    createGList_aux(root, s);
+}
+
+void gList::createGList_aux(glnodeP& l, sqString s)
+{
+    char c;
+    sqString hs;
+
+    if(! (s == "()"))
+    {
+        l = NULL;
+        return ;
+    }
+
+    l = new glnode;
+    assert(l != 0);
+
+    if(s.getLength() == 1)
+    {
+        s.getChar(l, c);
+        l->tag = ATOM;
+        l->atom = c;
+        return ;
+    }
+
+    separate(s, hs);
+    l->tag = LIST;
+    createGList_aux(l->ptr.hp, hs);
+    createGList_aux(l->ptr.tp, s);
+}
+
+bool gList::deleteHead(gList& secondGL)
+{
+    gList p = root;
+
+    if(!root)
+        return false;
+
+    root = root->ptr.tp;
+    p->ptr.tp = NULL;
+    secondGL.setRoot(p);
+    return true;
+}
+
+int gList::depth()
+{
+    return depth_aux(root);
+}
+
+int gList::depth_aux(glnodeP s)
+{
+    int dep, maxDep = 00;
+
+    if(!s || s->tag == ATOM)
+        return 0;
+
+
+}
+
+#endif

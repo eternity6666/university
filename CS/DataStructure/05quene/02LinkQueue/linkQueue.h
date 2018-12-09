@@ -10,9 +10,10 @@ private:
         elemtype data;
         linkNode *next;
     };
-    typedef linkNode *nodeP;
 
 public:
+    typedef linkNode * nodeP;
+
     void clear();
 
     bool deQueue(elemtype &e);

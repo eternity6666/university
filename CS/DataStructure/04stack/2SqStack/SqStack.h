@@ -1,3 +1,7 @@
+#ifndef SQSTACK_H
+    #define SQSTACK_H
+
+
 #include "../../myhead.h"
 #include <iomanip>
 
@@ -151,4 +155,5 @@ SqStack<elemtype>::SqStack(const SqStack &others)
         *(base + i) = *(others.base + i);
     top = base + length;
 }
+#endif
 

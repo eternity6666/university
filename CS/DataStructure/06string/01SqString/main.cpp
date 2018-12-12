@@ -2,6 +2,8 @@
 #include "sqString.h"
 using namespace std;
 
+sqString a;
+
 void menu();
 void code1();
 void code2();
@@ -123,72 +125,219 @@ int main()
 
 void code1()
 {
+    cout << " ------------------------ && 求顺序串的长度 && ------------------------- \n";
+    cout << " 当前顺序串的长度为" << a.getLength() << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code2()
 {
-
+    cout << " ---------------------- && 判断顺序串是否为空 && ----------------------- \n";
+    if(a.isEmpty())
+        cout << " 当前顺序串为空" << endl;
+    else
+        cout << " 当前顺序串不为空" << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code3()
 {
-
+    cout << " ------------------------ && 取顺序串的子串 && ------------------------- \n";
+    cout << " 请输入子串开始的字符序号: ";
+    int start;
+    int n = a.getLength();
+    while(cin >> start)
+    {
+        if(start >= 1 && start <= n)
+            break;
+        else
+            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+    }
+    int len;
+    while(cin >> len)
+    {
+        if(len >= 1 && len <= n - start - 1)
+            break;
+        else
+            cout << " 您的输入非法，请输入<1-" << n - start - 1 << ">: ";
+    }
+    sqString tmp;
+    a.subString(tmp, start, len);
+    cout << " 当前串从第" << start << "个字符开始长度为" << len << "的子串为" << tmp << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code4()
 {
-
+    cout << " ---------------- && 在第i个字符前插入另一个顺序串 && ------------------ \n " << endl;
+    cout << " 另一个顺序串为: ";
+    sqString c;
+    cin >> c;
+    cout << " 请输入插入另一个顺序串的位置: ";
+    int start;
+    int n = a.getLength();
+    while(cin >> i)
+    {
+        if(i >= 1 && i <= n)
+            break;
+        else
+            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+    }
+    a.insert(i, c);
+    cout << " 在第" << i << "个字符前插入" << c << "后，当前顺序串为" << a;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code5()
 {
-
+    cout << " --------------- && 删除从第i个字符起长度为len的子串 && ---------------- \n";
+    cout << " 请输入删除子串的起始位置: ";
+    int start;
+    int n = a.getLength();
+    while(cin >> start)
+    {
+        if(start >= 1 && start <= n)
+            break;
+        else
+            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+    }
+    cout << " 请输入删除子串的长度" << endl;
+    int len;
+    while(cin >> len)
+    {
+        if(len >= 1 && len <= n - start - 1)
+            break;
+        else
+            cout << " 您的输入非法，请输入<1-" << n - start - 1 << ">: ";
+    }
+    sqString tmp;
+    a.strDelete(start, len);
+    cout << " 从第" << start << "个字符开始删除长度为" << len << "的子串为 " << a << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code6()
 {
-
+    cout << " ---------- && 判断SqString顺序串与C++String顺序串是否相等 && ---------- \n";
+    cout << " 请输入一个C++String顺序串: ";
+    string c;
+    cin >> c;
+    cout << " 当前的SqString顺序串" << a;
+    if(a == c)
+        cout << "等于";
+    else
+        cout << "不等于";
+    cout << "C++String顺序串" << c << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code7()
 {
-
+    cout << " ---------- && 判断SqString顺序串与SqString顺序串是否相等 && ---------- \n";
+    cout << " 请输入一个SqString顺序串: ";
+    SqString c;
+    cin >> c;
+    cout << " 当前的SqString顺序串" << a;
+    if(a == c)
+        cout << "等于";
+    else
+        cout << "不等于";
+    cout << "SqString顺序串" << c << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code8()
 {
-
+    cout << " ----------- && SqString顺序串与C++String顺序串的加法运算 && ----------- \n";
+    cout << " 请输入一个C++String顺序串: ";
+    string c;
+    cin >> c;
+    a = a + c;
+    cout << " 当前SqString顺序串" << a << "和\n C++String顺序串" << c << "可以连接成" << a << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code9()
 {
-
+    cout << " --------------- && 两个SqString顺序串之间的加法运算 && ---------------- \n";
+    cout << " 请输入另一个SqString顺序串: ";
+    sqString c;
+    cin >> c;
+    a = a + c;
+    cout << " 当前SqString顺序串\"" << a << "\"和\n C++String顺序串\"" << c << "\"可以连接成\"" << a << "\"" << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code10()
 {
+    cout << " -------------------- && 串的朴素匹配(有回溯查找) && ------------------- \n";
+    cout << " ----------- 返回模式串在主串中第pos个字符起第一次出现的位置 ----------- \n";
+    cout << " 请输入一个主串: ";
+    sqString c, d;
+    cin >> c;
+    cout << " 请输入一个模式串: ";
+    cin >> d;
+    cout << " 请输入开始查找的字符的序号(从1开始): ";
+    int i;
+    int n = a.getLength();
+    while(cin >> i)
+    {
+        if(i >= 1 && i <= n)
+            break;
+        else
+            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+    }
 
+    int x = c.index(d, i);
+    if(x)
+    {
+        cout << " 模式串" << d << "在主串" << c << "从第1个字符起" << endl;
+        cout << " 第一次出现的位置为: " << x << endl;
+    }
+    else
+        cout << " 模式串" << d << "未在主串中匹配到" << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code11()
 {
-
+    cout << " ---------------------- && 求模式串的next数组 && ----------------------- \n";
+    cout << " 请输入一个模式串: ";
+    sqString c;
+    cin >> c;
+    int *next;
+    c.get_next(next, 1);
     cout << " ----------------------------------------------------------------------- \n";
-}
+}f
 
 void code12()
 {
+    cout << " ------------------ && 模式匹配(无回溯KMP方法查找) && ------------------ \n";
+    cout << " ----------- 返回模式串在主串中第pos个字符起第一次出现的位置 ----------- \n";
+    cout << " 请输入一个主串: ";
+    sqString c, d;
+    cin >> c;
+    cout << " 请输入一个模式串: ";
+    cin >> d;
+    cout << " 请输入开始查找的字符的序号(从1开始): ";
+    int i;
+    int n = a.getLength();
+    while(cin >> i)
+    {
+        if(i >= 1 && i <= n)
+            break;
+        else
+            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+    }
 
+    int x = c.index_KMP(d, i);
+    if(x)
+    {
+        cout << " 用KMP方法查找子串" << d << "在主串" << c << "\n 从第1个字符起" << endl;
+        cout << " 第一次出现的位置为: " << x << endl;
+    }
+    else
+        cout << " 模式串" << d << "未在主串中匹配到" << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 

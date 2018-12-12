@@ -106,7 +106,7 @@ void code2()
 {
     cout << " ------- && 出队列(删除非循环链队队头结点) && ------- " << endl;
     if(a.isEmpty())
-        cout << " 当前队列为空，无法进行出队操作" << endl;
+        cout << " 当前队列为空, 无法进行出队操作" << endl;
     else
     {
         int e;
@@ -127,7 +127,7 @@ void code3()
 {
     cout << " -------- && 读非循环链队队头结点的数据域 && -------- " << endl;
     if(a.isEmpty())
-        cout << " 当前队列为空，无法进行此次操作" << endl;
+        cout << " 当前队列为空, 无法进行此次操作" << endl;
     else
     {
         int e;
@@ -169,7 +169,7 @@ void code7()
 {
     cout << " ------------ && 把非循环链队置空 && ---------------- " << endl;
     a.clear();
-    cout << " 当前非循环链队置空后，结点的个数为: " << a.getLength() << endl;
+    cout << " 当前非循环链队置空后, 结点的个数为: " << a.getLength() << endl;
     cout << " ---------------------------------------------------- " << endl;
 }
 
@@ -204,7 +204,7 @@ void code10()
              << " 10.4. 随机生成停车的车辆\n"
              << " 其他. 结束 " << endl;
         cout << " ---------------------------------------------------- " << endl;
-        
+        cout << x;
         cout << " ---------------------------------------------------- " << endl;
         cout << " 请选择你要操作的代码<1-4>: ";
         int n;
@@ -248,7 +248,7 @@ void code101()
         int way;
         while(cin >> way)
         {
-            if(way >=0 && way <= 2)
+            if(way == 1 || way == 0 || way == 2)
                 break;
             else
             {
@@ -283,20 +283,36 @@ void code101()
 
 void code1011()
 {
-    
+    int sn = x.inCarNum();
+    if(sn > 0)
+    {
+        cout << " 请输入哪个位置上的车辆准备离开";
+        int n;
+        while(cin >> n)
+        {
+            if(n >= 0 && n <= sn)
+                break;
+            else
+                cout << " 您的输入非法, 请输入<0-" << sn << "> ";
+        }
+        x.carOut(n);
+    }
+    else
+        cout << " 当前停车场中没有车辆" << endl;
 }
 
 void code1012()
 {
-    cout << " 请输入哪个位置上的车辆准备离开";
-    int n;
-    cin >> n;
-    cout << " 停车场停放在" << n << "号位置上车辆准备离开. " << endl;
-
+    cout << " 请输入停车车辆的车牌号: ";
+    string name;
+    cin >> name;
+    x.carIn(name);
 }
 
 void code101tmp()
 {
+    cout << " 此次调度后, 停车场内外信息如下: " << endl;
+    cout << x;
 }
 
 void code102()

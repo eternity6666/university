@@ -54,6 +54,7 @@ protected:
     void strAssign_aux(char *s);
 
     int length;
+
     char *ch;
 };
 

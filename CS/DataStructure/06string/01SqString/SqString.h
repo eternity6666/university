@@ -1,7 +1,10 @@
+#ifndef SQSTRING_H
+    #define SQSTRING_H
+
 #include "../../myhead.h"
 #include <iomanip>
 
-class sqString
+class SqString
 {
 public:
     void clear();
@@ -12,39 +15,43 @@ public:
 
     void get_next(int *next, int display = 1);
 
-    int index(sqString p, int pos);
+    int index(SqString p, int pos);
 
-    bool insert(int i, sqString t);
+    int index_KMP(SqString p, int pos);
+
+    bool insert(int i, SqString t);
 
     bool isEmpty();
 
-    sqString operator = (char *s);
+    SqString operator = (char *s);
 
-    sqString operator = (const sqString s);
+    SqString operator = (const SqString s);
 
-    sqString operator + (char *s);
+    SqString operator + (char *s);
 
-    sqString operator + (const sqString s);
+    SqString operator + (const SqString s);
 
     int operator == (char *s);
 
-    int operator == (const sqString s);
+    int operator == (const SqString s);
 
-    bool operator < (const sqString s);
+    bool operator < (const SqString s);
 
-    bool operator > (const sqString s);
+   // bool operator > (const SqString s);
 
     bool strDelete(int i, int len);
 
-    bool subString(sqString &sub, int i, int len);
+    bool subString(SqString &sub, int i, int len);
 
-    sqString();
+    void getByRand();
 
-    virtual ~sqString();
+    SqString();
 
-    sqString(char *s);
+    virtual ~SqString();
 
-    sqString(const sqString &s);
+    SqString(char *s);
+
+    SqString(const SqString &s);
 
     void read(istream &in);
 
@@ -58,7 +65,7 @@ protected:
     char *ch;
 };
 
-void sqString::clear()
+void SqString::clear()
 {
     if(ch)
     {
@@ -68,7 +75,7 @@ void sqString::clear()
     }
 }
 
-bool sqString::getChar(int i, char &c)
+bool SqString::getChar(int i, char &c)
 {
     if(i < 1 || i > length)
         return false;
@@ -78,20 +85,22 @@ bool sqString::getChar(int i, char &c)
     return true;
 }
 
-int sqString::getLength()
+int SqString::getLength()
 {
     return length;
 }
 
-void sqString::get_next(int *next, int display)
+void SqString::get_next(int *next, int display)
 {
     int j = -1, i = 0;
     int first_i;
-    char no[5] = " [i]";
+    char no[5] = "[ i]";
 
+    // cout << ch << endl;
     next[0] = -1;
     while(i < length)
     {
+       // cout << i << endl;
         if(j == -1 || ch[j] == ch[i])
         {
             ++j;
@@ -156,7 +165,7 @@ void sqString::get_next(int *next, int display)
     }
 }
 
-int sqString::index(sqString p, int pos)
+int SqString::index(SqString p, int pos)
 {
     int i = pos - 1;
     int j = 0;
@@ -180,7 +189,7 @@ int sqString::index(sqString p, int pos)
         return 0;
 }
 
-int sqString::index_KMP(sqString p, int pos)
+int SqString::index_KMP(SqString p, int pos)
 {
     int i = pos - 1;
     int j = -1;
@@ -209,7 +218,7 @@ int sqString::index_KMP(sqString p, int pos)
         return 0;
 }
 
-bool sqString::insert(int i, sqString t)
+bool SqString::insert(int i, SqString t)
 {
     char *temp;
 
@@ -217,7 +226,8 @@ bool sqString::insert(int i, sqString t)
         return false;
     temp = new char[length + t.length];
     assert(temp != 0);
-    for(int j = 0; j < i - 1; j++)
+    int j = 0;
+    for(j = 0; j < i - 1; j++)
         temp[j] = ch[j];
     for(; j < i - 1 + t.length; j++)
         temp[j] = t.ch[j - i + 1];
@@ -230,18 +240,18 @@ bool sqString::insert(int i, sqString t)
     return true;
 }
 
-bool sqString::isEmpty()
+bool SqString::isEmpty()
 {
     return length ? false : true;
 }
 
-sqString sqString::operator = (char *s)
+SqString SqString::operator = (char *s)
 {
     strAssign_aux(s);
     return *this;
 }
 
-sqString sqString::operator = (sqString rightS)
+SqString SqString::operator = (SqString rightS)
 {
     if(this != &rightS)
     {
@@ -256,21 +266,22 @@ sqString sqString::operator = (sqString rightS)
     return *this;
 }
 
-sqString sqString::operator + (char *s)
+SqString SqString::operator + (char *s)
 {
     insert(length + 1, s);
     return *this;
 }
 
-sqString sqString::operator + (sqString rightS)
+SqString SqString::operator + (SqString rightS)
 {
     insert(length + 1, rightS);
     return *this;
 }
 
-bool sqString::operator < (sqString rightS)
+bool SqString::operator < (SqString rightS)
 {
-    for(int i = 0; i < length && i < rightS.length; i++)
+    int i = 0;
+    for(i = 0; i < length && i < rightS.length; i++)
         if(ch[i] < rightS.ch[i])
             return true;
     
@@ -280,7 +291,7 @@ bool sqString::operator < (sqString rightS)
         return false;
 }
 
-int sqString::operator == (char *s)
+int SqString::operator == (char *s)
 {
     int sl;
     for(int i = 0; s[i]; ++i)
@@ -291,7 +302,7 @@ int sqString::operator == (char *s)
     return length - sl;
 }
 
-int sqString::operator == (sqString rightS)
+int SqString::operator == (SqString rightS)
 {
     for(int i = 0; i < length && i < rightS.length; i++)
         if(ch[i] != rightS.ch[i])
@@ -299,12 +310,13 @@ int sqString::operator == (sqString rightS)
     return length - rightS.length;
 }
 
-void sqString::strAssign_aux(char *s)
+void SqString::strAssign_aux(char *s)
 {
     clear();
 
-    for(int i = 0; s[i]; i++)
+    for(int i = 0; s[i] != '\0'; i++)
         length = i;
+    length++;
 
     ch = new char[length];
     assert(ch != 0);
@@ -313,7 +325,7 @@ void sqString::strAssign_aux(char *s)
         ch[i] = s[i];
 }
 
-bool sqString::strDelete(int i, int len)
+bool SqString::strDelete(int i, int len)
 {
     char *temp;
     
@@ -335,7 +347,7 @@ bool sqString::strDelete(int i, int len)
     return true;
 }
 
-bool sqString::subString(sqString &sub, int i, int len)
+bool SqString::subString(SqString &sub, int i, int len)
 {
     if(i < 1 || i > length || len < 0 || len > length - i + 1)
         return false;
@@ -352,24 +364,35 @@ bool sqString::subString(sqString &sub, int i, int len)
     return true;
 }
 
-sqString::sqString()
+void SqString::getByRand()
+{
+    length = rand() % 15;
+
+    ch = new char[length];
+    assert(ch != 0);
+
+    fei(0, length - 1)
+        ch[i] = 'a' + rand() % 26;
+}
+
+SqString::SqString()
 {
     ch = NULL;
     length = 0;
 }
 
-sqString::~sqString()
+SqString::~SqString()
 {
     clear();
 }
 
-sqString::sqString(char *s)
+SqString::SqString(char *s)
 {
     ch = NULL;
     strAssign_aux(s);
 }
 
-sqString::sqString(const sqString &otherS)
+SqString::SqString(const SqString &otherS)
 {
     ch = new char[otherS.length];
     assert(ch != 0);
@@ -379,28 +402,30 @@ sqString::sqString(const sqString &otherS)
         ch[i] = otherS.ch[i];
 }
 
-void sqString::read(istream& in)
+void SqString::read(istream& in)
 {
     char s[50];
     in >> s;
     strAssign_aux(s);
 }
 
-istream& operator >> (istream& in, sqString& s)
+istream& operator >> (istream& in, SqString& s)
 {
     s.read(in);
     return in;
 }
 
-void sqString::display(ostream& out) const
+void SqString::display(ostream& out) const
 {
     for(int i = 0; i < length; i++)
         out << ch[i];
 }
 
-ostream& operator << (ostream& out, const sqString &s)
+ostream& operator << (ostream& out, const SqString &s)
 {
     s.display(out);
     return out;
 }
+
+#endif
 

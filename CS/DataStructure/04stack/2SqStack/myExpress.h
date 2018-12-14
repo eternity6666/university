@@ -6,15 +6,10 @@
 #endif
 */
 
-#ifndef SQSTACK_H
-    #define SQSTACK_H
+#ifndef MYEXPRESS_H
+    #define MYEXPRESS_H
     #include "SqStack.h"
-#endif
-
-#ifndef STRING_H
-    #define STRING_H
     #include <string>
-#endif
 
 int isOpMember(char ch)
 {
@@ -201,4 +196,5 @@ double evaluation(string suffixs)
     s.pop(x);
     return x;
 }
+#endif
 

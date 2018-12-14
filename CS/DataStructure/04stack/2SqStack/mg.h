@@ -1,12 +1,7 @@
-#ifndef IOMANIP_H
-    #define IOMANIP_H
+#ifndef MAIN_H
+    #define MAIN_H  
     #include <iomanip>
-#endif
-
-#ifndef SQSTACK_H
-    #define SQSTACK_H
     #include "SqStack.h"
-#endif
 
 const int maxm = 100 + 5;
 bool v[maxm][maxm];
@@ -220,4 +215,5 @@ mg::~mg()
 {
     clear();
 }
+#endif
 

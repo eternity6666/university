@@ -1,7 +1,6 @@
-#ifndef SQSTACK_H
-    #define SQSTACK_H
+#ifndef SQSTACK_TEST_H
+    #define SQSTACK_TEST_H
     #include "SqStack.h"
-#endif
 
 template <typename elemtype>
 void getByRand(SqStack<elemtype> &a, int display = 0)
@@ -53,3 +52,5 @@ void display(SqStack<elemtype> s)
         cout << " top" << endl;
     }
 }
+#endif
+

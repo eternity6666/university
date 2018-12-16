@@ -4,6 +4,13 @@ using namespace std;
 int main()
 {
     string x = "";
+    string tmp = "";
+    while(cin >> tmp, !cin.eof())
+    {
+        tmp = "";
+        x = x + tmp;
+    }
+    /*
     do
     {
         string tmp = "";
@@ -12,6 +19,8 @@ int main()
             break;
         x = x + tmp + "\n";
     }while(1);
+    */
+    cin.clear();
     cout << x << endl;
     return 0;
 }

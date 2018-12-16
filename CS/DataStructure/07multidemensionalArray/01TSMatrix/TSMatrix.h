@@ -1,4 +1,7 @@
-#include "myhead"
+#ifndef TSMATRIX_H
+    #define TSMATRIX_H
+
+#include "../../myhead.h"
 #include <iomanip>
 
 template <typename elemtype>
@@ -492,4 +495,5 @@ TSMatrix<elemtype>::TSMatrix(const TSMatrix<elemtype> &s)
     else
         data = NULL;
 }
+#endif
 

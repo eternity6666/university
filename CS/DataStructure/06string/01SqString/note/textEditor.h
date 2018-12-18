@@ -202,10 +202,10 @@ void textEditor::setText()
 void textEditor::display(ostream& out) 
 {
     if(text.isEmpty())
-        cout << " 当前文本为空" << endl;
+        out << " 当前文本为空" << endl;
     else
     {
-        cout << "  当前文本为: " << endl;
+        out << "  当前文本为: " << endl;
         out << "        " << pNum << "/" << maxNum << "页" << endl;
 
         int digitX = 0;

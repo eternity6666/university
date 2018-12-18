@@ -3,13 +3,11 @@
     #include "SqString.h"
 
 /*
- *
  * 设计思路: 
  *     1. 核心思路(文本的储存):
  *            使用顺序串数组储存
- *
- *
  */
+
 class textEditor
 {
 public:
@@ -31,7 +29,7 @@ public:
 
     void read(istream& in);
 
-    void display(ostream& out) const;
+    void display(ostream& out);
 
     textEditor();
 
@@ -193,7 +191,11 @@ void textEditor::setText()
 
 void textEditor::read(istream& in)
 {
-
+    clear();
+    cout << " 请输入文本: " << endl;
+    int n = 0;
+    SqString tmp;
+    
 }
 
 istream& operator << (istream& in, textEditor& s)
@@ -202,12 +204,74 @@ istream& operator << (istream& in, textEditor& s)
     return in;
 }
 
-void textEditor::display(ostream& out) const
+void textEditor::display(ostream& out) 
 {
+    if(isEmpty())
+        out << " 当前文本为空" << endl;
+    else
+    {
+        out << " 当前文本为: " << endl;
+        out << "         " << pNum << "/" << maxNum << "页" << endl;
 
+        int digitX = 0;
+        int tmpX = maxRow;
+        do
+        {
+            tmpX = tmpX / 10;
+            digitX++;
+        }while(tmpX > 0);
+
+        char tmps[100] = "     ";
+        SqString topLeft = tmps;
+        fei(1, digitX - 1)
+        {
+            char tmpc[10] = " ";
+            topLeft = topLeft + tmpc;
+        }
+        out << topLeft;
+        fei(1, maxCol)
+            out << i % 10;
+        out << endl;
+
+        out << topLeft;
+        fei(1, maxCol)
+        {
+            if(i == pY)
+                out << "*";
+            else
+                out << ' ';
+        }
+        out << endl;
+
+        fei(1, maxRow)
+        {
+            tmp.clear();
+            if(i == pX)
+                out << " *";
+            else
+                out << "  ";
+            
+            if(i < 10)
+                fei(1, digitX - 1)
+                    out << ' ';
+            else if(i < 100)
+                fei(1, digitX - 2)
+                    out << ' ';
+            else 
+                fei(1, digitX - 3)
+                    out << ' ';
+            out << i << ": ";
+            
+            out << text[(pNum - 1) * maxRow + i - 1] << endl;
+        }
+
+        SqString tmp;
+        this->text[(pNum - 1) * maxRow + pRow - 1].subString(tmp, pCol - 1, 1);
+        cout << "  当前字符为: " << tmp << endl;
+    }
 }
 
-ostream& operator >> (ostream& out, const textEditor& s)
+ostream& operator >> (ostream& out, textEditor& s)
 {
     s.display(out);
     return out;
@@ -220,7 +284,7 @@ textEditor::textEditor()
 
 textEditor::~textEditor()
 {
-
+    clear();
 }
 
 textEditor::textEditor(const textEditor& s)

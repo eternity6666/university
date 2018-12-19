@@ -1,3 +1,52 @@
+/* 
+void textEditor::replaceText()
+{
+    cout << " 请输入要替换的字符顺序串的长度: ";
+    int n = this->text.getLength();
+    n -= maxX * maxY * (pNum - 1) + maxY * (pX - 1) + pY - 1;
+    int len;
+    while(cin >> len)
+    {
+        if(len >= 1 && len <= n)
+            break;
+        else
+            cout << " 你的输入非法，请输入<1-" << n << ">: ";
+    }
+    this->text.strDelete(maxX * maxY * (pNum - 1) + maxY * (pX - 1) + pY, len);
+    cout << " 请输入替换文本: " << endl;
+    SqString tmp;
+    cout << "     ";
+    char s[10000];
+    while(scanf("%s", s) != EOF)
+    {
+        tmp = s;
+        // cout << tmp << endl;
+        int len = tmp.getLength();
+        int unFullLen = maxY - len % maxY;
+        if(len)
+        {
+            fei(1, unFullLen)
+            {
+                char tmpc[10] = " ";
+                tmp = tmp + tmpc;
+            }
+        }
+        // tmp = add_n(tmp);
+        len = tmp.getLength();
+        n = n + len / maxY;
+        this->text.insert(maxX * maxY * (pNum - 1) + maxY * (pX + n - 1) + pY, tmp);
+        // cout << text << endl;
+        cout << "     ";
+        tmp.clear();
+    }
+    cin.clear();
+    cout << " 总共" << n << "行" << endl;
+
+    formatText();
+}
+ */
+
+
 /*
 // textEditor.read(istream& in)
 clear();

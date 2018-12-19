@@ -130,6 +130,11 @@ int main()
 
 void code1()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ------------------------ && 求顺序串的长度 && ------------------------- \n";
     cout << " 当前顺序串的长度为" << a.getLength() << endl;
     cout << " ----------------------------------------------------------------------- \n";
@@ -137,6 +142,11 @@ void code1()
 
 void code2()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ---------------------- && 判断顺序串是否为空 && ----------------------- \n";
     if(a.isEmpty())
         cout << " 当前顺序串为空" << endl;
@@ -147,6 +157,11 @@ void code2()
 
 void code3()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ------------------------ && 取顺序串的子串 && ------------------------- \n";
     cout << " 请输入子串开始的字符序号: ";
     int start;
@@ -156,7 +171,7 @@ void code3()
         if(start >= 1 && start <= n)
             break;
         else
-            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+            cout << " 您的输入非法, 请输入<1-" << n << ">: ";
     }
     int len;
     cout << " 请输入子串的长度: ";
@@ -165,7 +180,7 @@ void code3()
         if(len >= 1 && len <= n - start + 1)
             break;
         else
-            cout << " 您的输入非法，请输入<1-" << n - start + 1 << ">: ";
+            cout << " 您的输入非法, 请输入<1-" << n - start + 1 << ">: ";
     }
     SqString tmp;
     a.subString(tmp, start, len);
@@ -175,6 +190,11 @@ void code3()
 
 void code4()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ---------------- && 在第i个字符前插入另一个顺序串 && ------------------ \n ";
     cout << " 另一个顺序串为: ";
     SqString c;
@@ -187,15 +207,20 @@ void code4()
         if(i >= 1 && i <= n)
             break;
         else
-            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+            cout << " 您的输入非法, 请输入<1-" << n << ">: ";
     }
     a.insert(i, c);
-    cout << " 在第" << i << "个字符前插入" << c << "后，当前顺序串为" << a << endl;
+    cout << " 在第" << i << "个字符前插入" << c << "后, 当前顺序串为" << a << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code5()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " --------------- && 删除从第i个字符起长度为len的子串 && ---------------- \n";
     cout << " 请输入删除子串的起始位置: ";
     int start;
@@ -205,7 +230,7 @@ void code5()
         if(start >= 1 && start <= n)
             break;
         else
-            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+            cout << " 您的输入非法, 请输入<1-" << n << ">: ";
     }
     cout << " 请输入删除子串的长度: ";
     int len;
@@ -214,7 +239,7 @@ void code5()
         if(len >= 1 && len <= n - start + 1)
             break;
         else
-            cout << " 您的输入非法，请输入<1-" << n - start + 1 << ">: ";
+            cout << " 您的输入非法, 请输入<1-" << n - start + 1 << ">: ";
     }
     SqString tmp;
     a.strDelete(start, len);
@@ -224,6 +249,11 @@ void code5()
 
 void code6()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ---------- && 判断SqString顺序串与C++String顺序串是否相等 && ---------- \n";
     cout << " 请输入一个C++String顺序串: ";
     char c[100];
@@ -239,12 +269,18 @@ void code6()
 
 void code7()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ---------- && 判断SqString顺序串与SqString顺序串是否相等 && ---------- \n";
     cout << " 请输入一个SqString顺序串: ";
     SqString c;
     cin >> c;
+    // cout << c.getLength() << a.getLength() << endl;
     cout << " 当前的SqString顺序串" << a;
-    if(a == c)
+    if((a == c) == 0)
         cout << "等于";
     else
         cout << "不等于";
@@ -254,6 +290,11 @@ void code7()
 
 void code8()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ----------- && SqString顺序串与C++String顺序串的加法运算 && ----------- \n";
     cout << " 请输入一个C++String顺序串: ";
     char c[100];
@@ -265,6 +306,11 @@ void code8()
 
 void code9()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " --------------- && 两个SqString顺序串之间的加法运算 && ---------------- \n";
     cout << " 请输入另一个SqString顺序串: ";
     SqString c;
@@ -276,6 +322,11 @@ void code9()
 
 void code10()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " -------------------- && 串的朴素匹配(有回溯查找) && ------------------- \n";
     cout << " ----------- 返回模式串在主串中第pos个字符起第一次出现的位置 ----------- \n";
     cout << " 请输入一个主串: ";
@@ -291,7 +342,7 @@ void code10()
         if(i >= 1 && i <= n)
             break;
         else
-            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+            cout << " 您的输入非法, 请输入<1-" << n << ">: ";
     }
 
     int x = c.index(d, i);
@@ -307,6 +358,11 @@ void code10()
 
 void code11()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ---------------------- && 求模式串的next数组 && ----------------------- \n";
     cout << " 请输入一个模式串: ";
     SqString c;
@@ -318,6 +374,11 @@ void code11()
 
 void code12()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ------------------ && 模式匹配(无回溯KMP方法查找) && ------------------ \n";
     cout << " ----------- 返回模式串在主串中第pos个字符起第一次出现的位置 ----------- \n";
     cout << " 请输入一个主串: ";
@@ -333,7 +394,7 @@ void code12()
         if(i >= 1 && i <= n)
             break;
         else
-            cout << " 您的输入非法，请输入<1-" << n << ">: ";
+            cout << " 您的输入非法, 请输入<1-" << n << ">: ";
     }
 
     int x = c.index_KMP(d, i);
@@ -349,6 +410,11 @@ void code12()
 
 void code13()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ----------- && 赋值运算<SqString顺序串=C++String顺序串> && ------------ \n";
     cout << " C++String顺序串为: ";
     char c[100];
@@ -360,6 +426,11 @@ void code13()
 
 void code14()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ------------ && 赋值运算<SqString顺序串=SqString顺序串> && ------------ \n";
     SqString c;
     c.getByRand();
@@ -370,6 +441,11 @@ void code14()
 
 void code15()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " -------------------------- && 把顺序串置空 && ------------------------- \n";
     cout << " 当前顺序串的长度为: " << a.getLength() << endl;
     a.clear();
@@ -379,15 +455,28 @@ void code15()
 
 void code16()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ------------------ && 随机生成顺序串(小写英文字母) && ----------------- \n";
     cout << " 随机生成当前字符串顺序串(小写英文字母)为: ";
     a.getByRand();
-    cout << a << endl;
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << a << endl;
     cout << " ----------------------------------------------------------------------- \n";
 }
 
 void code17()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " --------------- && 用C++String顺序串初始化一个顺序串 && --------------- \n";
     cout << " ------------------- && 利用拷贝初始化构造函数 && ---------------------- \n";
     cout << " 请输入一个C++String顺序串: ";
@@ -401,6 +490,11 @@ void code17()
 
 void code18()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前顺序串为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " ------------- && 用另一个Sqstring顺序串初始化一个顺序串 && ------------ \n";
     cout << " ------------------- && 利用拷贝初始化构造函数 && ---------------------- \n";
     cout << " 通过拷贝初始化构造函数, 用当前的SqString顺序串\n";
@@ -412,6 +506,11 @@ void code18()
 
 void code19()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前文本为空." << endl;
+    else
+        cout << " 当前顺序串为: " << a << endl;
     cout << " -------------------------- && 输入顺序串 && --------------------------- \n";
     cout << " 请输入顺序串: ";
     cin >> a;

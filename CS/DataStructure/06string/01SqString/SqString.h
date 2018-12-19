@@ -296,6 +296,7 @@ int SqString::operator == (char *s)
     int sl;
     for(int i = 0; s[i]; ++i)
         sl = i;
+    sl++;
     for(int i = 0; i < length && i < sl; i++)
         if(ch[i] != s[i])
             return ch[i] - s[i];

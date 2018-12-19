@@ -2,17 +2,14 @@
     #define TEXTEDITOR_H
     #include "SqString.h"
 
-/*
- * 设计思路: 
- *     1. 核心思路(文本的储存):
- *            使用顺序串数组储存
- */
-
-const int firstSize = 10;
+const int initCol = 5;
+const int initRow = 5;
 
 class textEditor
 {
 public:
+    bool clear();
+
     void pDown();
 
     void pUp();
@@ -38,196 +35,185 @@ public:
     virtual ~textEditor();
 
 private:
-    void clear();
+    SqString add_n(SqString tmp);
 
-    bool isEmpty();
-
-    int cacuLenNow();
-    
-    void removeEmpty();
+protected:
+    void formatText();
 
 protected:
     int pX;
-
+    
     int pY;
 
     int pNum;
 
+    SqString text;
+
     int maxX;
-    
-    int allNum;
 
     int maxY;
 
     int maxNum;
-
-    int editorSize;
-
-    SqString *text;
 };
 
-void textEditor::clear()
+void textEditor::formatText()
 {
-    fei(1, allNum)
-        text[i].clear();
-
-    allNum = 0;
-    pX = 1;
-    pY = 1;
-    pNum = 1;
-}
-
-bool textEditor::isEmpty()
-{
-    fei(1, allNum)
-        if(text[i].isEmpty())
-            continue;
-        else
-            return false;
-    return true;
-}
-
-void textEditor::removeEmpty()
-{
-    int n = 0;
-    fei(1, allNum)
-        if(text[i - 1].isEmpty())
-            n++;
-
-    SqString tmp;
-
-    tmp = new SqString[allNum - n];
-    assert(tmp != 0);
-
-    int j = 0;
-    fei(1, allNum)
+    if(text.isEmpty())
+        return ;
+    else
     {
-        if(text[i - 1].isEmpty())
-            continue;
-        else
+        SqString tmp;
+        tmp.clear();
+        int len = text.getLength();
+        bool flag = 0;
+        fei(1, len)
         {
-            tmp[j] = text[i - 1];
-            j++;
+            SqString x;
+            text.subString(x, i, 1);
+            char empty[10] = " ";
+            // cout << x << x.getLength() << endl;
+            /*
+            int sl;
+            for(int i = 0; empty[i]; ++i)
+                sl = i;
+            cout << sl << endl;
+            */
+            // cout << (x == empty) << endl;
+            if((x == empty) == 0)
+            {
+                // cout << 2 << endl;
+                if(flag)
+                {
+                    int len = maxY - tmp.getLength() % maxY;
+                    if(len < maxY)
+                    {
+                        SqString tmp2;
+                        fei(1, len)
+                            tmp2 = tmp2 + empty;
+                        tmp.insert(tmp.getLength() + 1, tmp2);
+                        flag = 0;
+                    }
+                    else
+                        continue;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            else
+            {
+                // cout << 1 << endl;
+                tmp.insert(tmp.getLength() + 1, x);
+                flag = 1;
+            }
         }
+        // cout << tmp << endl;
+        text = tmp;
     }
 
-    delete[] text;
-
-    text = new SqString [allNum - n];
-    assert(text != 0);
-
-    fei(1, allNum - n)
-        text[i - 1] = tmp[i - 1];
-
-    delete[] tmp;
-
-    allNum = allNum - n;
+    int len = text.getLength();
+    if(len % (maxX * maxY))
+        maxNum = len / (maxX * maxY) + 1;
+    else
+        maxNum = len / (maxX * maxY);
 }
 
-int textEditor::cacuLenNow()
+bool textEditor::clear()
 {
-    return text[(pNum - 1) * maxX + pX - 1].getLength();
+    text.clear();
+    
+    pX = 1;
+    
+    pY = 1;
+    
+    pNum = 1;
 }
 
 void textEditor::pDown()
 {
-    /*
-       下移可能出现的情况:
-       * 1. 下移后翻页
-         * pX = 1;
-         * pNum++;
-       * 2. 已到达文本最末行, 无法下移
-         * cout << " 已到达文本最末行, 无法下移" << endl;
-       * 3. 正常下移
-         * pX++
-    */
-    if((pX + 1 + (pNum - 1) * maxX) <= allNum)
+    int tmp = pX + 1;
+    if(pX == maxX)
     {
-        if((pX + 1) <= maxX)
-            pX++;
-        else
+        if(pNum != maxNum) 
         {
-            pX = 1;
             pNum++;
+            pX = 1;
         }
-        int len = text[pX - 1].getLength();
-        if(pY > len)
-            pY = len;
+        else
+            cout << " 已到达文本最底端, 无法下移" << endl;
     }
     else
-    {
-        cout << " 已到达文本编辑器的最低端, 光标无法下移" << endl;
-        pX = pX;
-    }
+        pX = tmp;
 }
 
 void textEditor::pUp()
 {
-    if((pX - 1 + (pNum - 1) * maxX) >= 1)
+    int tmp = pX - 1;
+    if(pX == 1)
     {
-        if((pX - 1) >= 1)
-            pX--;
+        if(pNum == 1)
+            cout << " 已到达文本最顶端, 无法上移" << endl;
         else
-        {
-            pX = maxNum;
-            pNum--;
-        }
-        int len = cacuLenNow(); 
-        if(pY > len)
-            pY = len;
-    }
-    else
-    {
-        cout << " 已到达文本编辑器的最顶端, 光标无法上移" << endl;
-        pX = pX;
-    }
-}
-
-void textEditor::pLeft()
-{
-    if(pX == 1 && pNum == 1 && pY == 1)
-        cout << " 已到达文本编辑器的最左端，光标无法左移" << endl;
-    else if(pY - 1 >= 1)
-        pY--;
-    else
-    {
-        if(pX == 1)
         {
             pNum--;
             pX = maxX;
         }
+    }
+    else
+        pX = tmp;
+}
+
+void textEditor::pLeft()
+{
+    int tmp = pY - 1;
+    if(pY == 1)
+    {
+        if(pX == 1)
+        {
+            if(pNum != 1)
+            {
+                pNum--;
+                pY = maxY;
+                pX = maxX;
+            }
+            else
+                cout << " 已到达文本最左端, 无法左移" << endl;
+        }
         else
         {
+            pY == maxY;
             pX--;
         }
-        pY = cacuLenNow(); 
     }
+    else
+        pY = tmp;
 }
 
 void textEditor::pRight()
 {
-    int len = cacuLenNow();
-    if(pY == len)
+    int tmp = pY + 1;
+    if(pY == maxY)
     {
-        // 光标在文本最后一行
-        if(pX + maxY * (pNum - 1) == allNum)
-            cout << " 已到达文本最右端，光标无法右移" << endl;
-        // 光标在翻页前最后一行
-        else if(pX == maxX)
+        if(pX == maxX)
         {
-            pNum++;
-            pY = 1;
-            pX = 1;
+            if(pNum == maxNum)
+                cout << " 已到达文本最右端, 无法右移" << endl;
+            else
+            {
+                pNum++;
+                pX = 1;
+                pY = 1;
+            }
         }
-        // 光标不翻页
         else
         {
-            pY = 1;
             pX++;
+            pY = 1;
         }
     }
     else
-        pY++;
+        pY = tmp;
 }
 
 void textEditor::deleteText()
@@ -239,78 +225,118 @@ void textEditor::deleteText()
         if(len >= 0)
             break;
         else
-            cout << " 请输入大于0的数: " << endl;
+            cout << " 请输入大于0的数: ";
     }
+    this->text.strDelete(maxX * maxY * (pNum - 1) + maxY * (pX - 1) + pY, len);
 
-
-    removeEmpty();
+    formatText();
 }
 
 void textEditor::insertText()
 {
+    cout << " 请输入待插入文本: " << endl;
+    SqString tmp;
+    cout << "     ";
+    char s[10000];
+    int n = 0;
+    while(scanf("%s", s) != EOF)
+    {
+        tmp = s;
+        // cout << tmp << endl;
+        int len = tmp.getLength();
+        int unFullLen = maxY - len % maxY;
+        if(len < maxY)
+        {
+            fei(1, unFullLen)
+            {
+                char tmpc[10] = " ";
+                tmp = tmp + tmpc;
+            }
+        }
+        // tmp = add_n(tmp);
+        len = tmp.getLength();
+        n = n + len / maxY;
+        this->text.insert(maxX * maxY * (pNum - 1) + maxY * (pX - 1) + pY, tmp);
+        // cout << text << endl;
+        cout << "     ";
+        tmp.clear();
+    }
 
+    cin.clear();
+    cout << " 总共" << n << "行" << endl;
+
+    int len = text.getLength();
+    if(len % maxX)
+        maxNum = n / maxX + 1;
+    else
+        maxNum = n / maxX;
+
+    formatText();
 }
 
 void textEditor::replaceText()
 {
+    cout << " 请输入要替换的字符顺序串的长度: ";
+    int n = this->text.getLength();
+    n -= maxX * maxY * (pNum - 1) + maxY * (pX - 1) + pY - 1;
+    int replaceLen;
+    while(cin >> replaceLen)
+    {
+        if(replaceLen >= 1 && replaceLen <= n)
+            break;
+        else
+            cout << " 你的输入非法, 请输入<1-" << n << ">: ";
+    }
+    text.strDelete(maxX * maxY * (pNum - 1) + maxY * (pX - 1) + pY, replaceLen);
+    cout << " 请输入替换文本: " << endl;
+    SqString tmp;
+    tmp.clear();
+    SqString tmp2;
+    cout << "     ";
+    char s[10000];
+    while(scanf("%s", s) != EOF)
+    {
+        tmp2 = s;
+        int len = tmp2.getLength();
 
+        int unFullLen = maxY - len % maxY;
+        
+        /*
+        if(len < maxY)
+        {
+            fei(1, unFullLen)
+            {
+                char tmp2c[10] = " ";
+                tmp2 = tmp2 + tmp2c;
+            }
+        }
+        */
+        len = tmp2.getLength();
+
+        tmp = tmp + tmp2;
+    }
+    text.insert(maxX * maxY * (pNum - 1) + maxY * (pX - 1) + pY, tmp);
+
+    formatText();
 }
 
 void textEditor::setText()
 {
     cout << " 请输入每页的最大行号: ";
     cin >> maxX;
-    cout << " 请输入每行的最大(字符数)列号: ";
+    cout << " 请输入每页的最大列号: ";
     cin >> maxY;
 }
 
-void textEditor::read(istream& in)
+void textEditor::display(ostream& out) 
 {
-    cout << " 请输入文本: " << endl;
-
-    char leftString[10] = "     ";
-
-    int n;
-
-    // input()
-    char s[1000000];
-    cout << leftString;
-    while(scanf("%s", s) != EOF)
-    {
-        SqString tmp = s;
-
-        int len = tmp.getLength();
-        int x;
-        if(len % maxX)
-            x = len / maxX + 1;
-        else
-            x = len / maxX;
-
-
-        n = n + x;
-    }
-
-    cout << " 总共" << n << "行" << endl;
-    allNum = n;
-
-    display(cout);
-}
-
-istream& operator >> (istream& in, textEditor& s)
-{
-    s.read(in);
-    return in;
-}
-
-void textEditor::display(ostream& out)
-{
-    if(isEmpty())
-        out << " 当前文本为空. " << endl;
+    if(text.isEmpty())
+        out << " 当前文本为空" << endl;
     else
     {
-        out << " 当前文本为: " << endl;
-        out << "         " << pNum << "/" << maxNum << endl;
-        
+        out << "  当前文本为: " << endl;
+        out << "        " << pNum << "/" << maxNum << "页" << endl;
+
         int digitX = 0;
         int tmpX = maxX;
         do
@@ -326,7 +352,6 @@ void textEditor::display(ostream& out)
             char tmpc[10] = " ";
             topLeft = topLeft + tmpc;
         }
-
         out << topLeft;
         fei(1, maxY)
             out << i % 10;
@@ -342,68 +367,103 @@ void textEditor::display(ostream& out)
         }
         out << endl;
 
-        int nowXNum = 0;
-        if((allNum - (pNum - 1) * maxX) < maxX)
-            nowXNum = allNum - (pNum - 1) * maxX;
-        else
-            nowXNum = maxX;
-
         SqString tmp;
-        fei(1, nowXNum)
+
+        fei(1, maxX)
         {
             tmp.clear();
             if(i == pX)
                 out << " *";
             else
                 out << "  ";
-
-            int xw = 0;
-            int tmpi = i;
-            do
-            {
-                tmpi = tmpi / 10;
-                xw++;
-            }while(tmpi > 0);
-            fei(1, digitX - xw)
-                out << ' ';
-            out << i << ": ";
             
-            out << text[(pNum - 1) * maxX + pX - 1] << endl;
+            if(i < 10)
+                fei(1, digitX - 1)
+                    out << ' ';
+            else if(i < 100)
+                fei(1, digitX - 2)
+                    out << ' ';
+            else 
+                fei(1, digitX - 3)
+                    out << ' ';
+            out << i << ": ";
+
+            this->text.subString(tmp, maxX * maxY * (pNum - 1) + maxY * (i - 1) + 1, maxY);
+            cout << tmp << endl;
         }
 
-        tmp.clear();
-        text[(pNum - 1) * maxX + pX - 1].subString(tmp, pY, 1);
-        cout << " 当前字符为: " << tmp << endl;
+        this->text.subString(tmp, maxX * maxY * (pNum - 1) + maxY * (pX - 1) + pY, 1);
+        cout << "  当前字符为: " << tmp << endl;
     }
 }
 
-ostream& operator << (ostream& out, textEditor& s)
+ostream& operator << (ostream& out, textEditor &s)
 {
     s.display(out);
     return out;
 }
 
+void textEditor::read(istream& in)
+{
+    clear();
+    cout << " 请输入文本: " << endl;
+    int n = 0;
+    SqString tmp;
+    cout << "     ";
+    char s[10000];
+    while(scanf("%s", s) != EOF)
+    {
+        tmp = s;
+        // cout << tmp << endl;
+        int len = tmp.getLength();
+        int unFullLen = maxY - len % maxY;
+        if(unFullLen != maxY)
+        {
+            fei(1, unFullLen)
+            {
+                char tmpc[10] = " ";
+                tmp = tmp + tmpc;
+            }
+        }
+        // tmp = add_n(tmp);
+        len = tmp.getLength();
+        n = n + len / maxY;
+        this->text = this->text + tmp;
+        // cout << text << endl;
+        cout << "     ";
+        tmp.clear();
+    }
+    cin.clear();
+    cout << " 总共" << n << "行" << endl;
+    if(n % maxX)
+        maxNum = n / maxX + 1;
+    else
+        maxNum = n / maxX;
+
+    formatText();
+
+    display(cout);
+}
+
+istream& operator >> (istream& in, textEditor &s)
+{
+    s.read(in);
+    return in;
+}
+
 textEditor::textEditor()
 {
-    text = new SqString[firstSize];
-    assert(text != 0);
-
-    editorSize = firstSize;
-
     pX = 1;
-    pY = 1;
-    pNum = 1;
-    maxX = 10;
-    allNum = 0;
-    maxY = 10;
-    maxNum = editorSize / maxX;
-    if(editorSize % maxX)
-        maxNum++;
 
-    char tmp[100] = "1232131";
-    text[0] = tmp;
-    text[1] = tmp;
-    allNum = 2;
+    pY = 1;
+
+    pNum = 1;
+
+    maxX = initRow;
+
+    maxY = initCol;
+
+    maxNum = 1;
 }
 
 textEditor::~textEditor()
@@ -411,4 +471,18 @@ textEditor::~textEditor()
     clear();
 }
 
+SqString textEditor::add_n(SqString tmp)
+{
+    int len = tmp.getLength();
+    char tmpc[2] = "\n";
+    SqString tmps = tmpc;
+    fei(1, len - 1)
+    {
+        tmp.insert(i * maxY + i, tmps); 
+    }
+    tmp = tmp + tmps;
+    return tmp;
+}
+
 #endif
+

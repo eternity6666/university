@@ -24,6 +24,20 @@ print >> w,'{'
 print >> w,"    while(1)"
 print >> w,"    {"
 print >> w,'        system("clear");'
+for i in range(n):
+    s = '        '
+    if(i == 0):
+        s = s + 'cout'
+    else:
+        s = s +'    '
+    s = s + ' << "   '
+    if(i + 1 < 10):
+        tmp = ' '+ str(i + 1)
+    else:
+        tmp = str(i + 1)
+    s = s + tmp + '. " << endl'
+    print >> w,s
+print >> w,'             << " 其他. 结束" << endl;'
 print >> w,'        cout << " ============================================================== " << endl;'
 print >> w,'        // cout << a << endl;'
 print >> w,'        cout << " ============================================================== " << endl;'

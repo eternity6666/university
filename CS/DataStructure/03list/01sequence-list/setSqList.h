@@ -1,7 +1,7 @@
-#ifndef MYSQLIST_H
-    #define MYSQLIST_H  
+#ifndef SETSQLIST_H
+    #define SETSQLIST_H
+
     #include "mySqList.h"
-#endif
 
 template <typename elemtype>
 mySqList<elemtype> unionSet(mySqList<elemtype> firstL, mySqList<elemtype> secondL)
@@ -51,3 +51,5 @@ mySqList<elemtype> dirfferenceSet(mySqList<elemtype> firstL, mySqList<elemtype> 
     }
     return thirdL;
 }
+#endif
+

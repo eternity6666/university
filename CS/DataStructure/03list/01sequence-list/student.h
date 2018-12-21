@@ -1,17 +1,9 @@
-#ifndef VECTOR_H
-    #define VECTOR_H
-    #include <vector>
-#endif
+#ifndef STUDENT_H
+    #define STUDENT_H
 
-#ifndef STRING_H
-    #define STRING_H
-    #include <string>
-#endif
-
-#ifndef CTIME_H
-    #define CTIME_H
-    #include <ctime>
-#endif
+#include <vector>
+#include <string>
+#include <ctime>
 
 class student
 {
@@ -105,4 +97,5 @@ void output(vector<student> x)
         printf("\t %2.0lf\t %2.0lf\t %2.0lf\t %2.2lf\t %2.0lf\n", s.Chinese, s.English, s.math, s.average, s.sum);
     }
 }
+#endif
 

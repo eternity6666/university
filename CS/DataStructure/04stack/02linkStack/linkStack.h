@@ -1,3 +1,6 @@
+#ifndef LINKSTACK_H
+    #define LINKSTACK_H
+
 #include "../../myhead.h"
 #include <iomanip>
 template<typename elemtype>
@@ -168,4 +171,6 @@ linkStack<elemtype>::linkStack(const linkStack<elemtype> &otherS)
     if(p)
         p->next = NULL;
 }
+
+#endif
 

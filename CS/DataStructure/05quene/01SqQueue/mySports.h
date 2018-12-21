@@ -36,7 +36,8 @@ void mySports::arrangeSports()
         return ;
     }
 
-    for(int i = 0; i < game_num; i++)
+    int i;
+    for(i = 0; i < game_num; i++)
         q.enQueue(i);
 
     clash = new int[game_num];
@@ -44,10 +45,10 @@ void mySports::arrangeSports()
 
     while(!q.isEmpty())
     {
-        int i;
         q.deQueue(i);
         if(i <= pre)
         {
+            // cout << 1 << endl;
             ++group;
             for(int j = 0; j < game_num; ++j)
                 clash[j] = 0;
@@ -56,7 +57,7 @@ void mySports::arrangeSports()
         {
             game_arrange[i] = group;
             for(int j = 0; j < game_num; ++j)
-                clash[j] += *(collusion + i * game_num + j);
+                clash[j] = clash[j] + *(collusion + i * game_num + j);
         }
         else
         {
@@ -323,7 +324,7 @@ void mySports::display(ostream& out) const
 
     out << "\n 各项比赛分组安排如下: " << endl;
     
-    out << " ";
+    out << "     ";
     for(int i = 0; i < game_num; i++)
     {
         if(i <= 9)
@@ -342,6 +343,7 @@ void mySports::display(ostream& out) const
     out << endl;
 
     // out << " ";
+    out << "    ";
     for(int i = 0; i < game_num; i++)
     {
         out.width(4);

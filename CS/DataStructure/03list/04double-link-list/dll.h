@@ -1,12 +1,9 @@
-#ifndef MYHEAD_H
-    #define MYHEAD_H
-    #include "../../myhead.h"
-#endif
+#ifndef DLL_H
+    #define DLL_H
 
-#ifndef IOMANIP_H
-    #define IOMANIP_H
-    #include <iomanip>
-#endif
+#include "../../myhead.h"
+#include <iomanip>
+
 
 template<typename elemtype>
 class doubleLinkList
@@ -392,4 +389,5 @@ doubleLinkList<elemtype>::doubleLinkList(const doubleLinkList &otherL)
         p->next = head;
     }
 }
+#endif
 

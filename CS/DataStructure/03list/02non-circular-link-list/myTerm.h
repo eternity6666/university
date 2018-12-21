@@ -1,3 +1,6 @@
+#ifndef MYTERM_H
+    #define MYTERM_H
+
 class myTerm
 {
 public:
@@ -41,5 +44,7 @@ ostream& operator << (ostream& out, myTerm& s)
     s.display(out);
     return out;
 }
+
+#endif
 
 

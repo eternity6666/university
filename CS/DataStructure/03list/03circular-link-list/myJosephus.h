@@ -1,3 +1,5 @@
+#ifndef MYJOSEPHUS_H
+    #define MYJOSEPHUS_H
 template <typename elemtype>
 void Josephus(circularLinkList<elemtype> l, int start, int i)
 {
@@ -23,4 +25,5 @@ void Josephus(circularLinkList<elemtype> l, int start, int i)
             cout << "空." << endl;
     }
 }
+#endif
 

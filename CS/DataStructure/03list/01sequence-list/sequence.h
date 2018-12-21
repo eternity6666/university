@@ -1,3 +1,6 @@
+#ifndef SEQUENCE_H
+    #define SEQUENCE_H
+
 #include "../../myhead.h"
 
 const int firstSize = 100;
@@ -344,4 +347,6 @@ int SqList<elemtype>::searchElem(elemtype a)
     }
     return -1;
 }
+#endif
+
 

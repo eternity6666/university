@@ -1,3 +1,6 @@
+#ifndef LINKSTACK_TEST_H
+    #define LINKSTACK_TEST_H
+
 #include "linkStack.h"
 
 template <typename elemtype>
@@ -43,4 +46,5 @@ void getByRand(linkStack<elemtype> &a, int display = 0)
     if(display)
         cout << endl;
 }
+#endif
 

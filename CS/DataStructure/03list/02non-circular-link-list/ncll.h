@@ -1,3 +1,6 @@
+#ifndef NCLL_H
+    #define NCLL_H
+
 #include "../../myhead.h"
 #include <iomanip>
 template<typename ElemType>
@@ -426,4 +429,6 @@ void linkList<ElemType>::randList()
     cout << " 随机生成的非循环单链表为: " << endl;
     display();
 }
+
+#endif
 

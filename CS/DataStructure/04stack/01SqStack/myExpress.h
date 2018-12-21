@@ -75,7 +75,7 @@ string transform(string mids)
 
     while(!s.isEmpty())
     {
-        cout << suffixs << endl;
+        // cout << suffixs << endl;
         // cout << 1 << endl;
         if(isOpMember(ch) == -1)
         {

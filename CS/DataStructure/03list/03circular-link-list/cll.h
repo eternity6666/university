@@ -1,3 +1,6 @@
+#ifndef CLL_H
+    #define CLL_H
+
 #include <iomanip>
 #include "../../myhead.h"
 #include <iostream>
@@ -331,4 +334,6 @@ circularLinkList<elemtype>::circularLinkList(const circularLinkList &otherL)
             p->next = head;
     }
 }
+#endif
+
 

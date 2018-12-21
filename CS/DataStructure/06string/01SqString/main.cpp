@@ -336,7 +336,7 @@ void code10()
     cin >> d;
     cout << " 请输入开始查找的字符的序号(从1开始): ";
     int i;
-    int n = a.getLength();
+    int n = c.getLength();
     while(cin >> i)
     {
         if(i >= 1 && i <= n)

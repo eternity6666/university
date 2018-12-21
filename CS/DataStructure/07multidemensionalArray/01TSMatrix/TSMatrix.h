@@ -8,7 +8,7 @@ template <typename elemtype>
 class TSMatrix
 {
 private:
-    class
+    class Triple
     {
     public:
         int i;

@@ -1,6 +1,6 @@
 #ifndef PARK_H
     #define PARK_H
-    #include "../../04stack/2SqStack/SqStack.h"
+    #include "../../04stack/01SqStack/SqStack.h"
     #include <string>
     #include <ctime>
     #include "linkQueue.h"
@@ -228,6 +228,11 @@ void park::display(ostream& out)
                     cout << "                      rear->" << tmp << endl;
                 else
                     cout << "                            " << tmp << endl;
+            }
+            fei(1, qn)
+            {
+                tmps.deQueue(tmp);
+                q.enQueue(tmp);
             }
         }
     }

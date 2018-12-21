@@ -1,7 +1,7 @@
-#ifndef DLL_H
-    #define DLL_H
-    #include "dll.h"    
-#endif
+#ifndef TEST_H
+    #define TEST_H
+    
+#include "dll.h"    
 
 template <typename elemtype>
 class mydll:public doubleLinkList<elemtype>
@@ -46,4 +46,6 @@ void mydll<elemtype>::getByRand(int display)
     if(display)
         cout << endl;
 }
+
+#endif
 

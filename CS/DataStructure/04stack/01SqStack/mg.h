@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-    #define MAIN_H  
+#ifndef MG_H
+    #define MG_H
     #include <iomanip>
     #include "SqStack.h"
 

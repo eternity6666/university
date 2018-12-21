@@ -1,12 +1,8 @@
-#ifndef LINKLIST_H
-    #define LINKLIST_H
-    #include "ncll.h"
-#endif
+#ifndef MYPOLYNOMIALLINKLIST_H
+    #define MYPOLYNOMIALLINKLIST_H
 
-#ifndef MYTERM_H
-    #define MYTERM_H
-    #include "myTerm.h"
-#endif
+#include "ncll.h"
+#include "myTerm.h"
 
 template <typename elemtype>
 class myPolynomialLinkList:public linkList<elemtype>
@@ -260,4 +256,6 @@ ostream& operator << (ostream& out, const myPolynomialLinkList<elemtype>& l)
     l.display(out);
     return out;
 }
+
+#endif
 

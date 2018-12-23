@@ -7,31 +7,22 @@
 template <typename elemtype>
 class TSMatrix
 {
-private:
-    class Triple
-    {
-    public:
-        int i;
-        int j;
-        elemtype e;
-    };
-
 public:
     void clear();
     
-    void calculate_rpos(int *rpos, int display = 0);
+    void calculate_rpos(int* rpos, int display);
 
     void displayTriple();
 
-    void fastTransposMatrix(TSMatrix<elemtype> &s);
+    void fastTransposeMatrix(TSMatrix<elemtype> &s);
 
     int getColNum();
 
-    elemtype getDatake(int p);
+    elemtype getDataKE(int p);
 
-    int getDataki(int p);
+    int getDataKI(int p);
 
-    int getDatakj(int p);
+    int getDataKJ(int p);
 
     int getRowNum();
 
@@ -39,13 +30,13 @@ public:
 
     bool isEmpty();
 
-    TSMatrix<elemtype> operator = (TSMatrix<elemtype s);
+    TSMatrix<elemtype> operator = (TSMatrix<elemtype> rightS);
 
-    TSMatrix<elemtype> operator + (TSMatrix<elemtype s);
+    TSMatrix<elemtype> operator + (TSMatrix<elemtype> rightS);
 
-    TSMatrix<elemtype> operator * (TSMatrix<elemtype s);
+    TSMatrix<elemtype> operator * (TSMatrix<elemtype> rightS);
 
-    void transposeMatrix(TSMatrix<elemtype &s);
+    void transposeMatrix(TSMatrix<elemtype> &s);
 
     TSMatrix();
 
@@ -54,6 +45,14 @@ public:
     TSMatrix(const TSMatrix<elemtype> &s);
 
 protected:
+    class Triple
+    {
+    public:
+        int i;
+        int j;
+        elemtype e;
+    };
+
     int rowNum;
     int colNum;
     int totalNum;
@@ -61,7 +60,7 @@ protected:
 };
 
 template<typename elemtype>
-void TSMatrix<elmetype>::clear()
+void TSMatrix<elemtype>::clear()
 {
     if(data)
         delete[] data;
@@ -70,17 +69,33 @@ void TSMatrix<elmetype>::clear()
 }
 
 template<typename elemtype>
-void TSMatrix<elemtype>::calculate_rpos(int* rpos, int display = 0)
+void TSMatrix<elemtype>::calculate_rpos(int* rpos, int display)
 {
     int k;
     int cur_i;
     int pre_num;
     int cur_num;
+
     if(!totalNum)
         return ;
 
+    for(cur_i = 0; cur_i < rowNum; ++cur_i)
+        rpos[cur_i] = 0;
+    for(k = 0; k < totalNum; k++)
+        ++rpos[data[k].i];
+
+    rpos[0] = 0;
+    pre_num = rpos[0];
+    for(cur_i = 1; cur_i < rowNum; ++cur_i)
+    {
+        cur_num = rpos[cur_i];
+        rpos[cur_i] = rpos[cur_i - 1] + pre_num;
+        pre_num = cur_num;
+    }
+
     if(display)
     {
+        cout << "\t行号\t第一个非零元素在三元组表中的下标" << endl;
         for(cur_i = 0; cur_i < rowNum; ++cur_i)
             cout << "\t[" << cur_i << "]\t\t" << rpos[cur_i] << endl;
     }
@@ -95,10 +110,10 @@ void TSMatrix<elemtype>::displayTriple()
     cout << " 该" << rowNum << "*" << colNum << "稀疏矩阵共有";
     cout << totalNum << "个非零元素" << endl;
 
-    cout << " 下标\t行\t列\t值" << endl;
+    cout << "   下标    行    列    值" << endl;
     for(k = 0; k < totalNum; k++)
     {
-        cout << " ";
+        // cout << " ";
         if(k < 10)
             no[2] = k + '0';
         else
@@ -106,16 +121,16 @@ void TSMatrix<elemtype>::displayTriple()
             no[1] = k / 10 + '0';
             no[2] = k % 10 + '0';
         }
-        cout << "\t" << no;
-        cout.width(7);
+        cout << "   " << no;
+        cout.width(6);
         cout.fill(' ');
         cout.setf(ios::right, ios::adjustfield);
         cout << data[k].i;
-        cout.width(7);
+        cout.width(6);
         cout.fill(' ');
         cout.setf(ios::right, ios::adjustfield);
         cout << data[k].j;
-        cout.width(7);
+        cout.width(6);
         cout.fill(' ');
         cout.setf(ios::right, ios::adjustfield);
         cout << data[k].e;
@@ -178,7 +193,7 @@ void TSMatrix<elemtype>::fastTransposeMatrix(TSMatrix<elemtype> &s)
         return ;
 
     s.data = new Triple[totalNum];
-    assert(s != 0);
+    assert(s.data != 0);
 
     rpos = new int[s.rowNum];
     assert(rpos != 0);
@@ -214,7 +229,7 @@ void TSMatrix<elemtype>::fastTransposeMatrix(TSMatrix<elemtype> &s)
 template <typename elemtype>
 bool TSMatrix<elemtype>::isEmpty()
 {
-    return totalNum ? true : false;
+    return totalNum == 0 ? true : false;
 }
 
 template <typename elemtype>
@@ -354,17 +369,17 @@ TSMatrix<elemtype> TSMatrix<elemtype>::operator * (TSMatrix<elemtype> rightS)
     }
 
     t.rowNum = s.rowNum = rowNum;
-    t.colNum = s.colNum = rightS.colNum
+    t.colNum = s.colNum = rightS.colNum;
 
     if(totalNum * rightS.totalNum)
     {
         rpos1 = new int[rowNum];
         assert(rpos1 != 0);
-        calculate_rpos(rpos1);
+        calculate_rpos(rpos1, 0);
 
         rpos2 = new int[rightS.rowNum];
         assert(rpos2 != 0);
-        rightS.calculate_rpos(rpos2);
+        rightS.calculate_rpos(rpos2, 0);
 
         s.data = new Triple[s.rowNum * s.colNum];
         assert(s.data != 0);
@@ -440,7 +455,7 @@ void TSMatrix<elemtype>::transposeMatrix(TSMatrix<elemtype> &s)
         s.totalNum = totalNum;
 
         s.data = new Triple[totalNum];
-        assert(s != 0);
+        assert(s.data != 0);
 
         for(i = 0; i < colNum; i++)
         {

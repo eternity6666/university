@@ -49,7 +49,7 @@ void menu()
             cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
             cout << a << endl;
         }
-        // cout << a << endl;
+        // if(a.isEmpty())
         cout << " ============================================================= " << endl;
         cout << " 请选择你要操作的代码<1-10>: ";
         int n;
@@ -108,54 +108,184 @@ void menu()
 
 void code1()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+    cout << " ================ && 求稀疏矩阵的转置矩阵 && ================= " << endl;
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        a.transposeMatrix(a);
+        cout << " 当前稀疏矩阵的转置矩阵为: " << endl;
+        cout << a;
+    }
     cout << " ============================================================= " << endl;
 }
 
 void code2()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+
+    cout << " =============== && 快速求稀疏矩阵的转置矩阵 && ============== " << endl;
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        a.fastTransposeMatrix(a);
+        cout << " 当前稀疏矩阵的转置矩阵为: " << endl;
+        cout << a;
+    }
     cout << " ============================================================= " << endl;
 }
 
 void code3()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+
+    cout << " == && 计算稀疏矩阵各行第一个非零元素在三元组表中的下标 && === " << endl;
+    int sz[1000];
+    a.calculate_rpos(sz, 1);
     cout << " ============================================================= " << endl;
 }
 
 void code4()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+
+    cout << " ================ && 求稀疏矩阵的赋值运算 && ================= " << endl;
+    myTSMatrix b;
+    b.getByRand(0);
+    cout << " 另一个稀疏矩阵赋值给当前稀疏矩阵为: " << endl;
+    cout << b;
+    a = b;
     cout << " ============================================================= " << endl;
 }
 
 void code5()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+
+    cout << " ================== && 求稀疏矩阵的加法 && =================== " << endl;
+    myTSMatrix b, c;
+    b.getByRand(0);
+    cout << b;
+    cout << " 下面的稀疏矩阵加以上面稀疏矩阵" << endl;
+    c = a + b;
+    if(!c.isEmpty())
+    {
+        cout << " 得到的和为: " << endl;
+        cout << c;
+    }
     cout << " ============================================================= " << endl;
 }
 
 void code6()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+
+    cout << " ================== && 求稀疏矩阵的乘法 && =================== " << endl;
+    myTSMatrix b, c;
+    b.getByRand(0);
+    cout << b;
+    cout << " 下面的稀疏矩阵乘以上面稀疏矩阵" << endl;
+    c = b * a;
+    if(!c.isEmpty())
+    {
+        cout << " 得到乘积的稀疏矩阵为: " << endl;
+        cout << c;
+    }
     cout << " ============================================================= " << endl;
 }
 
 void code7()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+
+    cout << " ============= && 显示稀疏矩阵的三元组表表示 && ============== " << endl;
+    a.displayTriple();
     cout << " ============================================================= " << endl;
 }
 
 void code8()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+
     cout << " ================== && 随机生成稀疏矩阵 && =================== " << endl;
     cout << "   ==============  (数据元素的值在100以内)   ============== " << endl;
-    x.getByRand(1);
+    a.getByRand(1);
     cout << " ============================================================= " << endl;
 }
 
 void code9()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
+
     cout << " ========== && 用已有的稀疏矩阵初始化一个新矩阵 && =========== " << endl;
-    myTSMatrix b;
-    b = a;
+    myTSMatrix b(a);
     if(b.isEmpty())
-        cout << " 已有的稀疏矩阵为空." << endl;
+        cout << " 已有的稀疏矩阵为空, 因此初始化后当前矩阵为空." << endl;
     else
     {
         cout << " 当前稀疏矩阵初始化另一个新矩阵为: " << endl;
@@ -166,7 +296,17 @@ void code9()
 
 void code10()
 {
+    system("clear");
+    if(a.isEmpty())
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
+    else
+    {
+        cout << " 当前稀疏矩阵(采用三元组表顺序存储)如下: " << endl;
+        cout << a << endl;
+    }
 
+    cout << " ================ && 输入稀疏矩阵的三元组表 && =============== " << endl;
+    cin >> a;
     cout << " ============================================================= " << endl;
 }
 

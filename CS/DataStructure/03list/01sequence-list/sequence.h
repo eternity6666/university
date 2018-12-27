@@ -3,8 +3,8 @@
 
 #include "../../myhead.h"
 
-const int firstSize = 100;
-const int addSize = 10;
+const int FIRSTSIZE = 100;
+const int ADDSIZE = 10;
 
 template <typename elemtype>
 class SqList{
@@ -99,12 +99,12 @@ void SqList<elemtype>::input(int x)
 
     if(x >= listSize)
     {
-        newbase = new elemtype[x + addSize];
+        newbase = new elemtype[x + ADDSIZE];
         assert(newbase != 0);
         
         delete[] elem;
         elem = newbase;
-        listSize = x +addSize;
+        listSize = x +ADDSIZE;
     }
 
     cout << " ";
@@ -198,7 +198,7 @@ bool SqList<elemtype>::addElem(elemtype a, int i)
 
     if(n >= listSize)
     {
-        newbase = new elemtype[listSize + addSize];
+        newbase = new elemtype[listSize + ADDSIZE];
         assert(newbase != 0);
 
         for(int j = 1; j <= n; j++)
@@ -206,7 +206,7 @@ bool SqList<elemtype>::addElem(elemtype a, int i)
         
         delete[] elem;
         elem = newbase;
-        listSize += addSize;
+        listSize += ADDSIZE;
     }
 
     for(int j = n; j >= i; j--)
@@ -294,9 +294,9 @@ int SqList<elemtype>::getLength()
 template <typename elemtype>
 SqList<elemtype>::SqList()
 {
-    elem = new elemtype[firstSize];
+    elem = new elemtype[FIRSTSIZE];
     assert(elem != 0);
-    listSize = firstSize;
+    listSize = FIRSTSIZE;
     n = 0;
 }
 

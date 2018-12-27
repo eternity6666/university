@@ -114,6 +114,11 @@ void myTSMatrix::display(ostream& out)
         {
             while(row < this->data[i].i)
             {
+		while(prej <= colNum - 1)
+		{
+		    out << "  0  ";
+		    prej++;
+		}
                 out << endl;
                 row++;
                 out << " ";
@@ -121,23 +126,52 @@ void myTSMatrix::display(ostream& out)
                     xh[2] = '0' + row;
                 else
                 {
-                    xh[1] = '0' + i / 10;
-                    xh[2] = '0' + i % 10;
+                    xh[1] = '0' + row / 10;
+                    xh[2] = '0' + row % 10;
                 }
                 out << xh;
                 prej = 0;
             }
-            while(prej < this->data[i].j - 1)
+            while(prej <= this->data[i].j - 1)
             {
-                out << "     ";
+                out << "  0  ";
                 prej++;
             }
             out.width(3);
             out.fill(' ');
             out.setf(ios::right, ios::adjustfield);
             out << this->data[i].e << "  ";
-            prej = this->data[i].j;
+            prej = this->data[i].j + 1;
+	    if(i == totalNum - 1)
+	    {
+		while(prej <= colNum - 1)
+		{
+		    out << "  0  ";
+		    prej++;
+		}
+		row++;
+	    }
         }
+    	fei(row, rowNum - 1)
+	{
+                out << endl;
+                // row++;
+                out << " ";
+                if(i < 10)
+                    xh[2] = '0' + i;
+                else
+                {
+                    xh[1] = '0' + i / 10;
+                    xh[2] = '0' + i % 10;
+                }
+                out << xh;
+                prej = 0;
+		while(prej <= colNum - 1)
+		{
+		    out << "  0  ";
+		    prej++;
+		}
+	}
     }
 }
 

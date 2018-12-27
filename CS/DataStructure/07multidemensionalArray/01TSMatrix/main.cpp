@@ -121,9 +121,11 @@ void code1()
         cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
     else
     {
-        a.transposeMatrix(a);
+	myTSMatrix b;
+        a.transposeMatrix(b);
         cout << " 当前稀疏矩阵的转置矩阵为: " << endl;
-        cout << a;
+        cout << b << endl;
+	a = b;
     }
     cout << " ============================================================= " << endl;
 }
@@ -144,9 +146,11 @@ void code2()
         cout << " 当前稀疏矩阵(采用三元组表顺序存储)为空. " << endl;
     else
     {
-        a.fastTransposeMatrix(a);
+	myTSMatrix b;
+        a.fastTransposeMatrix(b);
         cout << " 当前稀疏矩阵的转置矩阵为: " << endl;
-        cout << a;
+	a = b;
+        cout << a << endl;
     }
     cout << " ============================================================= " << endl;
 }
@@ -183,7 +187,7 @@ void code4()
     myTSMatrix b;
     b.getByRand(0);
     cout << " 另一个稀疏矩阵赋值给当前稀疏矩阵为: " << endl;
-    cout << b;
+    cout << b << endl;
     a = b;
     cout << " ============================================================= " << endl;
 }
@@ -201,14 +205,21 @@ void code5()
 
     cout << " ================== && 求稀疏矩阵的加法 && =================== " << endl;
     myTSMatrix b, c;
-    b.getByRand(0);
-    cout << b;
+    while(1)
+    {
+	    b.getByRand(0);
+	    if(b.getColNum() == a.getColNum() && b.getRowNum() == a.getRowNum())
+		    break;
+	    else
+		    continue;
+    }
+    cout << b << endl;
     cout << " 下面的稀疏矩阵加以上面稀疏矩阵" << endl;
     c = a + b;
     if(!c.isEmpty())
     {
         cout << " 得到的和为: " << endl;
-        cout << c;
+        cout << c << endl;
     }
     cout << " ============================================================= " << endl;
 }
@@ -226,14 +237,21 @@ void code6()
 
     cout << " ================== && 求稀疏矩阵的乘法 && =================== " << endl;
     myTSMatrix b, c;
-    b.getByRand(0);
-    cout << b;
+    while(1)
+    {
+	    b.getByRand(0);
+	    if(b.getColNum() == a.getColNum() && b.getRowNum() == a.getRowNum())
+		    break;
+	    else
+		    continue;
+    }
+    cout << b << endl;
     cout << " 下面的稀疏矩阵乘以上面稀疏矩阵" << endl;
     c = b * a;
     if(!c.isEmpty())
     {
         cout << " 得到乘积的稀疏矩阵为: " << endl;
-        cout << c;
+        cout << c << endl;
     }
     cout << " ============================================================= " << endl;
 }

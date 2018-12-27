@@ -1,12 +1,8 @@
-#ifndef MYHEAD_H
-    #define MYHEAD_H
-    #include "../../myhead.h"
-#endif
+#ifndef THREADTREE_H
+#define THREADTREE_H
 
-#ifndef MYSEQTREE_H
-    #define MYSEQTREE_H
-    #include "mySeqTree.h"
-#endif
+#include "../../myhead.h"
+#include "mySeqTree.h"
 
 typedef enum PointerTag {LINK, THREAD};
 
@@ -447,4 +443,5 @@ ostream& operator << (ostream& out, threadTree<elemtype> t)
     t.display(out);
     return out;
 }
+#endif
 

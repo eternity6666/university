@@ -1,5 +1,13 @@
 #include <iostream>
+#include <string>
+#include "biTree.h"
+#include "threadTree.h"
+#include "huffmanTree.h"
 using namespace std;
+
+biTree<char> a, b;
+threadTree<char> tt;
+huffmanTree<char> ht;
 
 void menu();
 void code1();
@@ -31,29 +39,32 @@ int main()
 
 void menu()
 {
+    a.getByRand(0);
+    tt.getByRand(0);
     while(1)
     {
         system("clear");
-        cout << "    1. " << endl
-             << "    2. " << endl
-             << "    3. " << endl
-             << "    4. " << endl
-             << "    5. " << endl
-             << "    6. " << endl
-             << "    7. " << endl
-             << "    8. " << endl
-             << "    9. " << endl
-             << "   10. " << endl
-             << "   11. " << endl
-             << "   12. " << endl
-             << "   13. " << endl
-             << "   14. " << endl
-             << "   15. " << endl
-             << "   16. " << endl
-             << "   17. " << endl
-             << "   18. " << endl
-             << "   19. " << endl
-             << "   20. " << endl
+        cout << " ==================== && 测试顺序表的操作 && =================== " << endl;
+        cout << "    1. 求二叉树的结点数" << endl
+             << "    2. 求二叉树的叶子数" << endl
+             << "    3. 递归求二叉树的深度" << endl
+             << "    4. 交换二叉树中所有结点的左右子树" << endl
+             << "    5. 前序递归遍历二叉树" << endl
+             << "    6. 中序递归遍历二叉树" << endl
+             << "    7. 后序递归求二叉树" << endl
+             << "    8. 非递归中序遍历二叉树" << endl
+             << "    9. 按层次顺序遍历二叉树" << endl
+             << "   10. 以顺序存储的方式显示二叉树" << endl
+             << "   11. 二叉树的二叉链表储存转化为顺序存储结构" << endl
+             << "   12. 二叉树的顺序存储转换为二叉链表存储结构" << endl
+             << "   13. 随机生成二叉树" << endl
+             << "   14. 输入二叉树" << endl
+             << "   15. 中序遍历中序穿线二叉树" << endl
+             << "   16. 中序穿线二叉树顺序存储转链式存储" << endl
+             << "   17. 中序穿线二叉树中找指定结点中序的前驱和后继" << endl
+             << "   18. 随机生成中序穿线二叉树" << endl
+             << "   19. 输入中序穿线二叉树" << endl
+             << "   20. 哈夫曼树（二叉树的应用）" << endl
              << " 其他. 结束" << endl;
         cout << " ============================================================== " << endl;
         // cout << a << endl;

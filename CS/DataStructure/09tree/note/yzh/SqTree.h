@@ -1,7 +1,10 @@
-#ifndef MYHEAD_H
-    #define MYHEAD_H
-    #include "../../myhead.h"
-#endif
+#ifndef SQTREE_H
+#define SQTREE_H
+    
+#include <stdlib.h>
+#include <cstring>
+#include <cassert>>
+#include "../../myhead.h"
 
 template <typename elemtype>
 class sqTree
@@ -124,5 +127,5 @@ sqTree<elemtype>::sqTree(const sqTree& otherT)
             initialAddress[i] = otherT.initialAddress[i];
     }
 }
-
+#endif
 

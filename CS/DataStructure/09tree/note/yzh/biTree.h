@@ -1,21 +1,16 @@
-#ifndef MYHEAD_H
-    #define MYHEAD_H
-    #include "../../myhead.h"
-#endif
+#ifndef BITREE_H
+#define BITREE_H
+    
+#include <cassert>
+#include <cstring>
+#include "mytree.h"
+#include "../../myhead.h"
+#include <stack>
+#include <queue>
 
-#ifndef STACK_H
-    #define STACK_H
-    #include <stack>
-#endif
-
-#ifndef QUEUE_H
-    #define QUEUE_H
-    #include <queue>
-#endif
-
-const int lh = 1;
-const int eh = 0;
-const int rh = -1;
+const int LH = 1;
+const int EH = 0;
+const int RH = -1;
 
 template <typename elemtype>
 class biTree
@@ -473,4 +468,5 @@ ostream& operator << (ostream& out, biTree<elemtype> bt)
     bt.display(out);
     return out;
 }
+#endif
 

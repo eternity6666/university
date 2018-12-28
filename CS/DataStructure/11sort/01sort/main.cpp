@@ -1,13 +1,17 @@
 #include <iostream>
+#include "../../myhead.h"
 #include "SqList.h"
 #include <iomanip>
+
+const int KEYNUM = 3;
+const int RADIX = 10;
 using namespace std;
 
 
-int quickTime=1;
-int quickTemp[100]={0};
-template <typename T>
-class SqListSort:public SqList<T>
+int quickelemtypeime=1;
+int quickelemtypeemp[100]={0};
+template <typename elemtype>
+class SqListSort:public SqList<elemtype>
 {
 public:
 
@@ -54,8 +58,8 @@ protected:
     SNodePointer LinkE;
     int linkN;
 };
-template <typename T>
-void SqListSort<T>::binaryInsertSort()
+template <typename elemtype>
+void SqListSort<elemtype>::binaryInsertSort()
 {
     int low;
     int mid;
@@ -67,7 +71,7 @@ void SqListSort<T>::binaryInsertSort()
     int *mt=new int[this->n];  
     assert(mt!=0);
     int temp;
-    T key;
+    elemtype key;
     for(i=1;i<this->n;++i)
     {
     
@@ -136,11 +140,11 @@ void SqListSort<T>::binaryInsertSort()
     delete[] mt;
 }
 
-template <typename T>
-void SqListSort<T>::bubbleSort()
+template <typename elemtype>
+void SqListSort<elemtype>::bubbleSort()
 {
     bool flag=true;
-    T t;
+    elemtype t;
     int i,j,k;
     for(i=1;i<this->n&&flag;++i)
     {
@@ -190,19 +194,19 @@ void SqListSort<T>::bubbleSort()
     }
 }
 
-template <typename T>
-int SqListSort<T>::getIndex(int i)
+template <typename elemtype>
+int SqListSort<elemtype>::getIndex(int i)
 {
     if(i<1||i>this->n)
         return -1;
     return index[i-1];
 }
 
-template <typename T>
-void SqListSort<T>::heapSort()
+template <typename elemtype>
+void SqListSort<elemtype>::heapSort()
 {
     int i,k,l;
-    T t;
+    elemtype t;
     int m=this->n;
     int deep;
     int time=1;
@@ -384,10 +388,10 @@ void SqListSort<T>::heapSort()
     delete[] flo;
 }
 
-template <typename T>
-void SqListSort<T>::heapSortAdjust_aux(int low,int high)
+template <typename elemtype>
+void SqListSort<elemtype>::heapSortAdjust_aux(int low,int high)
 {
-    T t=this->elem[low];
+    elemtype t=this->elem[low];
     for(int max=2*low+1;max<=high;)
     {
         if(max+1<high&&this->elem[max]<this->elem[max+1])
@@ -401,10 +405,10 @@ void SqListSort<T>::heapSortAdjust_aux(int low,int high)
     this->elem[low]=t;
 }
 //直接插入排序
-template <typename T>
-void SqListSort<T>::insertSort()
+template <typename elemtype>
+void SqListSort<elemtype>::insertSort()
 {
-    T key;
+    elemtype key;
     int temp_index;
     int i,j,k,m;
     for(i=0;i<this->n;++i)
@@ -452,14 +456,14 @@ void SqListSort<T>::insertSort()
     }
 }
 
-template <typename T>
-void SqListSort<T>::mergeSort()
+template <typename elemtype>
+void SqListSort<elemtype>::mergeSort()
 {
     mergeSort_aux(0,this->n-1);
 }
 
-template <typename T>
-void SqListSort<T>::mergeSort_aux(int low,int high)
+template <typename elemtype>
+void SqListSort<elemtype>::mergeSort_aux(int low,int high)
 {
     int mid;
     if(low!=high)
@@ -471,10 +475,10 @@ void SqListSort<T>::mergeSort_aux(int low,int high)
     }
 }
 
-template <typename T>
-void SqListSort<T>::mergeSortOne_aux(int low,int mid,int high)
+template <typename elemtype>
+void SqListSort<elemtype>::mergeSortOne_aux(int low,int mid,int high)
 {
-    T temp[LIST_MAX_SIZE];
+    elemtype temp[FIRSTSIZE];
     int k,i,j;
     static int time=1;
 
@@ -534,49 +538,49 @@ void SqListSort<T>::mergeSortOne_aux(int low,int mid,int high)
     
 }
 
-template <typename T>
-void SqListSort<T>::quickSort()
+template <typename elemtype>
+void SqListSort<elemtype>::quickSort()
 {
     cout<<"排序经过："<<endl;
     quickSort_aux(0,this->n-1);
-    quickTime=1;
+    quickelemtypeime=1;
     for(int i=0;i<100;i++)
-        quickTemp[i]=0;
+        quickelemtypeemp[i]=0;
 }
-template <typename T>
-void SqListSort<T>::quickSort_aux(int low,int high)
+template <typename elemtype>
+void SqListSort<elemtype>::quickSort_aux(int low,int high)
 {
     int keyLoc;
     int k;
     if(low<high)
     {
         keyLoc=quickSortPartion_aux(low,high);
-        cout<<"\t第"<<quickTime<<"趟快速排序结果如下："<<endl;
+        cout<<"\t第"<<quickelemtypeime<<"趟快速排序结果如下："<<endl;
         cout<<'\t';
         for(k=0;k<this->n;k++)
         {
-            if(quickTemp[k]==0)
-                if(quickTemp[k-1]==1)
+            if(quickelemtypeemp[k]==0)
+                if(quickelemtypeemp[k-1]==1)
                     cout<<"(";
             cout<<this->elem[k];
-            if(quickTemp[k]==0&&quickTemp[k+1]==1)
+            if(quickelemtypeemp[k]==0&&quickelemtypeemp[k+1]==1)
                 cout<<")";
-            if(quickTemp[k]==0&&(k+1)==this->n)
+            if(quickelemtypeemp[k]==0&&(k+1)==this->n)
                 cout<<")";
             cout<<'\t';
         }
-        quickTime++;
+        quickelemtypeime++;
         cout<<endl<<endl;
         quickSort_aux(low,keyLoc-1);
         quickSort_aux(keyLoc+1,high);
     }
 }
 
-template <typename T>
-int SqListSort<T>::quickSortPartion_aux(int low,int high)
+template <typename elemtype>
+int SqListSort<elemtype>::quickSortPartion_aux(int low,int high)
 {
     int i=low,j=high;
-    T t;
+    elemtype t;
     t=this->elem[i];
     while(i<j)
     {
@@ -588,12 +592,12 @@ int SqListSort<T>::quickSortPartion_aux(int low,int high)
         this->elem[j]=this->elem[i];
     }
     this->elem[i]=t;
-    quickTemp[i]=1;
+    quickelemtypeemp[i]=1;
     return i;
 }
 
-template <typename T>
-void SqListSort<T>::radixSort()
+template <typename elemtype>
+void SqListSort<elemtype>::radixSort()
 {
     int front[RADIX],end[RADIX];
     int i,j,k;
@@ -675,8 +679,8 @@ void SqListSort<T>::radixSort()
         cout<<endl;
     }
 }
-template <typename T>
-void SqListSort<T>::radixSortCollect_aux(int front[],int end[],int time)
+template <typename elemtype>
+void SqListSort<elemtype>::radixSortCollect_aux(int front[],int end[],int time)
 {
     int rear;
     int j;
@@ -697,8 +701,8 @@ void SqListSort<T>::radixSortCollect_aux(int front[],int end[],int time)
 }
 
 //基数排序的分配函数
-template <typename T>
-void SqListSort<T>::radixSortDistribute_aux(int i,int front[],int end[])
+template <typename elemtype>
+void SqListSort<elemtype>::radixSortDistribute_aux(int i,int front[],int end[])
 {
     int p;
     int pos;
@@ -725,10 +729,10 @@ void SqListSort<T>::radixSortDistribute_aux(int i,int front[],int end[])
 }
 
 
-template <typename T>
-void SqListSort<T>::ShellSort()
+template <typename elemtype>
+void SqListSort<elemtype>::ShellSort()
 {
-    int dlta[LIST_MAX_SIZE];
+    int dlta[FIRSTSIZE];
     int d,k,i;
     for(d=this->n/2,k=0;d>=1;d=d/2)
         dlta[k++]=d;
@@ -744,11 +748,11 @@ void SqListSort<T>::ShellSort()
     }
 }
 
-template <typename T>
-void SqListSort<T>::ShellSort_aux(int dk)
+template <typename elemtype>
+void SqListSort<elemtype>::ShellSort_aux(int dk)
 {
     int j,i,k;
-    T key;
+    elemtype key;
     for(i=dk;i<this->n;++i)
     {
         for(j=0;j<this->n;j++)
@@ -777,11 +781,11 @@ void SqListSort<T>::ShellSort_aux(int dk)
     }
 }
 
-template <typename T>
-void SqListSort<T>::selectSort()
+template <typename elemtype>
+void SqListSort<elemtype>::selectSort()
 {
     int min,i,j,k;
-    T t;
+    elemtype t;
     for(i=1;i<this->n;i++)
     {
         min=i-1;
@@ -813,8 +817,8 @@ void SqListSort<T>::selectSort()
         }
     }
 }
-template <typename T>
-void SqListSort<T>::staticLinkListSort()
+template <typename elemtype>
+void SqListSort<elemtype>::staticLinkListSort()
 {
     int q;
     int p;
@@ -861,25 +865,25 @@ void SqListSort<T>::staticLinkListSort()
 }
 
 
-template <typename T>
-SqListSort<T>::SqListSort()
+template <typename elemtype>
+SqListSort<elemtype>::SqListSort()
 {
-    index=new int[LIST_MAX_SIZE];
+    index=new int[FIRSTSIZE];
     assert(index!=0);
-    LinkE=new staticNode[1000];
+    LinkE=new sNode[1000];
     linkN=0;
 }
 
-template <typename T>
-SqListSort<T>::~SqListSort()
+template <typename elemtype>
+SqListSort<elemtype>::~SqListSort()
 {
     this->clear();
     delete []index;
     delete[] LinkE;
 }
 
-template <typename T>
-SqListSort<T>::SqListSort(const SqListSort& otherS)
+template <typename elemtype>
+SqListSort<elemtype>::SqListSort(const SqListSort& otherS)
 {
     index=new int[this->listSize];
     assert(index!=0);
@@ -901,12 +905,12 @@ SqListSort<T>::SqListSort(const SqListSort& otherS)
     }
 }
 
-#ifndef SQLISTSORT_H
-#define SQLISTSORT_H
+#ifndef SQLISelemtypeSORelemtype_H
+#define SQLISelemtypeSORelemtype_H
 #endif
 
-template <typename T>
-class MySqListSort
+template <typename elemtype>
+class MySqListSort:public SqListSort<elemtype>
 {
 public:
    
@@ -916,12 +920,12 @@ public:
    
     void displaySS(ostream& out);
   
-    Status randSql(int n,MySqListSort<T>& otherS);
+    bool randSql(int n,MySqListSort<elemtype>& otherS);
  
     void randStaSql();
 };
-template <typename T>
-void MySqListSort<T>::read(istream& in)
+template <typename elemtype>
+void MySqListSort<elemtype>::read(istream& in)
 {
     cout<<"请输入要建立的顺序表的元素个数：";
     cin>>this->n;
@@ -933,15 +937,15 @@ void MySqListSort<T>::read(istream& in)
     }
     cout<<endl;
 }
-template <typename T>
-istream& operator >>(istream& in,MySqListSort<T>& iL)
+template <typename elemtype>
+istream& operator >>(istream& in,MySqListSort<elemtype>& iL)
 { 
     iL.read(in);
     return in;
 }
 //输出
-template <typename T>
-void MySqListSort<T>::displaySq(ostream& out) 
+template <typename elemtype>
+void MySqListSort<elemtype>::displaySq(ostream& out) 
 {
     if(this->n==0)
         return;
@@ -952,20 +956,20 @@ void MySqListSort<T>::displaySq(ostream& out)
         cout<<this->elem[i]<<"\t";
     cout<<endl<<endl;
 }
-template <typename T>
-ostream& operator <<(ostream& out,MySqListSort<T>& oL)
+template <typename elemtype>
+ostream& operator <<(ostream& out,MySqListSort<elemtype>& oL)
 {
     oL.displaySq(out);
     oL.displaySS(out);
     return out;
 }
 //生成随机数顺序表
-template <typename T>
-Status MySqListSort<T>::randSql(int n,MySqListSort<T>& otherS)
+template <typename elemtype>
+bool MySqListSort<elemtype>::randSql(int n,MySqListSort<elemtype>& otherS)
 {
     srand((unsigned int)time(NULL));
     
-    if(n<1||n>otherS.listSize) return ERROR;
+    if(n<1||n>otherS.listSize) return false;
     else 
     {
         for(int i=0;i<n;i++)
@@ -974,14 +978,14 @@ Status MySqListSort<T>::randSql(int n,MySqListSort<T>& otherS)
         }
         otherS.n=n;
     }
-    return OK;
+    return true;
 }
-template <typename T>
-void MySqListSort<T>::randStaSql()
+template <typename elemtype>
+void MySqListSort<elemtype>::randStaSql()
 {
     srand((unsigned int)time(NULL));
     this->linkN=rand()%6+1;
-    T e;
+    elemtype e;
     cout<<"\t用以下随机数作为当前静态链表的元素："<<endl<<"\t";
     delete[] this->LinkE;
     
@@ -1002,8 +1006,8 @@ void MySqListSort<T>::randStaSql()
     displaySS(cout);
 }
 
-template <typename T>
-void MySqListSort<T>::displaySS(ostream& out)
+template <typename elemtype>
+void MySqListSort<elemtype>::displaySS(ostream& out)
 {
     if(this->linkN==0)
         return;
@@ -1026,6 +1030,8 @@ void MySqListSort<T>::displaySS(ostream& out)
 }
 
 int main(){
+    while(1)
+    {
     MySqListSort<int> sor;
     cout <<"1.直接插入排序" << endl;
     cout <<"2.折半插入排序" << endl;
@@ -1037,8 +1043,9 @@ int main(){
     cout <<"8.堆排序" << endl;
     cout <<"9.归并排序" << endl;
     cout <<"10.基数排序" << endl;
-    freopen("/Users/user/Desktop/1.txt", "r", stdin);
+    // freopen("/Users/user/Desktop/1.txt", "r", stdin);
     cin >> sor;
+    }
    // sor.insertSort();
    // sor.binaryInsertSort();
    // sor.staticLinkListSort();

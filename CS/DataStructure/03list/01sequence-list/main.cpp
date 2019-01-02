@@ -40,10 +40,10 @@ void code1512();
 int main()
 {
     a.newList(1);
+    system("clear");
+    menu();
     while(1)
     {
-        system("clear");
-        menu();
         cout << " ********************************************************** " << endl;
         cout << " 当前顺序表有" << a.getLength() << "个元素,分别为:" << endl;
         a.output(); 
@@ -269,6 +269,7 @@ void code9()
 {
     cout << " ********* && 把一个顺序表赋值个另一个顺序表 && *********** " << endl;
     cout << " 另一个顺序表赋值给当前顺序表为: " << endl;
+    b.newList(0);
     a = b;
     a.output();
     cout << " ********************************************************** " << endl;
@@ -341,8 +342,6 @@ void code15()
 {
     x = randStu();
     y = randStu();
-    while(1)
-    {
         system("clear");
         cout << " ************* && 学生信息管理(顺序表的应用) && *********** " << endl;
         cout << " 15. 1. 在第i个学生之前插入新学生\n"
@@ -359,6 +358,8 @@ void code15()
              << " 15.12. 输入学生表\n"
              << "  其他. 结束\n" << endl;
         cout << " ********************************************************** " << endl;
+    while(1)
+    {
         if(x.size())
         {
             cout << " 当前学生表(采用顺序表存储)有" << "个学生, 分别为: " << endl;
@@ -723,9 +724,9 @@ void code1512()
     else
     {
         x.clear();
+        system("clear");
         fei(1, n)
         {
-            system("clear");
             if(x.empty())
                 cout << " 当前学生表为空." << endl;
             else

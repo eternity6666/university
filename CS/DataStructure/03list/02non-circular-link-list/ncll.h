@@ -82,6 +82,7 @@ void linkList<ElemType>::input()
 
     int n;
     cin >> n;
+    cout << " 请输入" << n << "个数据: ";
     int array[10000];
     for(int i = 0; i < n; i++)
         cin >> array[i];

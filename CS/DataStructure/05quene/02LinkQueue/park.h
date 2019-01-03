@@ -247,8 +247,8 @@ ostream& operator <<(ostream& out, park& x)
 void park::getByRand(int display)
 {
     clear();
-    int n1 = rand() % 23 + 1;
-    int n2 = rand() % 23 + 1;
+    int n1 = rand() % 6 + 1;
+    int n2 = rand() % 6 + 1;
 
     char sname[] = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

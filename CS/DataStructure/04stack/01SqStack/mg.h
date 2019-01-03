@@ -168,8 +168,11 @@ void mg::input(istream& in)
     }
     x = y = n - 1;
     fei(0, x)
+    {
+        cout << " ";
         fej(0, y)
             in >> g[i][j];
+    }
 }
 
 istream& operator >>(istream& in, mg& s)

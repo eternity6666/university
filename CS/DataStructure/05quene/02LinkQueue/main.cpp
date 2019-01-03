@@ -28,10 +28,12 @@ void code104();
 
 int main()
 {
-    while(1)
-    {
+    a.getByRand(0);
+    b.getByRand(0);
         system("clear");
         menu();
+    while(1)
+    {
         if(a.isEmpty())
             cout << " 当前非循环链队为空" << endl;
         else
@@ -194,8 +196,7 @@ void code9()
 
 void code10()
 {
-    while(1)
-    {
+    x.getByRand(0);
         system("clear");
         cout << " --------- && 停车场管理(栈和队列的应用) && --------- " << endl;
         cout << " 10.1. 模拟车辆调度\n"
@@ -203,6 +204,8 @@ void code10()
              << " 10.3. 设置单位时间的收费值\n"
              << " 10.4. 随机生成停车的车辆\n"
              << " 其他. 结束 " << endl;
+    while(1)
+    {
         cout << " ---------------------------------------------------- " << endl;
         cout << x;
         cout << " ---------------------------------------------------- " << endl;
@@ -240,9 +243,9 @@ void code10()
 
 void code101()
 {
+    //system("clear");
     while(1)
     {
-        system("clear");
         cout << " ---------------- && 模拟车辆调度 && ---------------- " << endl;
         cout << " 请选择调度方式<1.离开\t2.进入\t0.结束>: ";
         int way;

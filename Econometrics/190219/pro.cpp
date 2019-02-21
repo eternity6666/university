@@ -28,7 +28,7 @@ int goti(int a, int b)
         return b + 4;;
 }
 
-int gotDay(int i, int* x, int* y)
+void gotDay(int i, int* x, int* y)
 {
     if(i <= 4)
         *x = 2017, *y = i + 8;
@@ -82,8 +82,8 @@ int main()
 
     vector<node>::iterator it;
     long long x = 0;
-    freopen("171.txt", "r", stdin);
-    while(~scanf("%d %d/%d", &a, &b, &c))
+    freopen("171.csv", "r", stdin);
+    while(~scanf("%d,%d/%d", &a, &b, &c))
     {
         cout << x++ << endl;
         tmp.id = a;
@@ -109,8 +109,8 @@ int main()
     fclose(stdin);
     cout << 171 << endl;
 
-    freopen("172.txt", "r", stdin);
-    while(~scanf("%d %d/%d", &a, &b, &c))
+    freopen("172.csv", "r", stdin);
+    while(~scanf("%d,%d/%d", &a, &b, &c))
     {
         cout << x++ << endl;
         tmp.id = a;
@@ -136,8 +136,8 @@ int main()
     fclose(stdin);
     cout << 172 << endl;
 
-    freopen("182.txt", "r", stdin);
-    while(~scanf("%d %d/%d", &a, &b, &c))
+    freopen("182.csv", "r", stdin);
+    while(~scanf("%d,%d/%d", &a, &b, &c))
     {
         cout << x++ << endl;
         tmp.id = a;
@@ -163,8 +163,8 @@ int main()
     fclose(stdin);
     cout << 182 << endl;
 
-    freopen("185.txt", "r", stdin);
-    while(~scanf("%d %d/%d", &a, &b, &c))
+    freopen("185.csv", "r", stdin);
+    while(~scanf("%d,%d/%d", &a, &b, &c))
     {
         cout << x++ << endl;
         tmp.id = a;
@@ -190,8 +190,8 @@ int main()
     fclose(stdin);
     cout << 185 << endl;
 
-    freopen("187.txt", "r", stdin);
-    while(~scanf("%d %d/%d", &a, &b, &c))
+    freopen("187.csv", "r", stdin);
+    while(~scanf("%d,%d/%d", &a, &b, &c))
     {
         cout << x++ << endl;
         tmp.id = a;
@@ -217,8 +217,8 @@ int main()
     fclose(stdin);
     cout << 187 << endl;
 
-    freopen("189.txt", "r", stdin);
-    while(~scanf("%d %d/%d", &a, &b, &c))
+    freopen("189.csv", "r", stdin);
+    while(~scanf("%d,%d/%d", &a, &b, &c))
     {
         cout << x++ << endl;
         tmp.id = a;

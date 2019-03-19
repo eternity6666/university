@@ -1,0 +1,23 @@
+Enter the number of questions: What is 8 - 2? Your answer is wrong.
+8 - 2 shoud be 6
+
+What is 8 - 3? Your answer is wrong.
+8 - 3 shoud be 5
+
+What is 7 - 0? Your answer is wrong.
+7 - 0 shoud be 7
+
+What is 3 - 0? Your answer is wrong.
+3 - 0 shoud be 3
+
+What is 9 - 7? Your answer is wrong.
+9 - 7 shoud be 2
+
+Corrent count is 0
+Test time is 0 seconds
+
+8 - 2 = 1 wrong
+8 - 3 = 2 wrong
+7 - 0 = 3 wrong
+3 - 0 = 4 wrong
+9 - 7 = 5 wrong

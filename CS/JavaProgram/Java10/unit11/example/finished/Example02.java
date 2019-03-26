@@ -1,18 +1,20 @@
 // CircleFromSimpleGeometricObject.java
 package unit11.example.out;
 
-public class example02 extends example01 {
+import unit11.example.out.Example01;
+
+public class Example02 extends Example01 {
 
     private double radius;
 
-    public example02() {
+    public Example02() {
     }
 
-    public example02(double radius) {
+    public Example02(double radius) {
         this.radius = radius;
     }
 
-    public example02(double radius, String color, boolean filled) {
+    public Example02(double radius, String color, boolean filled) {
         this.radius = radius;
         setColor(color);
         setFilled(filled);

@@ -1,20 +1,22 @@
 // RectangleFromSimpleGeometricObject.java 
 package unit11.example.out;
 
-public class example03 extends example01 {
+import unit11.example.out.Example01;
+
+public class Example03 extends Example01 {
 
     private double width;
     private double height;
 
-    public example03() {
+    public Example03() {
     }
 
-    public example03(double width, double height) {
+    public Example03(double width, double height) {
         this.width = width;
         this.height = height;
     }
 
-    public example03(double width, double height, String color, boolean filled) {
+    public Example03(double width, double height, String color, boolean filled) {
         this.width = width;
         this.height = height;
         setColor(color);

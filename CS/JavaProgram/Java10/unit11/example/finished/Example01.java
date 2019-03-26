@@ -1,17 +1,17 @@
 // SimpleCeometricObject.java
 package unit11.example.out;
 
-public class example01 {
+public class Example01 {
 
     private String color = "white";
     private boolean filled;
     private java.util.Date dateCreated;
 
-    public example01() {
+    public Example01() {
         dateCreated = new java.util.Date();
     }
 
-    public example01(String color, boolean filled) {
+    public Example01(String color, boolean filled) {
         dateCreated = new java.util.Date();
         this.color = color;
         this.filled = filled;

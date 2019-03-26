@@ -1,22 +1,22 @@
 package unit11.exam.out;
 
-import unit11.example.out.example01;
+import unit11.example.out.Example01;
 
-public class exam01 extends example01 {
+public class Exam01 extends Example01 {
 
     public static void mian(String[] args) {
-        exam01 test = new exam01();
+        Exam01 test = new Exam01();
     }
 
     private double side1 = 1.0;
     private double side2 = 1.0;
     private double side3 = 1.0;
 
-    public exam01() {
+    public Exam01() {
         this(1.0, 1.0, 1.0);
     }
 
-    public exam01(double side1, double side2, double side3) {
+    public Exam01(double side1, double side2, double side3) {
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;

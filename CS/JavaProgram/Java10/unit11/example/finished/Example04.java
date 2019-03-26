@@ -1,10 +1,14 @@
+// TestCircleRectangle.java
 package unit11.example.out;
 
-public class example04 {
+import unit11.example.out.Example02;
+import unit11.example.out.Example03;
+
+public class Example04 {
 
     public static void main(String[] args) {
 
-        example02 circle = new example02(1);
+        Example02 circle = new Example02(1);
         System.out.println("A circle " + circle.toString());
         System.out.println("The color is " + circle.getColor());
         System.out.println("The filled is " + circle.isFilled());
@@ -12,7 +16,7 @@ public class example04 {
         System.out.println("The area is " + circle.getArea());
         System.out.println("The diameter is " + circle.getDiameter());
 
-        example03 rectangle = new example03(2, 4);
+        Example03 rectangle = new Example03(2, 4);
         System.out.println("\nA rectangle " + rectangle.toString());
         System.out.println("The area is " + rectangle.getArea());
         System.out.println("The perimeter is " + rectangle.getPerimeter());

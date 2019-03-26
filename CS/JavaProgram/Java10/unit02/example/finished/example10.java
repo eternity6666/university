@@ -1,6 +1,8 @@
+package unit02.example.out;
+
 import java.util.Scanner;
 
-public class example0210{
+public class example10{
     public static void main(String[] args){
         
         Scanner inner = new Scanner(System.in);

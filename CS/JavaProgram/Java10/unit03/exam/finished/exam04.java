@@ -1,3 +1,5 @@
+package unit03.exam.out;
+
 import java.util.Scanner;
 
 public class exam04{

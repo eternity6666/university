@@ -1,5 +1,6 @@
 // QuotientWithException.java
-// package unit12.example.out;
+
+package unit12.example.out;
 
 import java.util.Scanner;
 

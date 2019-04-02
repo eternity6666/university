@@ -1,5 +1,6 @@
 // TestException.java
-// package unit12.example.out;
+
+package unit12.example.out;
 
 public class Example06 {
 

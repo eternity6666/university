@@ -47,5 +47,10 @@ public class Example03 extends Example01 {
     public double getPerimeter() {
         return 2 * width + 2 * height;
     }
+
+    @Override
+    public String toString() {
+        return "Width: " + width + " Height: " + height;
+    }
 }
 

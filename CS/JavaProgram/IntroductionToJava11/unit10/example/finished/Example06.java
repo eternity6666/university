@@ -1,10 +1,12 @@
-public class example06 {
+package unit10.example.out;
+
+public class Example06 {
 
     private String courseName;
     private String[] students = new String[100];
     private int numberOfStudents;
 
-    public example06(String courseName) {
+    public Example06(String courseName) {
         this.courseName = courseName;
     }
     

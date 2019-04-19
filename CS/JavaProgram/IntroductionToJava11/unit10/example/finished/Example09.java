@@ -1,6 +1,8 @@
+package unit10.example.out;
+
 import java.math.*;
 
-public class example09 {
+public class Example09 {
 
     public static void main(String[] args) {
         System.out.println("100! is \n" + factorial(100));

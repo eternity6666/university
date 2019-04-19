@@ -1,17 +1,19 @@
+package unit10.example.out;
+
 import java.util.Date;
 
-public class example02{
+public class Example02{
 
     private double annualInterestRate;
     private int numberOfYears;
     private double loanAmount;
     private Date loanDate;
 
-    public example02() {
+    public Example02() {
         this(2.5, 1, 1000);
     }
 
-    public example02(double annualInterestRate, int numberOfYears, double loanAmount) {
+    public Example02(double annualInterestRate, int numberOfYears, double loanAmount) {
         this.annualInterestRate = annualInterestRate;
         this.numberOfYears = numberOfYears;
         this.loanAmount = loanAmount;

@@ -1,9 +1,11 @@
-public class example05 {
+package unit10.example.out;
+
+public class Example05 {
 
     public static void main(String[] args) {
-        example06 course1 = new example06("Data Structures");
+        Example06 course1 = new Example06("Data Structures");
 
-        example06 course2 = new example06("Database Systems");
+        Example06 course2 = new Example06("Database Systems");
         
         course1.addStudent("Peter Jones");
         course1.addStudent("Kim Smith");

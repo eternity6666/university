@@ -1,17 +1,18 @@
 /* It is a class named Stack */
+package unit10.example.out;
 
 import java.util.Arrays;
 
-public class example08 {
+public class Example08 {
     private int[] elements;
     private int size;
     public static final int DEFAULT_CAPACITY = 16;
 
-    public example08() {
+    public Example08() {
         this(DEFAULT_CAPACITY);
     }
  
-    public example08(int capacity) {
+    public Example08(int capacity) {
         elements = new int[capacity];
     }
 
@@ -43,15 +44,15 @@ public class example08 {
 }
 
 /*
-public class example08 {
+public class Example08 {
     private int[] elements;
     private int size;
     
-    public example08() {
+    public Example08() {
         this(6);
     }
 
-    public example08(int capacity) {
+    public Example08(int capacity) {
         elements = new int[capacity];
     }
 

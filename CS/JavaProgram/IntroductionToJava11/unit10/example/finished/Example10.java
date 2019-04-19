@@ -1,6 +1,8 @@
+package unit10.example.out;
+
 import java.util.Scanner;
 
-public class example10 {
+public class Example10 {
 
     public static void main(String[] args) {
 

@@ -1,6 +1,8 @@
+package unit05.exam.out;
+
 import java.util.Scanner;
 
-public class exam17{
+public class Exam17{
 
     public static void main(String[] args){
 

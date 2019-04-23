@@ -7,12 +7,13 @@ import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+import unit14.example.out.ClockPane;
 
 public class Example20 extends Application {
     @Override
     public void start(Stage primaryStage) {
-        ColorPane clock = new ColorPane();
+        ClockPane clock = new ClockPane();
         String timeString = clock.getHour() + ":" + clock.getMinute() + ":" + clock.getSecond();
         Label lblCurrentTime = new Label(timeString);
 
@@ -21,7 +22,7 @@ public class Example20 extends Application {
         pane.setBottom(lblCurrentTime);
         BorderPane.setAlignment(lblCurrentTime, Pos.TOP_CENTER);
 
-        Scenescene = newScene(pane, 250, 250);
+        Scene scene = new Scene(pane, 250, 250);
         primaryStage.setTitle("DisplayClock");
         primaryStage.setScene(scene);
         primaryStage.show();

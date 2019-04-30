@@ -1,6 +1,6 @@
 // HandleEvent.java
 
-package unit15.example.out;
+// package unit15.example.out;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -17,7 +17,7 @@ public class Example01 extends Application {
         HBox pane = new HBox(10);
         pane.setAlignment(Pos.CENTER);
         Button btOK = new Button("OK");
-        Button btCannel = new Button("Cancel");
+        Button btCancel = new Button("Cancel");
         OKHandlerClass handler1 = new OKHandlerClass();
         btOK.setOnAction(handler1);
         CancelHandlerClass handler2 = new CancelHandlerClass();

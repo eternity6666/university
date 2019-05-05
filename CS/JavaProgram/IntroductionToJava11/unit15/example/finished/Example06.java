@@ -2,19 +2,19 @@
 
 package unit15.example.out;
 
+// import unit10.example.out.*;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.scene.layout.GridPane;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
-import javafx.control.Button;
-import javafx.control.Label;
-import javafx.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
-import javafx.paint.Color;
 
-public Example06 extends Application {
+public class Example06 extends Application {
     private TextField tfAnnualInterestRate = new TextField();
     private TextField tfNumberOfYears = new TextField();
     private TextField tfLoanAmount = new TextField();
@@ -45,11 +45,11 @@ public Example06 extends Application {
         tfLoanAmount.setAlignment(Pos.BOTTOM_RIGHT);
         tfMonthlyPayment.setAlignment(Pos.BOTTOM_RIGHT);
         tfTotalPayment.setAlignment(Pos.BOTTOM_RIGHT);
-        tfMonthlyPayment.setAlignment(false);
-        tfTotalPayment.setAlignment(false);
+        tfMonthlyPayment.setEditable(false);
+        tfTotalPayment.setEditable(false);
         GridPane.setHalignment(btCalculate, HPos.RIGHT);
 
-        btCalcualte.setOnAction(e -> calculateLoanPayment());
+        btCalculate.setOnAction(e -> calculateLoanPayment());
 
         Scene scene = new Scene(gridPane, 400, 250);
         primaryStage.setTitle("LoanCalculator");
@@ -59,11 +59,12 @@ public Example06 extends Application {
 
     private void calculateLoanPayment() {
         double interest = Double.parseDouble(tfAnnualInterestRate.getText());
-        double year = Double.parseDouble(tfNumberOfYears.getText());
+        int year = Integer.parseInt(tfNumberOfYears.getText());
         double loanAmount = Double.parseDouble(tfLoanAmount.getText());
 
-        Loan loan = new Loan(interest, year, loanAmount);
+        unit10.example.out.Example02 loan = new unit10.example.out.Example02(interest, year, loanAmount);
         tfMonthlyPayment.setText(String.format("$%.2f", loan.getMonthlyPayment()));
         tfTotalPayment.setText(String.format("$%.2f", loan.getTotalPayment()));
     }
 }
+

@@ -1,6 +1,8 @@
+package unit09.exam.out;
+
 import java.util.*;
 
-public class exam10 {
+public class Exam10 {
     
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);

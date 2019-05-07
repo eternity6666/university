@@ -1,4 +1,4 @@
-// package unit15.example.out;
+package unit15.example.out;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

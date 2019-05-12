@@ -1,4 +1,7 @@
 # Log Menu
+## [190512]
+1. 添加了《Java语言程序设计-基础篇(原书第10版)》中Unit16的例题(Example01-Example05.java).    
+
 ## [190507]
 1. 添加了《Java语言程序设计-基础篇(原书第10版)》中Unit15的例题(Example14-Example16.java).    
 

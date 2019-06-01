@@ -49,7 +49,7 @@ public class ClockPane extends Pane {
     }
 
     public void setSecond(int second) {
-        this.hour = hour;
+        this.second = second;
         paintClock();
     }
 
@@ -81,7 +81,9 @@ public class ClockPane extends Pane {
         paintClock();
     }
 
-    protected void paintClock() {
+    public void paintClock() {
+        getChildren().clear();
+
         double clockRadius = Math.min(w, h) * 0.8 * 0.5;
         double centerX = w / 2;
         double centerY = h / 2;
@@ -89,10 +91,34 @@ public class ClockPane extends Pane {
         Circle circle = new Circle(centerX, centerY, clockRadius);
         circle.setFill(Color.WHITE);
         circle.setStroke(Color.BLACK);
-        Text t1 = new Text(centerX - 5, centerY - clockRadius + 12, "12");
-        Text t2 = new Text(centerX - clockRadius + 3, centerY, "9");
-        Text t3 = new Text(centerX + clockRadius - 10, centerY, "3");
-        Text t4 = new Text(centerX - 3, centerY + clockRadius - 3, "6");
+        getChildren().add(circle);
+
+        for(int i = 0; i <= 59; i++) {
+            double dLength;
+            double edX;
+            double edY;
+            double sdX;
+            double sdY;
+            if(i % 5 == 0) {
+                dLength = clockRadius * 0.08;
+                int num = i / 5 == 0 ? 12 : i / 5;
+                String s = new Integer(num).toString();
+                double x = centerX - 5 + clockRadius * 0.8 * Math.sin(i * (2 * Math.PI / 60));
+                double y = centerY + 5 - clockRadius * 0.8 * Math.cos(i * (2 * Math.PI / 60));
+                Text t = new Text(x, y, s);
+                getChildren().add(t);
+            }
+            else 
+                dLength = clockRadius * 0.04;
+            edX = centerX + (clockRadius - dLength) * Math.sin(i * (2 * Math.PI / 60));
+            edY = centerY - (clockRadius - dLength) * Math.cos(i * (2 * Math.PI / 60));
+            sdX = centerX + clockRadius * Math.sin(i * (2 * Math.PI / 60));
+            sdY = centerY - clockRadius * Math.cos(i * (2 * Math.PI / 60));
+            Line dLine = new Line(sdX, sdY, edX, edY);
+            dLine.setStroke(Color.BLACK);
+
+            getChildren().add(dLine);
+        }
 
         double sLength = clockRadius * 0.8;
         double secondX = centerX + sLength * Math.sin(second * (2 * Math.PI / 60));
@@ -112,8 +138,26 @@ public class ClockPane extends Pane {
         Line hLine = new Line(centerX, centerY, hourX, hourY);
         hLine.setStroke(Color.GREEN);
 
-        getChildren().clear();
-        getChildren().addAll(circle, t1, t2, t3, t4, sLine, mLine, hLine);
+        getChildren().addAll(sLine, mLine, hLine);
+    }
+
+    @Override
+    public String toString() {
+        String ans;
+        if(getHour() < 10)
+            ans = "0" + getHour() + ":";
+        else
+            ans = getHour() + ":";
+        if(getMinute() < 10)
+            ans += "0" + getMinute() + ":";
+        else
+            ans += getMinute() + ":";
+        if(getSecond() < 10)
+            ans += "0" + getSecond();
+        else
+            ans += getSecond();
+
+        return ans;
     }
 }
 

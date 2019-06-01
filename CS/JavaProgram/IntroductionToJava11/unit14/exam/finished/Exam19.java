@@ -1,4 +1,4 @@
-package unit14.exam.out.Exam19;
+package unit14.exam.out;
 
 import javafx.application.Application;
 import javafx.scene.shape.Line;

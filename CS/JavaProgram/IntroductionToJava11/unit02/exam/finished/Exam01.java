@@ -2,7 +2,7 @@ package unit02.exam.out;
 
 import java.util.Scanner;
 
-public class exam01{
+public class Exam01{
     public static void main(String[] args){
         System.out.print("输入摄氏温度: ");
         Scanner inner = new Scanner(System.in);

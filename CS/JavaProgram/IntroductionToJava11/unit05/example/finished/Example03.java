@@ -1,6 +1,8 @@
+package unit05.example.out;
+
 import java.util.*;
 
-public class example03{
+public class Example03{
 
     public static void main(String[] args){
 

@@ -1,6 +1,6 @@
 package unit01.exam.out;
 
-public class exam03 {
+public class Exam03 {
 
     public static void main(String[] args) {
         System.out.println("     J      A     V     V     A   ");

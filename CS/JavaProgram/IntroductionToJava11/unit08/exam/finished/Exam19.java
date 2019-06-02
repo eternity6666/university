@@ -1,4 +1,4 @@
-// package unit08.exam.out;
+package unit08.exam.out;
 
 import java.util.Scanner;
 

@@ -19,14 +19,19 @@ public class Exam12{
 
         LinearEquation a1 = new LinearEquation(equa1[0], 1, equa1[1], equa1[2], 1, equa1[3]);
         LinearEquation a2 = new LinearEquation(equa2[0], 1, equa2[1], equa2[2], 1, equa2[3]);
+        boolean flag = false;
         if(a1.isSolvable())
             System.out.println(a1.getX() + " " + a1.getY());
-        else
+        else {
             System.out.println("a1 error");
+            flag = true;
+        }
         if(a2.isSolvable())
             System.out.println(a2.getX() + " " + a2.getY());
-        else
+        else {
             System.out.println("a2 error");
+            flag = true;
+        }
         LinearEquation ans = new LinearEquation(a1.getX(), -1, (-1) * a1.getY(), a2.getX(), -1, (-1) * a2.getY());
 
         if(ans.isSolvable())

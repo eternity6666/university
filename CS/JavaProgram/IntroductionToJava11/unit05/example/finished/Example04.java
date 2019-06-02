@@ -1,6 +1,8 @@
+package unit05.example.out;
+
 import java.util.*;
 
-public class example04{
+public class Example04{
 
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);

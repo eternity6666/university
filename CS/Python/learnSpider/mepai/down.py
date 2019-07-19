@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 all_urls = []
 img_urls = []
 
+path = "/home/eternity6666/Pictures/"
+
 def run(url, n):
     html = requests.get(url, headers = headers)
 
@@ -18,7 +20,7 @@ def run(url, n):
             n += 1
             print(img_url)
             response = requests.get(img_url, headers = headers)
-            file_name = str(n) + '.jpg'
+            file_name = path + str(n) + '.jpg'
             with open(file_name, "wb") as f:
                 f.write(response.content)
                 f.close()
@@ -32,7 +34,10 @@ if __name__ == "__main__":
 
     n = 0
     # all_urls.append("https://www.mepai.me/tags/日系")
-    all_urls.append("https://www.mepai.me/tags/南昌大学")
+    # all_urls.append("https://www.mepai.me/tags/南昌大学")
+    url = "https://www.mepai.me/recommend?page="
+    for i in range(10):
+        all_urls.append(url + str(i))
     for url in all_urls:
         n = run(url, n)
     print(n)

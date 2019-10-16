@@ -1,14 +1,30 @@
 semaphore maxE = M, maxW = N;
-semaphore max_total = K;
+semaphore maxTotal = K;
 
 void WaitUntilSafeToCross(Destination dest)
 {
-    p(max_oneway[dest]);
-    P(max_total);
+    if(dest==EAST)
+    {
+        wait(maxE);
+        wait(maxTotal);
+    }
+    else
+    {
+        wait(maxW);
+        wait(maxTotal); 
+    }
 }
 
 void DoneWithCrossing(Destination dest)
 {
-    V(max_total);
-    V(max_oneway[dest])
+    if(dest==EAST)
+    {
+        signal(maxE);
+        signal(maxTotal);
+    }
+    else
+    {
+        signal(maxW);
+        signal(maxTotal);
+    }
 }

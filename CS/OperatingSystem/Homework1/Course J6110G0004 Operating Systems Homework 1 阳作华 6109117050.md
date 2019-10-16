@@ -6,134 +6,131 @@
 ---|---|---
 阳作华|6109117050|计算机科学与技术(软件技术)174班
 
-本次作业采用的编程语言是```C++```, 一共有4个文件, 分别是**main.h**和**answer1.cpp**和**answer2.cpp**和**answer3.cpp**.
-
-其中**main.h**的内容如下
+## The Answer of Problem(a)
 
 ```C++
-//main.h
-#ifndef MY_MAIN_H
-    #define MY_MAIN_H
+int pigE = 0, pigW = 0;           //分别表示EAST方向、WEST方向pig的数量
+semaphore mutexE = 1, mutexW = 1; //每个方向的互斥
+semaphore max_on_rope = 5;        //确保rope上最多5只pig
+semaphore rope = 1;               //确保rope上pig的朝向
 
-typedef enum
+void WaitUntilSafeToCross(Destination dest)
 {
-    EAST,
-    WEST
-} Destination;
-
-class Same
-{
-private:
-    Destination destination;
-    int id;
-    bool waiting;
-    bool crossing;
-    bool crossed;
-
-public:
-    Same(int id, Destination dest);
-    Destination getDest();
-    void waitUntilSafeToCross();
-    void crossRavine();
-    void doneWithCrossing();
-};
-
-Same::Same(int id, Destination dest)
-{
-    this->id = id;
-    this->waiting = true;
-    this->crossing = false;
-    this->crossed = false;
-    this->destination = dest;
+    if (dest == EAST)
+    {
+        wait(mutexE);
+        pigE++;
+        if (pigE == 1)
+            wait(rope); //第一头排队的pig, 正等着rope
+        signal(mutexE);
+        wait(max_on_rope);
+    }
+    else
+    {
+        wait(mutexW);
+        pigW++;
+        if (pigW == 1)
+            wait(rope); //第一头排队的pig, 正等着rope
+        signal(mutexW);
+        wait(max_on_rope);
+    }
 }
 
-Destination Same::getDest()
+void DoneWithCrossing(Destination dest)
 {
-    return this->destination;
-}
-
-void Same::waitUntilSafeToCross()
-{
-    this->waiting = true;
-    this->crossing = false;
-    this->crossed = false;
-}
-
-void Same::crossRavine()
-{
-    this->waiting = false;
-    this->crossing = true;
-    this->crossed = false;
-}
-
-void Same::doneWithCrossing()
-{
-    this->waiting = false;
-    this->crossing = false;
-    this->crossed = true;
-}
-#endif
-```
-
-## The answer of problem(a)
-
-**answer1.cpp**内容如下:
-
-```C++
-//answer1.cpp
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include "main.h"
-using namespace std;
-
-class PigInProblemA : public Same
-{
-public:
-    PigInProblemA(int id, Destination dest):Same(id, dest){}
-};
-
-vector<PigInProblemA> ve;
-
-void crossRavine(int id, Destination dest)
-{
-    ve[id - 1].crossRavine();
-}
-
-void doneWithCrossing(int id, Destination dest)
-{
-    ve[id - 1].doneWithCrossing();
-}
-
-void pig(int id, Destination dest)
-{
-    crossRavine(id, dest);
-    doneWithCrossing(id, dest);
-}
-
-int main()
-{
-    int num = int(rand() * 100) % 5 + 1;
-    for (int i = 0; i < num; ++i)
-        ve.push_back(PigInProblemA(i + 1, EAST));
-    for (int i = 0; i < num; ++i)
-        pig(i + 1, (ve[i].getDest() == WEST ? EAST : WEST));
-    return 0;
+    if (dest == EAST)
+    {
+        wait(mutexE);
+        signal(max_on_rope);
+        pigE--;
+        if (pigE == 0)
+            signal(rope); //最后一头pig, 释放rope
+        signal(mutexE);
+    }
+    else
+    {
+        wait(mutexW);
+        signal(max_on_rope);
+        pigW--;
+        if (pigW == 0)
+            signal(rope); // 最后一头pig, 释放rope
+        signal(mutexW);
+    }
 }
 ```
 
-## The answer of problem(b)
-
-**answer2.cpp**内容如下:
+## The Answer of Problem(b)
 
 ```C++
-//answer2.cpp
+int pigE = 0, pigW = 0;           //分别表示EAST方向、WEST方向pig的数量
+semaphore mutexE = 1, mutexW = 1; //每个方向的互斥
+semaphore max_on_rope = 5;        //确保rope上最多5只pig
+semaphore rope = 1;               //确保rope上pig的朝向
+semaphore order = 1;              //用于避免出现starvation现象
+
+void WaitUntilSafeToCross(Destination dest)
+{
+    wait(order);
+    if (dest == EAST)
+    {
+        wait(mutexE);
+        pigE++;
+        if (pigE == 1)
+            wait(rope); //第一头排队的pig, 正等着rope
+        signal(mutexE);
+        signal(order);
+        wait(max_on_rope);
+    }
+    else
+    {
+        wait(mutexE);
+        pigE++;
+        if (pigE == 1)
+            wait(rope); //第一头排队的pig, 正等着rope
+        signal(mutexE);
+        signal(order);
+        wait(max_on_rope);
+    }
+}
+
+void DoneWithCrossing(Destination dest)
+{
+    if (dest == EAST)
+    {
+        wait(mutexE);
+        signal(max_on_rope);
+        pigE--;
+        if (pigE == 0)
+            signal(rope); //最后一头pig, 释放rope
+        signal(mutexE);
+    }
+    else
+    {
+        wait(mutexW);
+        signal(max_on_rope);
+        pigW--;
+        if (pigW == 0)
+            signal(rope); // 最后一头pig, 释放rope
+        signal(mutexW);
+    }
+}
 ```
 
-## The answer of problem(c)
-
-**answer3.cpp**内容如下:
+## The Answer of Problem(c)
 
 ```C++
-//answer3.cpp
+semaphore maxE = M, maxW = N;
+semaphore max_total = K;
+
+void WaitUntilSafeToCross(Destination dest)
+{
+    p(max_oneway[dest]);
+    P(max_total);
+}
+
+void DoneWithCrossing(Destination dest)
+{
+    V(max_total);
+    V(max_oneway[dest])
+}
 ```

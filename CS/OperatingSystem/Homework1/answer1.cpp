@@ -1,39 +1,48 @@
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include "main.h"
-using namespace std;
+int pigE = 0, pigW = 0;           //分别表示EAST方向、WEST方向pig的数量
+semaphore mutexE = 1, mutexW = 1; //每个方向的互斥
+semaphore max_on_rope = 5;        //确保rope上最多5只pig
+semaphore rope = 1;               //确保rope上pig的朝向
 
-class PigInProblemA : public Same
+void WaitUntilSafeToCross(Destination dest)
 {
-public:
-    PigInProblemA(int id, Destination dest):Same(id, dest){}
-};
-
-vector<PigInProblemA> ve;
-
-void crossRavine(int id, Destination dest)
-{
-    ve[id - 1].crossRavine();
+    if (dest == EAST)
+    {
+        wait(mutexE);
+        pigE++;
+        if (pigE == 1)
+            wait(rope); //第一头排队的pig, 正等着rope
+        signal(mutexE);
+        wait(max_on_rope);
+    }
+    else
+    {
+        wait(mutexW);
+        pigW++;
+        if (pigW == 1)
+            wait(rope); //第一头排队的pig, 正等着rope
+        signal(mutexW);
+        wait(max_on_rope);
+    }
 }
 
-void doneWithCrossing(int id, Destination dest)
+void DoneWithCrossing(Destination dest)
 {
-    ve[id - 1].doneWithCrossing();
-}
-
-void pig(int id, Destination dest)
-{
-    crossRavine(id, dest);
-    doneWithCrossing(id, dest);
-}
-
-int main()
-{
-    int num = int(rand() * 100) % 5 + 1;
-    for (int i = 0; i < num; ++i)
-        ve.push_back(PigInProblemA(i + 1, EAST));
-    for (int i = 0; i < num; ++i)
-        pig(i + 1, (ve[i].getDest() == WEST ? EAST : WEST));
-    return 0;
+    if (dest == EAST)
+    {
+        wait(mutexE);
+        signal(max_on_rope);
+        pigE--;
+        if (pigE == 0)
+            signal(rope); //最后一头pig, 释放rope
+        signal(mutexE);
+    }
+    else
+    {
+        wait(mutexW);
+        signal(max_on_rope);
+        pigW--;
+        if (pigW == 0)
+            signal(rope); // 最后一头pig, 释放rope
+        signal(mutexW);
+    }
 }

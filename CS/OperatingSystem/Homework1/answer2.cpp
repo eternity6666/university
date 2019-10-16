@@ -1,27 +1,52 @@
-#include <bits/stdc++.h>
-#include "main.h"
+int pigE = 0, pigW = 0;           //分别表示EAST方向、WEST方向pig的数量
+semaphore mutexE = 1, mutexW = 1; //每个方向的互斥
+semaphore max_on_rope = 5;        //确保rope上最多5只pig
+semaphore rope = 1;               //确保rope上pig的朝向
+semaphore order = 1;              //用于避免出现starvation现象
 
-class Pig extends Same{};
-
-void waitUntilSafeToCross(Destination dest)
+void WaitUntilSafeToCross(Destination dest)
 {
-
+    wait(order);
+    if (dest == EAST)
+    {
+        wait(mutexE);
+        pigE++;
+        if (pigE == 1)
+            wait(rope); //第一头排队的pig, 正等着rope
+        signal(mutexE);
+        signal(order);
+        wait(max_on_rope);
+    }
+    else
+    {
+        wait(mutexE);
+        pigE++;
+        if (pigE == 1)
+            wait(rope); //第一头排队的pig, 正等着rope
+        signal(mutexE);
+        signal(order);
+        wait(max_on_rope);
+    }
 }
-void crossRavine(int id, Destination dest)
+
+void DoneWithCrossing(Destination dest)
 {
-
-}
-void doneWithCrossing(Destination dest)
-{
-
-}
-
-void pig(int id, Destination dest)
-{
-
-}
-
-int main()
-{
-    return 0;
+    if (dest == EAST)
+    {
+        wait(mutexE);
+        signal(max_on_rope);
+        pigE--;
+        if (pigE == 0)
+            signal(rope); //最后一头pig, 释放rope
+        signal(mutexE);
+    }
+    else
+    {
+        wait(mutexW);
+        signal(max_on_rope);
+        pigW--;
+        if (pigW == 0)
+            signal(rope); // 最后一头pig, 释放rope
+        signal(mutexW);
+    }
 }

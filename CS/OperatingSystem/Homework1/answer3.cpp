@@ -1,27 +1,14 @@
-#include <bits/stdc++.h>
-#include "main.h"
+semaphore maxE = M, maxW = N;
+semaphore max_total = K;
 
-class Student extends Same{};
-
-void waitUntilSafeToCross(Destination dest)
+void WaitUntilSafeToCross(Destination dest)
 {
-
-}
-void crossRavine(int id, Destination dest)
-{
-
-}
-void doneWithCrossing(Destination dest)
-{
-
+    p(max_oneway[dest]);
+    P(max_total);
 }
 
-void student(int id, Destination dest)
+void DoneWithCrossing(Destination dest)
 {
-
-}
-
-int main()
-{
-    return 0;
+    V(max_total);
+    V(max_oneway[dest])
 }

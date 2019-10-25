@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>习题2</title>
+    <style>
+        div {
+            text-align: center;
+            margin: 20% 20%;
+        }
+    </style>
+    <script>
+        function method() {
+            var input = document.getElementsByClassName("num");
+            var sum = 0;
+            for(var x = 0; x < input.length; ++x) {
+                var y = parseInt(input[x].value);
+                if (isNaN(y)) {
+                    alert("请输入数字");
+                    return;
+                }
+                sum += y;
+            }
+            var answer = document.getElementById("answer");
+            answer.textContent = "5本书的价格和为" + sum;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        第1本书的价格: <input type="text" class="num" /><br />
+        第2本书的价格: <input type="text" class="num" /><br />
+        第3本书的价格: <input type="text" class="num" /><br />
+        第4本书的价格: <input type="text" class="num" /><br />
+        第5本书的价格: <input type="text" class="num" /><br />
+        <button type="submit" onclick="method()">查询</button>
+        <p id="answer"></p>
+    </div>
+</body>
+
+</html>

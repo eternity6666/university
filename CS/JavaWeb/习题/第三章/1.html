@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>习题1</title>
+    <style>
+        div {
+            text-align: center;
+            margin: 20% 20%;
+        }
+    </style>
+    <script>
+        function method() {
+            var input = document.getElementById("input");
+            var x = parseInt(input.value);
+            if (!isNaN(x)) {
+                var x50 = Math.round(x / 50);
+                x %= 50;
+                var x20 = Math.round(x / 20);
+                x %= 20;
+                var x10 = Math.round(x / 10);
+                x %= 10;
+                var x5 = Math.round(x / 5);
+                x %= 5;
+                var answer = document.getElementById("answer");
+                answer.textContent = x50 + "张50元 " + x20 + "张20元 " + x10 + "张10元 " + x5 + "张5元 " + x + "张1元.";
+            } else {
+               alert("请输入整数"); 
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <p>
+            输入找零的数量: <input id="input" type="text" />
+            <button type="button" onclick="method()">查询</button>
+        </p>
+        <p id="answer"></p>
+    </div>
+</body>
+
+</html>

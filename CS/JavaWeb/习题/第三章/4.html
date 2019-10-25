@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>习题4</title>
+    <style>
+        div {
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+    <script>
+        function method() {
+            var input = document.getElementsByClassName("num");
+            var sum = aver = min = max = 0;
+            for (var x = 0; x < input.length; ++x) {
+                var y = parseFloat(input[x].value);
+                if (isNaN(y)) {
+                    alert("请输入数字, 并重新提交");
+                    return;
+                }
+                if (x == 0) {
+                    sum = min = max = y;
+                } else {
+                    min = Math.min(min, y);
+                    max = Math.max(max, y);
+                    sum += y;
+                }
+            }
+            var maxP = document.getElementById("max");
+            maxP.textContent = "最大值为: " + max;
+            var minP = document.getElementById("min");
+            minP.textContent = "最小值为: " + min;
+            var averageP = document.getElementById("average");
+            averageP.textContent = "平均值为: " + String(sum / 10);
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        第1本书的价格: <input class="num" type="text" /><br />
+        第2本书的价格: <input class="num" type="text" /><br />
+        第3本书的价格: <input class="num" type="text" /><br />
+        第4本书的价格: <input class="num" type="text" /><br />
+        第5本书的价格: <input class="num" type="text" /><br />
+        第6本书的价格: <input class="num" type="text" /><br />
+        第7本书的价格: <input class="num" type="text" /><br />
+        第8本书的价格: <input class="num" type="text" /><br />
+        第9本书的价格: <input class="num" type="text" /><br />
+        第10本书的价格: <input class="num" type="text" /><br />
+        <button onclick="method()">提交</button>
+        <p id="max"></p>
+        <p id="min"></p>
+        <p id="average"></p>
+    </div>
+</body>
+
+</html>

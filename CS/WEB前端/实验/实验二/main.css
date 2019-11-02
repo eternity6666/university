@@ -1,0 +1,11 @@
+fieldset {
+    width: 300px;
+    margin: 50px;
+    font-size: 2ch;
+}
+
+p {
+    text-indent: 4ch;
+    margin:0;
+    padding: 0;
+}

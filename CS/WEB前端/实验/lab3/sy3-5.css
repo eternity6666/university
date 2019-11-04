@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.body {
+    margin: 50px;
+}
+
+.child{
+    margin: inherit;
+    position: relative;
+}
+
+p {
+    font: bold 100px sans-serif;
+    height: 100%;
+}
+
+.yellow {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    color: yellow;
+}
+
+.red {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    color: red;
+}
+
+.blue {
+    color: blue;
+}

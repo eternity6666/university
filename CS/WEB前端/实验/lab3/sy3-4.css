@@ -1,0 +1,9 @@
+.float {
+    float: left;
+    font-size: 32px;
+}
+
+.clean {
+    clear: both;
+    font-size: 32px;
+}

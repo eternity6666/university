@@ -3,10 +3,13 @@ x=$1
 for((i=1;i<=x;i++))
 do
     echo "$(($i-1))$i
-    123213:11
     123
-    13213213
-    1123
+    435
+    678
+    12
+    1233899
+    098978adfasf
+    1sfgafdsaf
     asdf
     hello
     my name is your name

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>检测浏览器对HTML5画布API的支持情况</title>
+    <style>
+        canvas {
+            /* background-color: orange; */
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>检测浏览器对HTML5画布API的支持情况</h3>
+    <hr />
+    <canvas id="MyCanvas" width="500" height="400">
+        对不起, 您的浏览器不支持HTML5画布功能
+    </canvas>
+    <script>
+        var c = document.getElementById("MyCanvas");
+        var ctx = c.getContext("2d");
+
+        ctx.fillStyle = "red";
+        // ctx.beginPath();
+        // ctx.moveTo(90, 55);
+        // ctx.bezierCurveTo(90, 52, 85, 40, 65, 40);
+        // ctx.stroke();
+        // ctx.bezierCurveTo(35, 40, 35, 77.5, 35, 77.5);
+        // ctx.bezierCurveTo(35, 95, 55, 117, 90, 135);
+        // ctx.bezierCurveTo(125, 117, 145, 95, 145, 77.5);
+        // ctx.bezierCurveTo(145, 77.5, 145, 40, 115, 40);
+        // ctx.bezierCurveTo(100, 40, 90, 52, 90, 55);
+        // ctx.fill();
+        // ctx.stroke();
+        function move(a, b) {
+            ctx.moveTo(0.5 * a, 400 - 0.5 * b);
+        }
+
+        function line(a, b) {
+            ctx.lineTo(0.5 * a, 400 - 0.5 * b);
+        }
+
+        function bezierCurve(a, b, c, d, e, f) {
+            ctx.bezierCurveTo(0.5 * a, 400 - 0.5 * b, 0.5 * c, 400 - 0.5 * d, 0.5 * e, 400 - 0.5 * f);
+        }
+        ctx.beginPath();
+        move(149, 597);
+        bezierCurve(149, 597, 149, 597, 345, 597);
+        bezierCurve(361, 597, 365, 599, 368, 606);
+        bezierCurve(406, 695, 368, 606, 406, 695);
+        bezierCurve(397, 702, 406, 695, 397, 702);
+        bezierCurve(382, 681, 372, 676, 351, 676);
+        bezierCurve(351, 676, 351, 676, 142, 676);
+        bezierCurve( 33, 439, 142, 676,  33, 439);
+        bezierCurve( 32, 438,  32, 436,  32, 434);
+        bezierCurve( 32, 428,  35, 426,  44, 426);
+        bezierCurve( 74, 426, 109, 420, 149, 408);
+        bezierCurve(269, 372, 324, 310, 324, 208);
+        bezierCurve(324, 112, 264,  37, 185,  37);
+        bezierCurve(165,  37, 149,  44, 119,  66);
+        bezierCurve( 86,  90,  65,  99,  42,  99);
+        bezierCurve( 14,  99,   0,  87,   0,  62);
+        bezierCurve(  0,  24,  46,   0, 121,   0);
+        bezierCurve(205,   0, 282,  27, 333,  78);
+        bezierCurve(378, 123, 399, 180, 399, 256);
+        bezierCurve(399, 327, 381, 372, 333, 422);
+        bezierCurve(288, 468, 232, 491, 112, 512);
+        bezierCurve(112, 512, 149, 597, 149, 597);
+        // ctx.stroke();
+        ctx.fill();
+    </script>
+</body>
+
+</html>
+<!-- // ctx.beginPath();
+        // ctx.moveTo(149, 597);
+        // ctx.bezierCurveTo(149, 597, 149, 597, 345, 597);
+        // ctx.bezierCurveTo(361, 597, 365, 599, 368, 606);
+        // ctx.bezierCurveTo(406, 695, 368, 606, 406, 695);
+        // ctx.bezierCurveTo(397, 702, 406, 695, 397, 702);
+        // ctx.bezierCurveTo(382, 681, 372, 676, 351, 676);
+        // ctx.bezierCurveTo(351, 676, 351, 676, 142, 676);
+        // ctx.bezierCurveTo(33, 439, 142, 676, 33, 439);
+        // ctx.bezierCurveTo(32, 438, 32, 436, 32, 434);
+        // ctx.bezierCurveTo(32, 428, 35, 426, 44, 426);
+        // ctx.bezierCurveTo(74, 426, 109, 420, 149, 408);
+        // ctx.bezierCurveTo(269, 372, 324, 310, 324, 208);
+        // ctx.bezierCurveTo(324, 112, 264, 37, 185, 37);
+        // ctx.bezierCurveTo(165, 37, 149, 44, 119, 66);
+        // ctx.bezierCurveTo(86, 90, 65, 99, 42, 99);
+        // ctx.bezierCurveTo(14, 99, 0, 87, 0, 62);
+        // ctx.bezierCurveTo(0, 24, 46, 0, 121, 0);
+        // ctx.bezierCurveTo(205, 0, 282, 273, 33, 78);
+        // ctx.bezierCurveTo(378, 123, 399, 180, 399, 256);
+        // ctx.bezierCurveTo(399, 327, 381, 372, 333, 422);
+        // ctx.bezierCurveTo(288, 468, 232, 491, 112, 512);
+        // ctx.bezierCurveTo(112, 512, 149, 597, 149, 597);
+        // ctx.stroke(); -->

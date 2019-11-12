@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+    color:white;
+    font-size: 1em;
+}
+
+div.header {
+    font-size: 2em;
+}
+
+div.header,
+div.footer {
+    text-align: center;
+    background: #71c9ce;
+    color: white;
+    line-height: 150%;
+}
+
+div.footer {
+    font-size: 1em;
+    clear: left;
+}
+
+div.footer p{
+    line-height: 150%;
+}
+
+div.body {
+    background: #e3fdfd;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>直接插入排序</title>
+    <style type="text/css"></style>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/func.css">
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <a href="./index.html">排序算法合集</a>
+    </div>
+    <div class="body">
+        <div class="func">
+            <p>直接插入排序（Straight Insertion Sort）是一种最简单的排序方法，其基本操作是将一条记录插入到已排好的有序表中，从而得到一个新的、记录数量增1的有序表。</p>
+            <br />
+            <p><b>直接插入排序(straight insertion sort)的做法是：</b></p>
+            <p>每次从无序表中取出第一个元素，把它插入到有序表的合适位置，使有序表仍然有序。</p>
+            <br />
+            <p>第一趟比较前两个数，然后把第二个数按大小插入到有序表中； 第二趟把第三个数据与前两个数从后向前扫描，把第三个数按大小插入到有序表中；依次进行下去，进行了(n-1)趟扫描以后就完成了整个排序过程。</p>
+            <br />
+            <p>直接插入排序是由两层嵌套循环组成的。外层循环标识并决定待比较的数值。内层循环为待比较数值确定其最终位置。直接插入排序是将待比较的数值与它的前一个数值进行比较，所以外层循环是从第二个数值开始的。当前一数值比待比较数值大的情况下继续循环比较，直到找到比待比较数值小的并将待比较数值置入其后一位置，结束该次循环。</p>
+            <br />
+            <p><b>排序方法</b></p>
+            <p><b>1. 简单方法</b></p>
+            <p>首先在当前有序区R[1..i-1]中查找R[i]的正确插入位置k(1≤k≤i-1)；然后将R[k．．i-1]中的记录均后移一个位置，腾出k位置上的空间插入R[i]。</p>
+            <p>注意：若R[i]的关键字大于等于R[1．．i-1]中所有记录的关键字，则R[i]就是插入原位置。</p>
+            <br />
+            <p><b>2. 改进的方法</b></p>
+            <p>一种查找比较操作和记录移动操作交替地进行的方法。具体做法：</p>
+            <p>将待插入记录R[i]的关键字从右向左依次与有序区中记录R[j](j=i-1，i-2，…，1)的关键字进行比较：</p>
+            <p>① 若R[j]的关键字大于R[i]的关键字，则将R[j]后移一个位置；</p>
+            <p>②若R[j]的关键字小于或等于R[i]的关键字，则查找过程结束，j+1即为R[i]的插入位置。</p>
+            <p>关键字比R[i]的关键字大的记录均已后移，所以j+1的位置已经腾空，只要将R[i]直接插入此位置即可完成一趟直接插入排序。</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>这是<a class="author" href="https://yangzuohua.top" target="_blank">©eternity6666</a>制作的网站</p>
+    </div>
+</body>
+
+</html>

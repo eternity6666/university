@@ -1,0 +1,55 @@
+header {
+    text-align: center;
+}
+
+.scroll-container {
+    position: relative;
+    height: 300px;
+    margin: 100 auto;
+    overflow: hidden;
+}
+
+.scroll-image-container {
+    position: absolute;
+    left: 0px;
+    width: 200%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    animation: marquee 10s linear 20ms infinite;
+    /*SafariandChrome*/
+    -webkit-animation: marquee 10s linear 20ms infinite;
+}
+
+@keyframes marquee {
+    0% {
+        left: 0;
+    }
+
+    25% {
+        left: -450px;
+    }
+
+    50% {
+        left: -900px;
+    }
+
+    75% {
+        left: -450px;
+    }
+
+    100% {
+        left: 0px;
+    }
+}
+
+.scroll-image {
+    float: left;
+    width: 500px;
+    height: 300px;
+}
+
+.scroll-image a {
+    float: left;
+    overflow: hidden;
+}

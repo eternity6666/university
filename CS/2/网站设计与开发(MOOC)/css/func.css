@@ -1,0 +1,9 @@
+div.func p{
+    text-indent: 2em;
+}
+
+div.func {
+    padding:5% 15% 15% 15%;
+    width:70%;
+    height: auto;
+}

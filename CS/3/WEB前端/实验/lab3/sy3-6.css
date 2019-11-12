@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background: url("./banner-red.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #a62027 !important;
+    position: relative;
+    overflow: hidden;
+    display: block !important;
+}
+
+.container {
+    text-align: center;
+    max-width: 1140px !important;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.container img {
+    margin-top: 7.5%;
+    max-width: 100%;
+    max-height: 70%;
+}
+
+nav {
+    background: #D5767A;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+}
+
+nav ul {
+    text-align: center;
+}
+
+nav ul li {
+    float: left;
+    list-style: none;
+    width: 12.5%;
+    line-height: 50px;
+}
+
+nav ul li:hover {
+    background: #a62027;
+}
+
+nav ul li a {
+    font: 20px;
+    color: white;
+}
+main h1{
+    line-height: 3ch;
+    color: #a62027;
+}
+main p{
+    margin:10px;
+    text-indent: 4ch;
+    line-height: 3ch;
+    color: #a62027;
+}
+.left{
+    float: left;
+    padding-left: 10%;
+    width: 60%;
+    height: 100%;
+}
+
+.right{
+    width: 30%;
+    float: left;
+}
+
+footer {
+    bottom: 0;
+    clear: both;
+    background: #343A40;
+    padding:1%;
+}
+
+footer span {
+    margin-top: 10px;
+    color: white;
+    display: block;
+    text-align: center;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算机图形学 字母f</title>
+    <script src="./commons.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <canvas id="canvasf" height="500" width="500">
+        对不起, 您的浏览器不支持HTML5画布功能.
+    </canvas>
+    <script>
+        var c = document.getElementById("canvasf");
+        fs = 0.5;
+        height = c.height;
+        var ctx = c.getContext("2d");
+
+        ctx.beginPath();
+        move(289, 452);
+        bezierCurve(289, 452, 166, 452, 166, 452);
+        bezierCurve(166, 452, 166, 568, 166, 568);
+        bezierCurve(166, 627, 185, 657, 223, 657);
+        bezierCurve(245, 657, 258, 647, 276, 618);
+        bezierCurve(292, 589, 304, 580, 321, 580);
+        bezierCurve(345, 580, 363, 598, 363, 621);
+        bezierCurve(363, 657, 319, 683, 259, 683);
+        bezierCurve(196, 683, 144, 656, 118, 611);
+        bezierCurve(92, 566, 84, 530, 83, 450);
+        bezierCurve(83, 450, 1, 450, 1, 450);
+        bezierCurve(1, 450, 1, 418, 1, 418);
+        bezierCurve(1, 418, 83, 418, 83, 418);
+        bezierCurve(83, 418, 83, 104, 83, 104);
+        bezierCurve(83, 31, 72, 19, 0, 15);
+        bezierCurve(0, 15, 0, 0, 0, 0);
+        bezierCurve(0, 0260, 0260, 0);
+        bezierCurve(260, 0, 260, 15, 260, 15);
+        bezierCurve(178, 18, 167, 29, 167, 104);
+        bezierCurve(167, 104, 167, 418, 167, 418);
+        bezierCurve(167, 418, 289, 418, 289, 418);
+        bezierCurve(289, 418, 289, 452, 289, 452);
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

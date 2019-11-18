@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+thead {
+    background: lightskyblue;
+}
+
+.headRight {
+    padding: 1% 10% 1%;
+}
+
+.menuMain {
+    background-color: orange;
+    border: 1px solid;
+}
+
+.body {
+    width: 80%;
+}
+
+.menu a {
+    color: blue;
+}
+
+tfoot {
+    background: gainsboro;
+    text-align: center;
+}

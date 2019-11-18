@@ -8,10 +8,7 @@ a {
 }
 
 header {
-    background: url("./banner-red.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: top center;
+    background: url("./banner-red.jpg") top center/100% 100% no-repeat;
     background-color: #a62027 !important;
     position: relative;
     overflow: hidden;
@@ -57,24 +54,27 @@ nav ul li a {
     font: 20px;
     color: white;
 }
-main h1{
+
+main h1 {
     line-height: 3ch;
     color: #a62027;
 }
-main p{
-    margin:10px;
+
+main p {
+    margin: 10px;
     text-indent: 4ch;
     line-height: 3ch;
     color: #a62027;
 }
-.left{
+
+.left {
     float: left;
     padding-left: 10%;
     width: 60%;
     height: 100%;
 }
 
-.right{
+.right {
     width: 30%;
     float: left;
 }
@@ -83,7 +83,7 @@ footer {
     bottom: 0;
     clear: both;
     background: #343A40;
-    padding:1%;
+    padding: 1%;
 }
 
 footer span {

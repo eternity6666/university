@@ -7,7 +7,7 @@
     margin: 50px;
 }
 
-.child{
+.child {
     margin: inherit;
     position: relative;
 }

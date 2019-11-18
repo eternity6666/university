@@ -1,15 +1,15 @@
-.center{
+.center {
     text-align: center;
 }
 
-.height{
+.height {
     height: 10%;
 }
 
-.text{
+.text {
     text-decoration: underline overline;
 }
 
-.indent{
+.indent {
     text-indent: 0.75cm;
 }

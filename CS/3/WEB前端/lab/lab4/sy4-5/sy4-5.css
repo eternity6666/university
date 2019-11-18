@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+.title{
+    font-size: 25px;
+    padding-bottom: 1em;
+    padding-top: 0.5em;
+    text-align: center;
+}
+
+.article{
+    font:楷体;
+    text-indent:2ch;
+    line-height: 1.5em;
+}

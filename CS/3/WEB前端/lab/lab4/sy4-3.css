@@ -1,0 +1,21 @@
+/* 显示产品名称*/
+.p1 {
+    font-family: "黑体";
+    font-size: 20px;
+    color: #3333ff;
+}
+
+/*显示具体产品*/
+.p2 {
+    font-family: "黑体";
+    font-size: 30px;
+    color: #3333ff;
+}
+
+/*显示每一个子项目标题*/
+.bt1 {
+    color: #6600cc;
+    font-size: 25px;
+    font-family: 微软雅黑;
+    background-color: #999900;
+}

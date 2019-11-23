@@ -77,6 +77,7 @@ void remove_left_recursion()
 
 void remove_left_gene()
 {
+    
 }
 
 void print()

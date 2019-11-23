@@ -1,17 +1,35 @@
-*{
+* {
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 
-.title{
-    font-size: 25px;
+.title {
+    font-size: 20px;
     padding-bottom: 1em;
     padding-top: 0.5em;
     text-align: center;
 }
 
-.article{
-    font:楷体;
-    text-indent:2ch;
+.article {
+    font: 楷体;
+    text-indent: 2em;
     line-height: 1.5em;
+}
+
+.center {
+    text-align: center;
+}
+
+table {
+    background: rgb(40, 114, 233);
+    color: aliceblue;
+}
+
+.bt a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+hr{
+    margin: auto;
 }

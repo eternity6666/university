@@ -1,0 +1,24 @@
+table {
+    background: url("./1.jpg") #99ff00;
+    background-size: 100%;
+}
+
+tr {
+    width: 500px;
+    text-align: center;
+    vertical-align: middle;
+    height: 20px;
+}
+
+.blue {
+    color: blue;
+}
+
+.yellow {
+    color: yellow;
+}
+
+td {
+    font-weight: bold;
+    color: white;
+}

@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*第 1 图层样式*/
+#div1 {
+    background-color: #f2f9fd;
+    color: #66ffff;
+    width: 100%;
+    height: 30px;
+}
+
+/*第 2 图层样式*/
+#div2 {
+    background-color: #f2f9fd;
+    color: #66ffff;
+    width: 100%;
+    /* height: 300px; */
+    margin-top: 3px;
+}
+
+/*单元格1 样式*/
+.td1 {
+    line-height: 22px;
+    font-size: 18px;
+    color: #339966;
+    width: 100px;
+    font-weight: bold;
+}
+
+/*单元格2 样式*/
+.td2 {
+    line-height: 42px;
+    font-size: 18px;
+    color: #339966;
+    width: 100px;
+    font-weight: bold;
+}
+
+/*标题1 样式*/
+.bt1 {
+    float: left;
+    font-size: 30px;
+    font-family: 黑体;
+    font-weight: bold;
+    text-align: left;
+    width: 500px;
+    color: #0033cc;
+}
+
+/*标题2 样式*/
+.bt2 {
+    float: left;
+    font-size: 22px;
+    font-family: 黑体;
+    font-weight: bold;
+    text-align: left;
+    width: 200px;
+    color: #0033cc;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    height: 300px;
+}
+
+.submit {
+    text-align: center;
+}
+
+.zhu {
+    text-indent: 2em;
+    color: #0033cc;
+}
+
+tfoot {
+    color: black;
+}
+
+.red{
+    color:red;
+}
+
+.lylx{
+    text-indent: 2em;
+}

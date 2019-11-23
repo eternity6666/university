@@ -1,0 +1,10 @@
+tr {
+    width: 500px;
+    text-align: center;
+    vertical-align: middle;
+    height: 20px;
+}
+
+td {
+    font-weight: bold;
+}

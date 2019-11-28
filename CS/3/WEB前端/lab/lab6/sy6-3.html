@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验6自主实验</title>
+    <link rel="stylesheet" href="./sy6-3.css">
+</head>
+
+<body>
+    <h1>自主实验1</h1>
+    <input id="id1" type="text" oninput="zzsy1()" />
+    <p id="num1"></p>
+    <p id="num2"></p>
+    <br />
+    <script>
+        function zzsy1() {
+            var id = document.getElementById('id1').value;
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");
+            if (isNaN(id)) {
+                num1.innerHTML = " ";
+                num2.innerHTML = " ";
+            } else {
+                num1.innerHTML = parseInt(id);
+                num2.innerHTML = parseFloat(id);
+            }
+        }
+    </script>
+    <h1>自主实验2</h1>
+    <button id="id2" onclick="zzsy2()">摇奖</button>
+    <script>
+        function zzsy2() {
+            var x1, x2, x3;
+            x1 = parseInt(Math.random() * 100) % 11;
+            do {
+                x2 = parseInt(Math.random() * 100) % 11;
+            } while (x1 == x2);
+            do {
+                x3 = parseInt(Math.random() * 100) % 11;
+            } while (x1 == x3 || x2 == x3);
+            alert("三个幸运数字是：" + x1 + ", " + x2 + "和" + x3);
+        }
+    </script>
+    <h1>自主实验3</h1>
+    <input id="id3" type="date" onkeydown="zzsy3()" />
+    <p id="num3"></p>
+    <script>
+        function zzsy3() {
+            var id = document.getElementById('id3').value;
+            var num3 = document.getElementById('num3');
+            var date1 = Date.UTC(id.substr(0, 4), id.substr(5, 2), id.substr(8, 2));
+            var date2 = Date.UTC(
+                String(new Date().getFullYear()),
+                String(new Date().getMonth()),
+                String(new Date().getDate())
+            );
+            num3.innerHTML = Math.ceil((date2 - date1) / 86400000);
+        }
+    </script>
+    <h1>自主实验4</h1>
+    <input id="id4" type="text" oninput="zzsy4()" />
+    <p id="num4"></p>
+    <script>
+        function zzsy4() {
+            var id = document.getElementById('id4').value;
+            var num4 = document.getElementById('num4');
+            var patt = /[0-9a-z]+@[0-9a-z]+\.[0-9a-z]+/i;
+            if (patt.test(id))
+                num4.innerHTML = " ";
+            else
+                num4.innerHTML = "邮箱地址非法";
+        }
+    </script>
+    <h1>自主实验5</h1>
+    <div id="sy6-3-5">
+        <input id="id5" value="0" type="text">
+        <div id="control" style="font-size: 0;">
+            <button class="button" id="clear" onclick="clear()">C</button>
+            <button class="button" id="backspace" onclick="backspace()">《</button>
+            <button class="button" id="mod" onclick="fhmod()">%</button>
+            <button class="button" id="divide" onclick="fhdivide()">/</button>
+            <button class="button" id="number1" onclick="number1()">1</button>
+            <button class="button" id="number2" onclick="number2()">2</button>
+            <button class="button" id="number3" onclick="number3()">3</button>
+            <button class="button" id="mutiply" onclick="fhmutiply()">*</button>
+            <button class="button" id="number4" onclick="number4()">4</button>
+            <button class="button" id="number5" onclick="number5()">5</button>
+            <button class="button" id="number6" onclick="number6()">6</button>
+            <button class="button" id="subtraction" onclick="fhsubtraction()">-</button>
+            <button class="button" id="number7" onclick="number7()">7</button>
+            <button class="button" id="number8" onclick="number8()">8</button>
+            <button class="button" id="number9" onclick="number9()">9</button>
+            <button class="button" id="add" onclick="fhadd()">+</button>
+            <button class="button" id="PI" onclick="fhPI()">π</button>
+            <button class="button" id="number0" onclick="number0()">0</button>
+            <button class="button" id="e" onclick="fhe()">e</button>
+            <button class="button" id="sqrt" onclick="fhsqrt()">sqrt</button>
+            <button class="button" id="sin" onclick="fhsin()">sin</button>
+            <button class="button" id="cos" onclick="fhcos()">cos</button>
+            <button class="button" id="tan" onclick="fhtan()">tan</button>
+            <button class="button" id="equal" onclick="fhequal()">=</button>
+        </div>
+    </div>
+    <script src="./sy6-3.js"></script>
+</body>
+
+</html>

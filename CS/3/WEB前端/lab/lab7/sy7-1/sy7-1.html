@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验7步骤1</title>
+    <link rel="stylesheet" href="./sy7-1.css">
+    <script src="./sy7-1.js"></script>
+</head>
+
+<body id="body">
+    <center>
+        <form onsubmit="return submitTest()" onreset="resetTest()">
+            <fieldset height="500px">
+                <legend>表单事件实例</legend>
+                昵称：<input type="text" id="input1" />
+                <br />
+                密码：<input type="password" id="input2" />
+                <br /><br />
+                <input onfocus="getFocus()" onblur="loseFocus()" type="button" value="获得/失去焦点触发事件" />
+                <br />
+                <input type="submit" value="提交" />
+                <input type="reset" value="重置" />
+            </fieldset>
+        </form>
+    </center>
+</body>
+
+</html>

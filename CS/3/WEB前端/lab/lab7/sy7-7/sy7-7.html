@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验7步骤7</title>
+    <link rel="stylesheet" href="./sy7-7.css">
+    <script src="./sy7-7.js"></script>
+</head>
+
+<body>
+    <p style="text-align: center;width:15em;">表单验证</p>
+    <form onsubmit="return false;" style="border:1px solid black;width: 15em;">
+        <label>昵<span class="span"></span><span class="span"></span>称：</label>
+        <input type="text" name="user" id="user" confirmUser();" placeholder="请输入您的用户名" required />
+        <br />
+        <label>密<span class="span"></span><span class="span"></span>码：</label>
+        <input type="password" name="pwd" id="pwd" confirmPwd();" placeholder="请输入您的密码" required />
+        <br />
+        <label>确认密码：</label>
+        <input type="password" name="rePwd" id="rePwd" confirmRePwd();" placeholder="请重新确认您的密码" required />
+        <br />
+        <label>电子邮件：</label>
+        <input type="text" name="email" id="email" confirmEmail();" placeholder="请输入您的邮箱" required />
+        <br />
+        <p style="text-align:center;">
+            <button type="submit" onclick="submit()">提交</button><span class="span"></span><button type="reset">重置</button>
+        </p>
+    </form>
+</body>
+
+</html>

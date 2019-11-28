@@ -1,0 +1,20 @@
+form {
+    text-align: center;
+}
+
+.div {
+    background: #33ff99;
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+button{
+    width: 30px;
+    height: 30px;
+}
+
+input{
+    height: 40px;
+    width: 200px;
+}

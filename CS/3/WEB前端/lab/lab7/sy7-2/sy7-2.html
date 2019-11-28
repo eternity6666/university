@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验7步骤2</title>
+    <link rel="stylesheet" href="./sy7-2.css">
+    <script src="./sy7-2.js"></script>
+</head>
+
+<body>
+    <form name="myform">
+        <p>人民币和各种外汇比价折算。</p>
+        <b>请选择一种外汇...</b><br>
+        <p>
+            <select name="country" onchange="change()">
+                <option value="7.80">美元</option>
+                <option value="12.00">英 镑 </option>
+                <option value="10.00">欧 元 </option>
+                <option value="0.30">日元</option>
+            </select>
+            一元这样的外币可以兑换<input type="text" name="money" onselect="sel()" value="">元人民币
+        </p>
+    </form>
+</body>
+
+</html>

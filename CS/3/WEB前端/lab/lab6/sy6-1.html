@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验6步骤1</title>
+    <link rel="stylesheet" href="./sy6-1.css">
+</head>
+
+<body>
+    <div id="" class="">
+        <h4>系统函数使用</h4>
+        <b>1.eval("字符串")</b><br />
+        <script type="text/javascript">
+            var rel = eval("1000 + 3 / 5");
+            document.write("1000 + 3 / 5 =" + rel);
+            document.write("<br />");
+            document.write("x = 10, y = 20, x * y = ");
+            eval("x=10;y=20;document.write(x*y)");
+            document.write("<br />2 + 2 = " + eval("2+2"));
+            document.write("<br />");
+            var x = 10;
+            document.write("x=10,x+17=" + eval(x + 17));
+            document.write("<br />");
+        </script>
+        <b>2.escape("字符串")</b><br />
+        <script type="text/javascript">
+            /*escape()*/
+            document.write("escape('&')=" + escape("&"));
+            document.write("<br />");
+            result = escape('my name is 张华');
+            document.write("escape('my name is 张华')=" + result);
+            document.write("<br />");
+        </script>
+        <b>3.unecsape(string)</b><br />
+        <script type="text/javascript">
+            /*unescape()*/
+            document.write("unescape('%26') = " + unescape("%26"));
+            document.write("<br />");
+            result = unescape("my%20name%20is%20%u5F20%u534E ");
+            document.write("unescape('my%20name%20is%20%u5F20%u534E') = " + result);
+            document.write("<br />");
+        </script>
+        <b>4.parseFloat(string)</b><br />
+        <script type="text/javascript">
+            document.write("parseFloat('3.14') = " + parseFloat("3.14"));
+            document.write("<br />")
+            document.write("parseFloat('314e-2') = " + parseFloat("314e-2"));
+            document.write("<br />")
+            document.write("parseFloat('3.14ab') = " + parseFloat("3.14ab"));
+            document.write("<br />")
+            document.write("parseFloat('FF2') = " + parseFloat("FF2"));
+            document.write("<br />")
+        </script>
+        <b>5.parseInt(numberstring,radix)</b><br />
+        <script type="text/javascript">
+            document.write("32: " + parseInt("32"));
+            document.write("<br />")
+            document.write("032: " + parseInt("032"));
+            document.write("<br />")
+            document.write("0x32: " + parseInt("0x32"));
+            document.write("<br />")
+            document.write("parseInt('15*3',10) = " + parseInt("15*3", 10))
+            document.write("<br />")
+        </script>
+        <b>6.isNaN)</b><br />
+        <script type="text/javascript">
+            document.write("isNaN(\"5454g\") = " + isNaN("5454g"));
+            document.write("<br />")
+            document.write("isNaN(\"789\") = " + isNaN("789"));
+            document.write("<br />")
+        </script>
+    </div>
+</body>
+
+</html>

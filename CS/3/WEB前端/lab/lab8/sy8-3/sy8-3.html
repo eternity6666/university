@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验8步骤3</title>
+    <link rel="stylesheet" href="./sy8-3.css">
+    <script src="./sy8-3.js"></script>
+    <style type="text/css">
+        #div {
+            background: #009933;
+            width: 400px;
+            height: 300px;
+            margin: 0px auto;
+            border: 2px dotted #ff3300;
+            color: white;
+        }
+
+        form {
+            margin: 0 auto;
+        }
+
+        table {
+            margin: 0 auto;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 28px;
+            text-align: center;
+        }
+        button{
+            width:6em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        <form onsubmit="return false;">
+            <h2>福利彩票投注助手</h2>
+            <table>
+                <tr>
+                    <td><button onclick="selectNumber(1)">机选1注</button></td>
+                    <td rowspan="3">
+                        <select name="" id="number1" size="6" multiple>
+                        </select>
+                    </td>
+                    <td>
+                        <button onclick="delSelect()">删除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button onclick="selectNumber(5)">机选5注</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="selectNumber(10)">机选10注</button></td>
+                    <td>
+                        <button onclick="delSelectAll()">全部删除</button>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+</body>
+
+</html>

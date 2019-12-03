@@ -1,0 +1,8 @@
+#div{
+    border: 1px solid black;
+    border-radius: 14px;
+    width: 400px;
+    height: 150px;
+    background: rgb(193, 131, 255);
+    text-indent: 2em;
+}

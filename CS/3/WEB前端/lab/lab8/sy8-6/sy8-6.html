@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验8步骤6</title>
+    <link rel="stylesheet" href="./sy8-6.css">
+    <script src="./sy8-6.js"></script>
+</head>
+
+<body>
+    <div id="div">
+        <p id="messages"></p>
+    </div>
+    <script>
+        function start() {
+            var pp = document.getElementById("messages");
+            var date = new Date();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var second = date.getSeconds();
+            pp.innerHTML = "现在是：" + (hour % 12) + ":" + min + ":" + second + (hour >= 12 ? " pm" : " am");
+        }
+        setInterval("start();", 1000);
+    </script>
+</body>
+
+</html>

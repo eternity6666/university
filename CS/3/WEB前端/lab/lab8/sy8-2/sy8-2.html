@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验8步骤2</title>
+    <link rel="stylesheet" href="./sy8-2.css">
+    <script src="./sy8-2.js"></script>
+    <style type="text/css">
+        #div {
+            background: #009933;
+            width: 400px;
+            height: 300px;
+            margin: 0px auto;
+            border: 2px dotted #ff3300;
+            color: white;
+        }
+
+        form {
+            margin: 0 auto;
+        }
+
+        table {
+            margin: 0 auto;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 28px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        <h2>福利彩票投注助手</h2>
+        <table>
+            <tr>
+                <td>彩票号码</td>
+                <td><input readonly type="text" name="" id="1"></td>
+                <td><button onclick="selectnumber(1)">投注</button></td>
+                <td rowspan="3"><button style="line-height:5em;" onclick="clear()">清空</button></td>
+            </tr>
+            <tr>
+                <td>彩票号码</td>
+                <td><input readonly type="text" name="" id="2"></td>
+                <td><button onclick="selectnumber(2)">投注</button></td>
+            </tr>
+            <tr>
+                <td>彩票号码</td>
+                <td><input readonly type="text" name="" id="3"></td>
+                <td><button onclick="selectnumber(3)">投注</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

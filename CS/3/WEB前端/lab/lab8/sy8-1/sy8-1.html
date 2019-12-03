@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验8步骤1</title>
+    <link rel="stylesheet" href="./sy8-1.css">
+    <script src="./sy8-1.js"></script>
+</head>
+
+<body>
+    <script>
+        /*document 对象的属性显示文档相关信息*/
+        document.write(" 当前文档的标题:" + document.title + "<br />");
+        document.write(" 当前文档的URL:" + document.URL + "<br />");
+        document.write(" 当前文档的背景色:" + document.bgColor + "<br />");
+        document.write(" 当前文档的最后修改日期:" + document.lastModified + "<br />");
+        document.write(" 当前文档包含" + document.links.length + "个超链接<br />");
+        document.write(" 当前文档包含" + document.images.length + " 个图像<br />");
+    </script>
+    <script>
+        var i, cell,len = document.all.length;
+        for (i = 0; i < len; i++) { //all 属性返回页面元素数组，通过循环遍历
+            cell = document.all[i];
+            document.write(cell.tagName);
+            if (i != len) {
+                document.write("，");
+            }
+            if ((i + 1) % 5 == 0)
+                document.write("<br />")
+        }
+    </script>
+</body>
+
+</html>

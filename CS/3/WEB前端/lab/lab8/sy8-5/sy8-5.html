@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验8步骤5</title>
+    <link rel="stylesheet" href="./sy8-5.css">
+    <script src="./sy8-5.js"></script>
+</head>
+
+<body>
+    <div style="width: 400px;">
+        <div id="control" style="width:398px">
+            <select id="select" onchange="control()">
+                <option value="xsb">销售部</option>
+                <option value="yfb">研发部</option>
+                <option value="bgs">办公室</option>
+            </select></div>
+        <div id="container" style="width: 100%;">
+            <div id="table1">
+                <select size="10">
+                    <option>王老五</option>
+                    <option>张大帅</option>
+                    <option>张明</option>
+                </select>
+                <select size="10" class="hidden">
+                    <option>小明</option>
+                    <option>李小白</option>
+                    <option>牛二娃</option>
+                </select>
+                <select size="10" class="hidden">
+                    <option>李世民</option>
+                    <option>赵子龙</option>
+                    <option>王雪梅</option>
+                </select>
+            </div>
+            <div id="change">
+                <div>
+                    <button onclick="put(1,2)">></button> <br />
+                    <button onclick="putAll(1,2)">>>></button> <br />
+                    <button onclick="put(2,1)"><</button> <br />
+                    <button onclick="putAll(2,1)"><<<</button> <br />
+                </div>
+            </div>
+            <div id="table2">
+                <select size="10">
+                    <option>王博文</option>
+                    <option>李华</option>
+                </select>
+                <select size="10" class="hidden">
+                    <option>老叶</option>
+                </select>
+                <select size="10" class="hidden">
+                    <option>小老弟</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

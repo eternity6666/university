@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#div {
+    width: 420px;
+    margin: 0 auto;
+}
+
+.block {
+    float: left;
+    background-color: rgb(250, 151, 195);
+    text-align: center;
+    padding: 20px 0;
+    width: 60px;
+}
+
+.today{
+    background-color: red;
+}

@@ -1,1 +1,26 @@
+#div {
+    background: #009933;
+    width: 400px;
+    height: 300px;
+    margin: 0px auto;
+    border: 2px dotted #ff3300;
+    color: white;
+}
 
+form {
+    margin: 0 auto;
+}
+
+table {
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 28px;
+    text-align: center;
+}
+
+button {
+    width: 6em;
+}

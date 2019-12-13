@@ -12,7 +12,6 @@
 
 <body>
     <script>
-        /*document 对象的属性显示文档相关信息*/
         document.write(" 当前文档的标题:" + document.title + "<br />");
         document.write(" 当前文档的URL:" + document.URL + "<br />");
         document.write(" 当前文档的背景色:" + document.bgColor + "<br />");
@@ -21,8 +20,8 @@
         document.write(" 当前文档包含" + document.images.length + " 个图像<br />");
     </script>
     <script>
-        var i, cell,len = document.all.length;
-        for (i = 0; i < len; i++) { //all 属性返回页面元素数组，通过循环遍历
+        var i, cell, len = document.all.length;
+        for (i = 0; i < len; i++) {
             cell = document.all[i];
             document.write(cell.tagName);
             if (i != len) {

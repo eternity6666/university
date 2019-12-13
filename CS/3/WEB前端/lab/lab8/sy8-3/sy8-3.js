@@ -2,7 +2,7 @@ function selectNumber(n) {
     //彩票选号助手
     var number = new Array();
     var objsel = document.getElementById("number1");
-    varselnum = objsel.options.length; //保存选项添加前总数
+    var selnum = objsel.options.length; //保存选项添加前总数
     for (j = 0; j <= n - 1; j++) {
         var list = "";
         //随机产生7 个 01~30 之间的整数

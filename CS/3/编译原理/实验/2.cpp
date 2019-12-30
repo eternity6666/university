@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 map<char, set<string>> ma;
 map<char, set<string>>::iterator mit;
 set<string>::iterator sit;
-
 bool isIn(char c)
 {
     if (ma[c].size() == 0)
@@ -14,7 +12,6 @@ bool isIn(char c)
     }
     return true;
 }
-
 void read()
 {
     string s;
@@ -37,7 +34,6 @@ void read()
         }
     }
 }
-
 string substr(string x, int begin, int end)
 {
     string ans = "";
@@ -118,7 +114,6 @@ void remove_left_recursion()
         }
     }
 }
-
 void remove_left_gene()
 {
     bool flag;
@@ -177,7 +172,6 @@ void remove_left_gene()
         }
     } while (flag);
 }
-
 void print()
 {
     for (mit = ma.begin(); mit != ma.end(); ++mit)
@@ -195,7 +189,6 @@ void print()
     }
     cout << endl;
 }
-
 int main()
 {
     read();
@@ -206,26 +199,22 @@ int main()
     print();
     return 0;
 }
-
 /*
 #include <iostream>
 #include <map>
 #include <vector>
 using namespace std;
-
 map<char, int> ma1;
 map<char, int> ma2;
 map<char, int>::iterator it;
 vector<string> ve;
 int len = 0;
-
 bool isIn(char c)
 {
     if (ma1[c] == 0)
         return false;
     return true;
 }
-
 void read()
 {
     string s;
@@ -251,7 +240,6 @@ void read()
         ma2[c] = len;
     }
 }
-
 void remove_left_recursion()
 {
     for (it = ma1.begin(); it != ma1.end(); it++)
@@ -284,12 +272,10 @@ void remove_left_recursion()
         }
     }
 }
-
 void remove_left_gene()
 {
     
 }
-
 void print()
 {
     for (it = ma1.begin(); it != ma1.end(); it++)
@@ -300,7 +286,6 @@ void print()
             cout << c << "->" << ve[i - 1] << endl;
     }
 }
-
 int main()
 {
     read();

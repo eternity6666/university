@@ -10,6 +10,7 @@ bool isalpha(char c)
         return true;
     return 'A' <= c && c <= 'Z';
 }
+
 bool is0(char c)
 {
     return c == '0';
@@ -128,8 +129,8 @@ void scan(string s)
 
 int main()
 {
-    freopen("program.txt", "r", stdin);
-    freopen("out.txt", "w", stdout);
+    // freopen("program.txt", "r", stdin);
+    // freopen("out.txt", "w", stdout);
     string s;
     while (cin >> s)
         scan(s);
